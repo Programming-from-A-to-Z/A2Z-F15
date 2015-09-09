@@ -3,7 +3,8 @@
 This course focuses on programming strategies and techniques behind procedural analysis and generation of text-based data. We'll explore topics ranging from evaluating text according to its statistical properties to the automated production of text with probabilistic methods to text visualization. Students will learn server-side and client-side JavaScript programming and develop projects that can be shared and interacted with online.  There will be weekly homework assignments as well as a final project.
 
 ## Info
-- Daniel Shiffman, Fridays, 12:10pm-2:40pm
+- Daniel Shiffman, Mondays, 12:10pm-2:40pm
+- [All class dates](http://help.itp.nyu.edu/curriculum/fall-class-dates)
 - [Course Notes](http://shiffman.net/teaching/a2z/)
 - All example code in this repo.
 
