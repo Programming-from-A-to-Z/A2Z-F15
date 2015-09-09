@@ -10,50 +10,56 @@ This course focuses on programming strategies and techniques behind procedural a
 ## Mailing List
 * [Join ITP A2Z Google Group](https://groups.google.com/a/nyu.edu/forum/#!forum/a2z-group/).
 
-## Part 1: Strings and Data
+## Week 1 - Intro
+* in-class text mashup exercise
+* p5.js overview
+* client-side vs. server-side
+* github pages
+* Assignment: Get up and running with p5.js and github pages
 
-### Week 1 - Intro
-### Course intro / expectations
-* Where to find course materials
-* Overview / syllabus
-* Homework / final project
+## Week 2 -- Strings and DOM
+* Strings in JS
+* DOM manipulation in p5.js
+* Text input (from user, from file)
+* Assignment: Text-in Text Out
 
-### Week 2 - Regular Expressions
+## Week 3 - Regular Expressions
+* Assignment: Regex manipulation
 
-### Week 3 - Getting data
-* APIs
-* Working with google sheets
-
-## Part 2: Analysis and Generation
-
-### Week 4 - Text Analysis
+## Week 4 - Text Analysis
 * Concordance
 * TF/IDF
+* Assignment: Text Analysis Project
 
-### Week 5 - Text Generation: Markov chains
-* Also, saving data to Parse
+## Week 5 - Getting data and saving data
+* APIs
+* Working with google sheets
+* Parse
 
-### Week 6 - Text Generation: Grammars
-* Wordnik
+## Week 6 - show text analysis projects
 
-## Part 3: Output
+## Week 7 - Text Generation: Markov chains
+* Assignment: Markov chain generator
 
-### Week 7 - Text Visualization
-* Font outlines
+## Week 8 - Text Generation: Grammars
+* Look at wordnik here?
+* Assignment: Design a grammar
 
-### Week 8 - Bots
+## Week 9 - Bots
 * Twitter
 * Youtube
- 
-### Week 9 - TBD
+* Assignment: Develop final project proposal
 
-### Week 10 - Final Project Proposals
+## Week 10 - Visualizing with text
+* More DOM
+* More canvas
+* Font outlines
 
 ### Week 11 - Final Project Proposals
 
-### Week 12 - User Testing
+### Week 12 - Final Project Proposals
 
-### Week 13 - Final Presentations
+### Week 13 - User Testing
 
 ### Week 14 - Final Presentations
 
