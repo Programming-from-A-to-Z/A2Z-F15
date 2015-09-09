@@ -10,52 +10,52 @@ This course focuses on programming strategies and techniques behind procedural a
 ## Mailing List
 * [Join ITP A2Z Google Group](https://groups.google.com/a/nyu.edu/forum/#!forum/a2z-group/).
 
-# Part 1: Strings and Data
+## Part 1: Strings and Data
 
-## Week 1 - Intro
+### Week 1 - Intro
 ### Course intro / expectations
 * Where to find course materials
 * Overview / syllabus
 * Homework / final project
 
-## Week 2 - Regular Expressions
+### Week 2 - Regular Expressions
 
-## Week 3 - Getting data
+### Week 3 - Getting data
 * APIs
 * Working with google sheets
 
-# Part 2: Analysis and Generation
+## Part 2: Analysis and Generation
 
-## Week 4 - Text Analysis
+### Week 4 - Text Analysis
 * Concordance
 * TF/IDF
 
-## Week 5 - Text Generation: Markov chains
+### Week 5 - Text Generation: Markov chains
 * Also, saving data to Parse
 
-## Week 6 - Text Generation: Grammars
+### Week 6 - Text Generation: Grammars
 * Wordnik
 
-# Part 3: Output
+## Part 3: Output
 
-## Week 7 - Text Visualization
+### Week 7 - Text Visualization
 * Font outlines
 
-## Week 8 - Bots
+### Week 8 - Bots
 * Twitter
 * Youtube
  
-## Week 9 - TBD
+### Week 9 - TBD
 
-## Week 10 - Final Project Proposals
+### Week 10 - Final Project Proposals
 
-## Week 11 - Final Project Proposals
+### Week 11 - Final Project Proposals
 
-## Week 12 - User Testing
+### Week 12 - User Testing
 
-## Week 13 - Final Presentations
+### Week 13 - Final Presentations
 
-## Week 14 - Final Presentations
+### Week 14 - Final Presentations
 
 
 ## Resources
