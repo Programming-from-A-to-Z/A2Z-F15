@@ -45,41 +45,45 @@ This course focuses on programming strategies and techniques behind procedural a
 * Strings in JS
 * DOM manipulation in p5.js
 * Text input (from user, from file)
-* Assignment: Text-in Text Out
+* Assignment: Recreate assignment 1 using an algorithm.  Get text in from user via text input box or file.
 
 ## Week 3 - Regular Expressions
 * Assignment: Regex manipulation
+* Project 1 (due week 6): Analyze a text (or multiple texts) and visualize / present the results to the user.
 
-## Week 4 - Text Analysis
-* Concordance
+## Week 4 - Text Analysis Workshop
+* Simple Concordance
 * TF/IDF
-* Assignment: Text Analysis Project
+* Bayesian Analysis
 
-## Week 5 - Getting data and saving data
-* APIs
+## Week 5 - Data/API Workshop
+* APIs -- NY Times, twitter (temboo)
 * Working with google sheets
 * Parse
 
-## Week 6 - show text analysis projects
+## Week 6 - Show text analysis projects
 
-## Week 7 - Text Generation: Markov chains
-* Assignment: Markov chain generator
+## Week 7 - Text Generation Workshop: Markov chains
+* In class we'll build and use a simple markov chain generator
+* Project #2: develop an idea for a bot the generates text
 
 ## Week 8 - Text Generation: Grammars
-* Look at wordnik here?
-* Assignment: Design a grammar
+* In class we'll build and use a CFG generator
+* Continue Project #2
 
 ## Week 9 - Bots
 * Twitter
-* Youtube
-* Assignment: Develop final project proposal
+* Youtube?
+* Assignment: Use text generation techiniques to create a bot using JavaScript and node.js.
 
-## Week 10 - Visualizing with text
+## Week 10 - Bot presentations
+* Assignment: Final project proposal
+
+## Week 11 - Visualizing with text workshops
+* Return to p5.js canvas
 * More DOM
-* More canvas
+* Physics?
 * Font outlines
-
-## Week 11 - Final Project Proposals
 
 ## Week 12 - Final Project Proposals
 
