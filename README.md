@@ -49,10 +49,10 @@ This course focuses on programming strategies and techniques behind procedural a
 * Assignment: Recreate assignment 1 using an algorithm.  Get text in from user via text input box or file.
 
 ## Week 3 - Regular Expressions
-* Assignment: Regex manipulation
 * Project 1 (due week 6): Analyze a text (or multiple texts) and visualize / present the results to the user.
 
 ## Week 4 - Text Analysis Workshop
+* In class, we'll build a simple concordance together as well as demonstrate and discuss TF/IDF and Bayesian analysis.
 * Simple Concordance
 * TF/IDF
 * Bayesian Analysis
@@ -66,21 +66,19 @@ This course focuses on programming strategies and techniques behind procedural a
 
 ## Week 7 - Text Generation Workshop: Markov chains
 * In class we'll build and use a simple markov chain generator
-* Project #2: develop an idea for a bot the generates text
+* Project 2 (due Week 10): Create a bot the generates text 
 
 ## Week 8 - Text Generation: Grammars
 * In class we'll build and use a CFG generator
-* Continue Project #2
 
 ## Week 9 - Bots
 * Twitter
 * Youtube?
-* Assignment: Use text generation techiniques to create a bot using JavaScript and node.js.
 
 ## Week 10 - Bot presentations
-* Assignment: Final project proposal
+* Assignment: Create a final project proposal (due week 12)
 
-## Week 11 - Visualizing with text workshops
+## Week 11 - Visualizing with text workshop
 * Return to p5.js canvas
 * More DOM
 * Physics?
@@ -91,7 +89,6 @@ This course focuses on programming strategies and techniques behind procedural a
 ## Week 13 - User Testing
 
 ## Week 14 - Final Presentations
-
 
 ## Resources
 * [p5.js](http://p5js.org)
