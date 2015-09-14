@@ -22,6 +22,7 @@ This course focuses on programming strategies and techniques behind procedural a
    * [Overview of p5.js](https://github.com/processing/p5.js/wiki/p5.js-overview)
    * [p5.js transition from Processing](https://github.com/processing/p5.js/wiki/Processing-transition)
    * [p5.js DOM library](https://github.com/processing/p5.js/wiki/Beyond-the-canvas)
+   * Objects in JavaScript
    * Basics of HTML and CSS with p5.js
 * JavaScript
    * [Eloquent JavaScript: Chapters 1-4](http://eloquentjavascript.net/)
