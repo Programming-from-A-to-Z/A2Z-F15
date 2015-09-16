@@ -90,12 +90,21 @@ This course focuses on programming strategies and techniques behind procedural a
 
 ## Week 14 - Final Presentations
 
-## Resources
+## References and Inspiration
+* Moved to [references wiki](https://github.com/shiffman/Programming-from-A-to-Z-F15/wiki/References)
+
+## Tools
 * [p5.js](http://p5js.org)
 * [p5.js on GitHub](https://github.com/lmccart/p5.js)
 * [p5.js CDN](http://cdnjs.com/libraries/p5.js)
 * [Node](http://nodejs.org/)
 * [Servi](https://github.com/antiboredom/servi.js)
+* [RitaJS](https://github.com/dhowe/RiTaJS)
+
+## JS reference books
+* [JavaScript: The Definitive Guide](http://shop.oreilly.com/product/9780596000486.do)
+* [Eloquent JavaScript](http://eloquentjavascript.net/contents.html), Marijn Haverbeke
+* [Beginning JavaScript](http://www.amazon.com/Beginning-JavaScript-Paul-Wilton/dp/0470525932), Paul Wilton and Jeremy McPeak
 
 ## Learning / Intro
 * [CodeAcademy: JavaScript](http://www.codecademy.com/tracks/javascript)
@@ -106,44 +115,15 @@ This course focuses on programming strategies and techniques behind procedural a
 * [A re-introduction to JS by Mozilla](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript)
 * [JavaScript 101 from JQuery](https://learn.jquery.com/javascript-101/)
 
-## Reference
-* [JavaScript: The Definitive Guide](http://shop.oreilly.com/product/9780596000486.do)
-* [Eloquent JavaScript](http://eloquentjavascript.net/contents.html), Marijn Haverbeke
-* [Beginning JavaScript](http://www.amazon.com/Beginning-JavaScript-Paul-Wilton/dp/0470525932), Paul Wilton and Jeremy McPeak
-
 ## Tools
 * Checking code: [JSLint](http://www.jslint.com/) / [JSHint](http://www.jshint.com)
 * Browser debugging: Chrome Developer Tools ([tutorial](https://developer.chrome.com/extensions/tut_debugging)) / Firebug ([tutorial](http://www.developerfusion.com/article/139949/debugging-javascript-with-firebug/))
 * Mobile debugging [jsconsole.com](http://jsconsole.com)
 * Sharing code snippets (useful for asking questions): [gist.github.com](http://gist.github.com)
 
-## References
-* Office of Creative Research
-   * [Moveable Type](http://o-c-r.org/portfolio/moveable-type/)
-   * [Shuffle](http://o-c-r.org/portfolio/shuffle/)
-   * [Shakespeare Machine](http://o-c-r.org/portfolio/shakespeare-machine/)
-* [ITP Course Generator](http://static.decontextualize.com/toys/next_semester) by Allison Parrish
-* [Darius Kazemi](http://tinysubversions.com/)
-* [Wordnik](https://www.wordnik.com/about), [Wordnik API](http://developer.wordnik.com/)
-* [WTFEngine](https://github.com/soulwire/WTFEngine)
-* [programming language design prototyping tool](https://github.com/nasser/pltjs) by Ramsey Nasser
-* [Drawing with text](http://codepen.io/tholman/pen/qCnfB)
-* [Ariel Malka](http://ariel.chronotext.org/)
-* [Werdmerge](http://werdmerge.com/)
-* [Visualizing Fiction's Structure](https://www.youtube.com/watch?v=f41U936WqPM), Lynn Cherny
-* [Secretlife of Pronouns](http://secretlifeofpronouns.com/)
-* [Gnoetry](http://www.beardofbees.com/gnoetry.html)
-* [Jackson Mac Low](http://epc.buffalo.edu/authors/maclow/)
-* [Grand Text Auto](http://grandtextauto.org/)
-* [Nick Montfort](http://nickm.com/)
-* [Wordnet](http://wordnet.princeton.edu/)
-* [Wordcount](http://www.number27.org/wordcount)
-* [Rita](http://rednoise.org/rita/)
-* [Allison Parrish](http://www.decontextualize.com/)
-
 ## Requirements
 * You are required to attend all class meetings and submit all weekly assignments and a final project.
 * Grading (pass/fail) will be based on a combination of factors:
   * Attendance, participation in class discussion, and engagement in other students' projects (25%)
-  * Quality of weekly assignments (50%) 
+  * Quality of assignments (50%) 
   * Final Project (25%)

@@ -19,9 +19,6 @@ function draw() {
   background(39, 120, 255);
   myCar.display();
   myCar.move();
-
-
-
 }
 
 function Car() {
