@@ -40,7 +40,7 @@ This course focuses on programming strategies and techniques behind procedural a
    * Jackson Mac Low and the Diastic Technique
       * Excerpt from Virtual Muse: Experiments In Computer Poetry pgs. 95-96
       * [Online Diastic generator](http://www.eddeaddad.net/eDiastic/)
-* Assignment: Find a source text and manually perform one of the mashup techniques above (or make up your own.)  Create a webpage with the results using some combination of HTML, CSS, and/or p5.js. Host the page on github pages (or your own server).  There is no need for programming for this assignment, it's just about getting set up in the environment.  However, you may choose to include animated or interactive elements if you like.
+* [Homework Assignment](https://github.com/shiffman/Programming-from-A-to-Z-F15/wiki/Week-1-Homework)
 
 ## Week 2 -- Strings and DOM
 * Strings in JS
