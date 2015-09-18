@@ -12,7 +12,7 @@ This course focuses on programming strategies and techniques behind procedural a
 * [Join ITP A2Z Google Group](https://groups.google.com/a/nyu.edu/forum/#!forum/a2z-group/).
 
 ## Week 1 - Intro
-* [Notes](http://shiffman.net/)
+* [Notes](http://shiffman.github.io/week1)
 * [Homework Assignment](https://github.com/shiffman/Programming-from-A-to-Z-F15/wiki/Week-1-Homework)
 * Git and Github
    * [Introduction to Git and Command Line by Steve Klise](http://sklise.com/2012/09/22/introduction-to-git/)
