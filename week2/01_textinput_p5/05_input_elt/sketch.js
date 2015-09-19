@@ -28,5 +28,5 @@ function greetTyping() {
 
 function greet() {
   var name = input.value();
-  var par = createP('hello '+name+'!');
+  var par = createP('hello '+ name + '!');
 }
