@@ -5,14 +5,12 @@ This course focuses on programming strategies and techniques behind procedural a
 ## Info
 - Daniel Shiffman, Mondays, 12:10pm-2:40pm
 - [All class dates](http://help.itp.nyu.edu/curriculum/fall-class-dates)
-- [Course Notes](http://shiffman.net/teaching/a2z/)
-- All example code in this repo.
 
 ## Mailing List
 * [Join ITP A2Z Google Group](https://groups.google.com/a/nyu.edu/forum/#!forum/a2z-group/).
 
 ## Week 1 - Intro
-* [Notes](http://shiffman.github.io/week1)
+* [Notes](http://shiffman.github.io/A2Z-F15/week1/notes.html)
 * [Homework Assignment](https://github.com/shiffman/Programming-from-A-to-Z-F15/wiki/Week-1-Homework)
 * Git and Github
    * [Introduction to Git and Command Line by Steve Klise](http://sklise.com/2012/09/22/introduction-to-git/)
@@ -29,19 +27,6 @@ This course focuses on programming strategies and techniques behind procedural a
 * JavaScript
    * [Eloquent JavaScript: Chapters 1-4](http://eloquentjavascript.net/)
 * Client-side vs. Server-side?
-* Text mashups
-   * "Cut-ups"
-      * [Cut-up Method](http://www.writing.upenn.edu/~afilreis/88v/burroughs-cutup.html) from  Leroi Jones, ed., The Moderns: An Anthology of New Writing in America (NY: Corinth Books, 1963).
-      * [Cut-up machine](http://www.languageisavirus.com/cutupmachine.html#.VfHCY51Viko)
-   * "Erasures"
-      * [Erasure Poetry](https://en.wikipedia.org/wiki/Erasure_(artform))
-      * [Make an online Erasure](http://erasures.wavepoetry.com/erasures.php?sourceid=23)
-   * "N+7" or "V+__"
-      * [N+7 technique](http://www.languageisavirus.com/articles/articles.php?subaction=showcomments&id=1161978000#.VfHDT51Viko)
-      * [N+7 machine](http://www.spoonbill.org/n+7/)
-   * Jackson Mac Low and the Diastic Technique
-      * Excerpt from Virtual Muse: Experiments In Computer Poetry pgs. 95-96
-      * [Online Diastic generator](http://www.eddeaddad.net/eDiastic/)
 
 
 ## Week 2 -- Strings and DOM
