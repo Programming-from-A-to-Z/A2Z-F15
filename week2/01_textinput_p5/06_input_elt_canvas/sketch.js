@@ -1,0 +1,34 @@
+// Adapted from: http://p5js.org/examples/examples/Dom_Input_and_Button.php
+
+var input, button, greeting;
+
+function setup() {
+
+  // create canvas
+  createCanvas(710, 400);
+  background(51);
+
+  greeting = createElement('h2', 'what is your name?');
+  input = createInput();
+  button = createButton('submit');
+  button.mousePressed(greet);
+
+  textAlign(CENTER)
+  textSize(50);
+}
+
+function greet() {
+  background(51);
+  var name = input.value();
+  greeting.html('hello '+name+'!');
+  input.value('');
+
+  for (var i=0; i < 200; i++) {
+    push();
+    fill(random(255), 255, 255);
+    translate(random(width), random(height));
+    rotate(random(2*PI));
+    text(name, 0, 0);
+    pop();
+  }
+}
