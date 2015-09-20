@@ -1,142 +1,77 @@
+// A2Z F15
+// Daniel Shiffman
+// https://github.com/shiffman/A2Z-F15
 
+// Many DOM elements
 var dropZone, input, button, sample, clearButton;
 
+// An array to keep track of all the new DOM elements being added
 var paragraphs = [];
 
 function setup() {
 
   noCanvas();
 
+  // Selecting the text field and button
   input = select('#textinput');
   button = select('#submit');
-
+  // What to do when button pressed
   button.mousePressed(handleInput);
 
+  // Selected the div which will be the "drop zone"
+  // for dragging and dropping files
   dropZone = select('#drop_zone');
-  dropZone.dragOver(draggedOver);
-  dropZone.drop(gotFile, dropped);
+  // Here are the events to handle
+  dropZone.dragOver(highlight);
+  dropZone.drop(gotFile, unHighlight);
 
+  // This link allows quick testing with a file
+  // that's ready to load instantly
   sample = select('#sample');
   sample.mousePressed(loadFile);
 
+  // This button clears the new paragraph elements
+  // added
   clearButton = select('#clear');
   clearButton.mousePressed(clearText);
 }
 
+// Load a file for quick testing
 function loadFile() {
   loadStrings('files/spam.txt', fileLoaded);
 }
-
+// When the file is loaded
 function fileLoaded(data) {
   var txt = data.join('\n');
+  // Note the use of a function that will "process" the text
+  // This is b/c the text might come in a number of different ways
   process(txt);
 }
 
-function draggedOver() {
-  dropZone.style('background-color','#AAA');
+// Handle dropzone events
+function highlight() {
+  dropZone.style('background', '#AAA');
 }
 
-function dropped() {
-  dropZone.style('background-color','');
+function unHighlight() {
+  dropZone.style('background','');
 }
 
 function gotFile(file) {
   if (file.type === 'text') {
     process(file.data);
   } else {
-    process('this is not a text file.');
+    // In case it's some weird other kind of file
+    alert('this is not a text file.');
   }
 }
 
+// Handle the text input field
 function handleInput() {
   process(input.value());
 }
 
-function process(data) {
-
-  // Check to see if they entered something
-  var len = data.length;
-  if (data.length === 0) {
-    alert("Enter something!");
-  } else {
-    var totalSyllables = 0;
-    var totalSentences = 0;
-    var totalWords     = 0;
-
-    var delimiters = /[.:;?! !@#$%^&*()]+/;
-    var words = data.split(delimiters);
-    for (var i = 0; i < words.length; i++) {
-      var word = words[i];
-      totalSyllables += countSyllables(word);
-      totalWords++;
-    }
-
-    // Look for sentence delimiters
-    var sentenceDelim = /[.:;?!]/;
-    var sentences = data.split(sentenceDelim);
-    totalSentences = sentences.length;
-
-    // Calculate flesch index
-    var f1 = 206.835;
-    var f2 = 84.6;
-    var f3 = 1.015;
-    var r1 = totalSyllables / totalWords;
-    var r2 = totalWords / totalSentences;
-    var flesch = f1 - (f2 * r1) - (f3 * r2);
-
-    // Write Report
-    var report = "";
-    
-    report += "Total Syllables: " + totalSyllables + "<br/>";
-    report += "Total Words    : " + totalWords + "<br/>";
-    report += "Total Sentences: " + totalSentences + "<br/>";
-    report += "Flesch Index   : " + flesch + "\n";   
-
-    var flesch = createP(report);
-    flesch.class('text');
-    paragraphs.push(flesch);
-  }
-}
-
-// A method to count the number of syllables in a word
-// Pretty basic, just based off of the number of vowels
-// This could be improved
-function countSyllables(word) {
-  var syl    = 0;
-  var vowel  = false;
-  var length = word.length;
-
-  // Check each word for vowels (don't count more than one vowel in a row)
-  for (var i = 0; i < length; i++) {
-    if (isVowel(word.charAt(i)) && (vowel == false)) {
-      vowel = true;
-      syl++;
-    } else if (isVowel(word.charAt(i)) && (vowel == true)) {
-      vowel = true;
-    } else {
-      vowel = false;
-    }
-  }
-
-  var tempChar = word.charAt(word.length-1);
-  // Check for 'e' at the end, as long as not a word w/ one syllable
-  if (((tempChar == 'e') || (tempChar == 'E')) && (syl != 1)) {
-    syl--;
-  }
-  return syl;
-}
-
-// Check if a char is a vowel
-function isVowel(c) {
-  if      ((c == 'a') || (c == 'A')) { return true;  }
-  else if ((c == 'e') || (c == 'E')) { return true;  }
-  else if ((c == 'i') || (c == 'I')) { return true;  }
-  else if ((c == 'o') || (c == 'O')) { return true;  }
-  else if ((c == 'u') || (c == 'U')) { return true;  }
-  else if ((c == 'y') || (c == 'Y')) { return true;  }
-  else                               { return false; }
-}
-
+// Clear all the divs with remove()
 function clearText() {
   for (var i = 0; i < paragraphs.length; i++) {
     paragraphs[i].remove();
