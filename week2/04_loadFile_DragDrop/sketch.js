@@ -14,7 +14,7 @@ function setup() {
   dropZone.id('drop_zone');
 
   dropZone.dragOver(function() {
-    this.style('background','#AAAAAA');
+    this.style('background','#AAA');
   });
 
   dropZone.dragLeave(function() {
