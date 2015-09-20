@@ -1,28 +1,62 @@
-var fleschReport;
-var input;
+
+var dropZone, input, button, sample, clearButton;
+
+var paragraphs = [];
 
 function setup() {
+
   noCanvas();
 
-  // A text area
-  input = createElement("textarea","Enter some text.");
-  input.attribute("rows",10);
-  input.attribute("cols",100);
+  input = select('#textinput');
+  button = select('#submit');
 
-  // A button
-  var button = createButton("Compute the Flesch Index!");
-  button.mousePressed(flesch);
-    
-  // An HTML Element for the resulting text
-  fleschReport = createP("");
+  button.mousePressed(handleInput);
+
+  dropZone = select('#drop_zone');
+  dropZone.dragOver(draggedOver);
+  dropZone.drop(gotFile, dropped);
+
+  sample = select('#sample');
+  sample.mousePressed(loadFile);
+
+  clearButton = select('#clear');
+  clearButton.mousePressed(clearText);
 }
 
-function flesch() {
-  // What has the user entered?
-  var data = input.value();
+function loadFile() {
+  loadStrings('files/spam.txt', fileLoaded);
+}
+
+function fileLoaded(data) {
+  var txt = data.join('\n');
+  process(txt);
+}
+
+function draggedOver() {
+  dropZone.style('background-color','#AAA');
+}
+
+function dropped() {
+  dropZone.style('background-color','');
+}
+
+function gotFile(file) {
+  if (file.type === 'text') {
+    process(file.data);
+  } else {
+    process('this is not a text file.');
+  }
+}
+
+function handleInput() {
+  process(input.value());
+}
+
+function process(data) {
+
   // Check to see if they entered something
   var len = data.length;
-  if (data.length == '0') {
+  if (data.length === 0) {
     alert("Enter something!");
   } else {
     var totalSyllables = 0;
@@ -58,7 +92,9 @@ function flesch() {
     report += "Total Sentences: " + totalSentences + "<br/>";
     report += "Flesch Index   : " + flesch + "\n";   
 
-    fleschReport.html(report);
+    var flesch = createP(report);
+    flesch.class('text');
+    paragraphs.push(flesch);
   }
 }
 
@@ -90,7 +126,7 @@ function countSyllables(word) {
   return syl;
 }
 
-// Check if a char is a vowel (count y)
+// Check if a char is a vowel
 function isVowel(c) {
   if      ((c == 'a') || (c == 'A')) { return true;  }
   else if ((c == 'e') || (c == 'E')) { return true;  }
@@ -101,3 +137,9 @@ function isVowel(c) {
   else                               { return false; }
 }
 
+function clearText() {
+  for (var i = 0; i < paragraphs.length; i++) {
+    paragraphs[i].remove();
+  }
+  paragraphs = [];
+}

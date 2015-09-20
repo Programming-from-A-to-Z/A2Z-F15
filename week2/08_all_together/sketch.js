@@ -28,7 +28,8 @@ function loadFile() {
 }
 
 function fileLoaded(data) {
-  process(data);
+  var txt = data.join('\n');
+  process(txt);
 }
 
 function draggedOver() {
