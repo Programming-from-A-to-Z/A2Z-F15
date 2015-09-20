@@ -5,7 +5,7 @@
 
 // The cut-up algorithm is performed in this function
 function process(data) {
-  
+
   // Split into words
   var words = splitTokens(data, ' .,:;!@#$%&*()\n');
 

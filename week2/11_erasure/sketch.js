@@ -5,14 +5,12 @@
 // Many DOM elements
 var dropZone, input, button, sample, clearButton;
 
-// This example also includes a slider
-var slider;
-// Variable to keep track of slider value (a bit redundant)
-var percent = 5;
+// An extra element, a checkbox
+var spacingCheck;
+
 
 // An array to keep track of all the new DOM elements being added
 var paragraphs = [];
-
 
 function setup() {
 
@@ -41,12 +39,8 @@ function setup() {
   clearButton = select('#clear');
   clearButton.mousePressed(clearText);
 
-  // Deal with the slider
-  slider = select('#percentslider');
-  // Using a native JS event for when slider changes
-  // May change in p5: https://github.com/processing/p5.js/issues/932
-  slider.elt.addEventListener('input', changePercent);
-
+  spacingCheck = select('#keepspacing');
+  
 }
 
 // Load a file for quick testing
