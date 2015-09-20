@@ -1,21 +1,32 @@
+// A2Z F15
+// Daniel Shiffman
+// https://github.com/shiffman/A2Z-F15
 
+
+// The cut-up algorithm is performed in this function
 function process(data) {
+  
+  // Split into words
   var words = splitTokens(data, ' .,:;!@#$%&*()\n');
 
+  // Shuggle the array randomly
   words = shuffle(words);
 
-
+  // Create a new string to store the "cut-up"
   var output = '';
+  // For every word
   for (var i = 0; i < words.length; i++) {
+    // Randomly choose to include it based on
+    // percentage
     if (random(100) < percent) {
       output += words[i] + ' ';
     }
   }
 
+  // Display the cut-up in a paragraph element
   var txt = createP(output);
   txt.class('text');
   paragraphs.push(txt);
-
 
   // Temporarily overriding splitTokens until
   // https://github.com/processing/p5.js/pull/931
@@ -26,6 +37,7 @@ function process(data) {
 }
 
 
+// A function to shuffle an array
 // From: http://bost.ocks.org/mike/shuffle/
 function shuffle(array) {
   var m = array.length, t, i;
