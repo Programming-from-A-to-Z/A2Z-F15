@@ -1,42 +1,53 @@
+// A2Z F15
+// Daniel Shiffman
+// https://github.com/shiffman/A2Z-F15
+
+var dropZone;
+
 function setup() {
 
   noCanvas();
-  // // Check for the various File API support.
-  // if (window.File && window.FileReader && window.FileList && window.Blob) {
-  //   console.log('Great success! All the File APIs are supported');
-  // } else {
-  //   alert('The File APIs are not fully supported in this browser.');
-  // }
 
-  // // <div id="drop_zone">Drop files here</div>
-  // // Make a div to drag a file on
-  var dropZone = createDiv('Drop files here');
+  // Make a div to drag a file on, equivalent of
+  // <div id="drop_zone">Drop files here</div>
+  dropZone = createDiv('Drop files here');
   dropZone.id('drop_zone');
 
-  dropZone.dragOver(function() {
-    this.style('background','#AAA');
-  });
+  // When the user drags a file over the div
+  dropZone.dragOver(highlight);
 
-  dropZone.dragLeave(function() {
-     // do nothing?
-     console.log("LEAVING");
-  });
+  // Not using this event in this example
+  // dropZone.dragLeave(someHandler);
 
-  dropZone.drop(gotFile, dropped);
+  // When the file is "dropped" we need two callbacks
+  // One to handle the dropping event
+  // One to handle the files when they are ready
+  dropZone.drop(gotFile, unHighlight);
 
 }
 
-function dropped() {
-  this.style('background','');
+// highlight and unhighlight the div
+function highlight() {
+  dropZone.style('background', '#AAA');
 }
 
+function unHighlight() {
+  dropZone.style('background','');
+}
+
+// file is a p5.File object that has metadata, and the file's contents
 function gotFile(file) {
+  // Make a div to display info about the file
   var fileDiv = createDiv(file.name + ' ' + file.type + ' ' + file.subtype + ' ' + file.size + ' bytes');
+  // Assign a CSS class for styling (see index.html)
   fileDiv.class('file');
+
+  // Hanlde image and text differently
   if (file.type === 'image') {
     var img = createImg(file.data);
     img.class('thumb');
   } else if (file.type === 'text') {
+    // Make a paragraph of text
     var par = createP(file.data);
     par.class('text');
   }

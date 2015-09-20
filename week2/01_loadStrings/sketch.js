@@ -1,4 +1,6 @@
-
+// A2Z F15
+// Daniel Shiffman
+// https://github.com/shiffman/A2Z-F15
 
 // Variable for array of lines
 var lines;
@@ -18,7 +20,6 @@ function setup() {
   text = lines.join('<br/>');
   var par = createP(text);
   par.id('text');
-
 }
 
 
