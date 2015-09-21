@@ -153,7 +153,7 @@ var dropZone = select('#drop_zone');
 
 Note the use of the hash sign `#` to indicate DOM element id.  Once you have a DOM element to act as a drop zone there are three events you can handle — `dragOver()`, `dragLeave()`, and `drop()`.  `dragOver()` and `dragLeave()` are just like `mouseOver()` and `mouseOut()`, only instead of just hovering over the element, the events are triggered only if the user is dragging a file over the element.  This can be useful for giving the user some feedback as to what is going on:
 
-
+{% highlight JavaScript %}
 // Handle the two events
 dropZone.dragOver(highlight);
 dropZone.dragLeave(unHighlight);
