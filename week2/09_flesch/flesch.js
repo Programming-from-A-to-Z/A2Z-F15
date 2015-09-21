@@ -19,7 +19,7 @@ function process(data) {
     var totalSentences = 0;
     var totalWords     = 0;
 
-    var delimiters = '[.:;?! !@#$%^&*()]+';
+    var delimiters = '.:;?! !@#$%^&*()+';
     var words = splitTokens(data, delimiters);
     for (var i = 0; i < words.length; i++) {
       var word = words[i];
@@ -28,7 +28,7 @@ function process(data) {
     }
 
     // Look for sentence delimiters
-    var sentenceDelim = '[.:;?!]';
+    var sentenceDelim = '.:;?!';
     var sentences = splitTokens(data, sentenceDelim);
     totalSentences = sentences.length;
 
