@@ -19,6 +19,7 @@ The key functions and topics I will discuss in class are:
 * The core "create" functions — `createElement()`, `createP()`, `createDiv()`, `createImg()`.
 * Moving things around in the DOM — `parent()`, `child()`
 * Making interface elements — `createButton()`, `createSlider()`, `createInput()`, `createSelect()`, `createCheckbox()`.
+* Events — `mousePressed()`, `mouseOver()`, `mouseOut()`, `changed()`, and more?  What about `addEventListener()`?
 * When to use create vs select — `select()` and `selectAll()`, id vs class vs tag
 * Applying CSS styles — `style()` (and when to use a CSS file).
 
