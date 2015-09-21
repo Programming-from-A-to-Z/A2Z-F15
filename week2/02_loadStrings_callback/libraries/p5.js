@@ -1,4 +1,4 @@
-/*! p5.js v0.4.12 September 15, 2015 */
+/*! p5.js v0.4.13 September 20, 2015 */
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.p5 = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(_dereq_,module,exports){
 
 },{}],2:[function(_dereq_,module,exports){
@@ -13579,9 +13579,9 @@ p5.Element.prototype.drop = function (callback, fxn) {
         reader.onload = makeLoader(f);
 
 
-        // Text of data?
+        // Text or data?
         // This should likely be improved
-        if (f.type === 'text') {
+        if (f.type.indexOf('text') > -1) {
           reader.readAsText(f);
         } else {
           reader.readAsDataURL(f);
@@ -20278,9 +20278,9 @@ p5.prototype.copy = function () {
  * Increases the light areas. No parameter is used.
  *
  * @method filter
- * @param  {String}    kind
- *
- * @param  {Number|undefined} param
+ * @param  {String} filterType
+ * @param  {Number} filterParam an optional parameter unique
+ *  to each filter, see above
  *
  *
  * @example
@@ -27517,7 +27517,12 @@ p5.prototype.split = function(str, delim) {
  * </code>
  */
 p5.prototype.splitTokens = function() {
-  var d = (arguments.length > 0) ? arguments[1] : /\s/g;
+  var d;
+  if (arguments.length > 1) {
+    d = new RegExp('[' + arguments[1] + ']', 'g');
+  } else {
+    d = /\s/g;
+  }
   return arguments[0].split(d).filter(function(n){return n;});
 };
 
