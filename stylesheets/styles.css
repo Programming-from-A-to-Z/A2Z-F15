@@ -1,11 +1,22 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:300italic,700italic,300,700);
 
+
+/* STUFF I'M ADDING */
+#drop_zone {
+  padding: 20px;
+  border-style: dotted;
+  width: 200px;
+  text-align: center;
+}
+
+
 body {
   padding:50px;
   font:14px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
   color:#777;
   font-weight:300;
 }
+
 
 h1, h2, h3, h4, h5, h6 {
   color:#222;
@@ -101,7 +112,7 @@ header {
   position:fixed;
 }
 
-header ul {
+/*header ul {
   list-style:none;
   height:40px;
 
@@ -119,9 +130,9 @@ header ul {
   border:1px solid #d2d2d2;
   box-shadow:inset #fff 0 1px 0, inset rgba(0,0,0,0.03) 0 -1px 0;
   width:270px;
-}
+}*/
 
-header li {
+/*header li {
   width:89px;
   float:left;
   border-right:1px solid #d2d2d2;
@@ -136,14 +147,14 @@ header ul a {
   text-align:center;
   padding-top:6px;
   height:40px;
-}
+}*/
 
 strong {
   color:#222;
   font-weight:700;
 }
 
-header ul li + li {
+/*header ul li + li {
   width:88px;
   border-left:1px solid #fff;
 }
@@ -157,11 +168,12 @@ header ul a strong {
   font-size:14px;
   display:block;
   color:#222;
-}
+}*/
 
 section {
-  width:500px;
-  float:right;
+  width:800px;
+  float:left;
+  margin-left: 200px;
   padding-bottom:50px;
 }
 
