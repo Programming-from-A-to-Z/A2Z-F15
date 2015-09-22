@@ -29,10 +29,12 @@ This course focuses on programming strategies and techniques behind procedural a
 * Client-side vs. Server-side?
 
 ## Week 2 -- [Strings and DOM](http://shiffman.github.io/A2Z-F15/week2/notes.html)
+* [Notes](http://shiffman.github.io/A2Z-F15/week1/notes.html)
+* [Homework Assignment](https://github.com/shiffman/Programming-from-A-to-Z-F15/wiki/Week-2-Homework)
 * DOM manipulation in p5.js
 * Strings in JS
 * Text input (from user, from file)
-* Assignment: TBA, but loosely Recreate assignment 1 using an algorithm.  Get text in from user via text input box or file.
+
 
 ## Week 3 - Regular Expressions
 * Project 1 (due week 6): Analyze a text (or multiple texts) and visualize / present the results to the user.

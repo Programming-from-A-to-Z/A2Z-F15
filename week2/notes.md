@@ -5,6 +5,23 @@ layout: default
 
 # Week 2 Notes
 
+## All examples
+
+* For p5.dom examples, see [Week 1 notes](http://shiffman.github.io/A2Z-F15/week1/notes.html)
+* [loadStrings](01_loadStrings) — [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week2/01_loadStrings)
+* [loadStrings with callback](02_loadStrings_callback) — [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week2/02_loadStrings_callback)
+* ["choose files" button](03_loadFile_Menu) — [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week2/03_loadFile_Menu)
+* ["drag and drop" files](04_loadFile_DragDrop) — [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week2/04_loadFile_DragDrop)
+* [text input element](05_input_elt) — [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week2/05_input_elt)
+* [text input element with canvas](06_input_elt_canvas) — [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week2/06_input_elt_canvas)
+* [textarea element](07_textarea) — [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week2/07_textarea)
+* [many loading options all together](08_all_together) — [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week2/08_all_together)
+* [Flesch Index Calculator](09_flesch) — [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week2/09_flesch)
+* [Cut-Up Machine](10_cut_up_machine) — [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week2/10_cut_up_machine)
+* [Erasure Poetry Machine](11_erasure) — [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week2/11_erasure)
+* [Diastic Machine](12_diastic) — [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week2/12_diastic)
+* [Simple Rita Test](13_rita_sentence) — [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week2/13_rita_sentence)
+
 ## p5 basics and p5.dom
 
 This week we'll spend some time covering the basics of p5 canvas and dom.  These topics are well covered in the following tutorials:
@@ -188,6 +205,46 @@ function gotFile(file) {
 
 Note how I am re-using the exact same `gotFile()` function that we had with the "choose files" button.
 
+## &lt;textarea&gt; and "contenteditable"
+
+If you want to get a large body of text typed in by a user, `createInput()` isn't a great choice.  It's meant more for just a couple words or a single sentence:
+
+Type a sentence: <input size="50" value="I can only fit one sentence here in this box." />
+
+For a larger body of text the `<textarea>` element can be generated using `createElement()`.
+
+{% highlight JavaScript %}
+var area = createElememt('textarea', 'Some text to start initially.');
+{% endhighlight %}
+
+<p><textarea>Some text to start initially.</textarea></p>
+
+The p5 `size()` function can be used to adjust the areas default size.  
+
+It's also possible to simply use a `div` or `p` element and assign the attribute `contenteditable`.  This makes any DOM element editable by the user (and you can the capture the content of that element with the `html()` function.)  For example:
+
+{% highlight JavaScript %}
+var p = createP('this is editable');
+p.attribute('contenteditable', 'true');
+{% endhighlight %}
+
+Note how you can edit this text below:
+
+<p contenteditable style = "padding: 4px; background-color: #CCC">this will be editable</p>
+
+As always, these elements can also be written into the HTML directly and accessed in p5 with `select()` and `selectAll()`.
+
+{% highlight html %}
+<p><textarea id="area">Some text to start initially.</textarea></p>
+<p contenteditable id="editableP">this will be editable</p>
+{% endhighlight %}
+
+{% highlight javascript %}
+var area = select('#area');
+var p = select('#editableP');
+{% endhighlight %}
+
+
 ## Strings in JS
 
 One you have data from a file or user input (or user file input!), the next step is to do something interesting with it.  For this week, it's up to you to invent something.  To demonstrate some possibilities I'll first run through some of the basic functions available as part of the JavaScript [String object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) and then describe one scenario for analyzing text — the Flesch index.
@@ -324,13 +381,13 @@ The examples above on this page demonstrate how to read in text from a file and 
 The first thing I'll do is count the number of words in the text.  We&#8217;ve seen in some of the examples above that we can accomplish this by using `split()` to split a String up into an array wherever there is a space.  For this example, however, we are going to want to split by more than a space.  A new word occurs whenever there is a space or some sort of punctuation.
 
 {% highlight javascript %}
-var delimiters = /[.:;?! !@#$%^&*()]+/;
-var words = data.split(delimiters);
+var delimiters = '.:;?! !@#$%^&*()]+';
+var words = splitTokens(delimiters);
 {% endhighlight %}
 
-You'll notice some new syntax here.  `/[.:;?! !@#$%^&*()]+/` is a regular expression.  We are going to cover regex in detail next week.  For now, we should just understand this as something that indicates a list of possible delimiters (any character than appears between `/[` and `]+/`).
+Note again how `splitTokens()` will split using any of the listed characters as a delimiter. Next week, I will cover how to use regular expressions to split text. 
 
-Now we have split up the text, we can march through all the words (tokens) and count their syllables.
+Now that I have split up the text, I can march through all the words (tokens) and count their syllables.
 
 {% highlight javascript %}
 for (var i = 0; i < words.length; i++) {
@@ -340,17 +397,15 @@ for (var i = 0; i < words.length; i++) {
 }
 {% endhighlight %}
 
-Ok, so `countSyllables()` isn&#8217;t a function that exists in JavaScript.  We&#8217;re going to have to write it ourselves.   The following method is not the most accurate way to count syllables, but it will do for now.
+Ok, so `countSyllables()` isn&#8217;t a function that exists in JavaScript.  I'm going to have to write it myself.   The following method is not the most accurate way to count syllables, but it will do for now.
 
-```
-Syllables = total # of vowels in a word (not counting vowels that appear after another vowel and when &#8216;e&#8217; is found at the end of the word)
-```
+**Syllables = total # of vowels in a word**<br/>*(not counting vowels that appear after another vowel and when &#8216;e&#8217; is found at the end of the word)*
 
 * &#8220;beach&#8221; &#8211;> one syllable
 * &#8220;banana&#8221; &#8211;> three syllables
 * &#8220;home&#8221; &#8211;> one syllable
 
-Our code looks like this:
+The code looks like this:
 
 {% highlight javascript %}
 // A method to count the number of syllables in a word
@@ -393,18 +448,18 @@ function isVowel(c) {
 }
 {% endhighlight %}
 
-As we will see next week, the above could be vastly improved using Regular Expressions, but it&#8217;s nice as an exercise to learn how to do all the String manipulation manually before we move on to more advanced techniques.
+Again as you will see next week, the above could be vastly improved using Regular Expressions, but it&#8217;s nice as an exercise to learn how to do all the string manipulation manually before you move on to more advanced techniques.
 
-Counting sentences is a bit simpler.  We&#8217;ll just split the content using periods, question marks, exclamation points, etc. (&#8220;.:;?!&#8221;) as delimiters and count the total number of elements in the resulting array.  This isn&#8217;t terribly accurate; for example, &#8220;My e-mail address is daniel.shiffman@nyu.edu.&#8221;  will be counted as three sentences.  Nevertheless, as a first pass, this will do.
+Counting sentences is a bit simpler.  I'll just split the content using periods, question marks, exclamation points, etc. (&#8220;.:;?!&#8221;) as delimiters and count the total number of elements in the resulting array.  This isn&#8217;t terribly accurate; for example, &#8220;My e-mail address is daniel.shiffman@nyu.edu.&#8221;  will be counted as three sentences.  Nevertheless, as a first pass, this will do.
 
 {% highlight javascript %}
 // Look for sentence delimiters
-var sentenceDelim = /[.:;?!]/;
-var sentences = data.split(sentenceDelim);
+var sentenceDelim = '.:;?!';
+var sentences = splitTokens(sentenceDelim);
 totalSentences = sentences.length;
 {% endhighlight %}
 
-Now, all we need to do is apply the formula, generate a report.
+Now, all we need to do is apply the formula, generate a report as a string (which can be inserted into a DOM element using [`html()`](http://p5js.org/reference/#/p5.Element/html).
 
 {% highlight javascript %}
 // Calculate flesch index
@@ -423,5 +478,3 @@ report += "Total Words    : " + totalWords + "\n";
 report += "Total Sentences: " + totalSentences + "\n";
 report += "Flesch Index   : " + flesch + "\n";
 {% endhighlight %}
-
-The full example code is here.
