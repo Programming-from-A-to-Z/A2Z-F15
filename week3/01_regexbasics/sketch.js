@@ -5,36 +5,22 @@ function setup() {
 
   
   // Demonstrates exec() in RegExp
-  var text1 = 'This is a test of regular expressions.';  
-  var regex1 = /test/;
+  var text = 'This is a test of regular expressions.';  
+  var regex = /test/;
+  // The function exec() executes a search for a match in string.  the result is an array.
+  var results = regex.exec(text);
+  console.log(results);
 
-  var info   = 'text: ' + text1 + '<br/>'
-             + 'regex: ' + regex1 + '<br/>'
-             +  '<code>regex.exec(text);</code><br/><br/>';
+  var output = 'text: ' + text + '<br/>'
+             + 'regex: ' + regex + '<br/>'
+             + '<code>regex.exec(text);</code><br/><br/>'
 
-  var p1 = createP(info);
+             + 'The match found in the text is: ' + results[0] + '<br/>'
+             + 'And the index where it was found: ' + results.index + '<br/>'
+             + 'And the input text in case you forgot: ' + results.input + '<br/>';
+
+  var p1 = createP(output);
   p1.class('text');
-
-  var seeResults = createA('#','test regex');
-  seeResults.parent(p1);
-
-  seeResults.mousePressed(function() {
-
-    // The function exec() executes a search for a match in string.  the result is an array.
-    var results1 = regex1.exec(text1);
-    var output = 'The match found in the text is: ' + results1[0] + '<br/>'
-               + 'And the index where it was found: ' + results1.index + '<br/>'
-               + 'And the input text in case you forgot: ' + results1.input + '<br/>';
-    var p2 = createP(output);
-    p2.parent(p1);
-    console.log(regex1.exec(text1));
-  });
-
-
-
-
-
-
 
 
   // And again with capturing parentheses, the global flag, and a loop
@@ -42,15 +28,17 @@ function setup() {
   // Note the use of 'g' for global matches
   var regex = /(\d+)[-.]\d+[-.]\d+/g;               
 
-  createDiv('text: ' + text);
-  createDiv('regex: ' + regex);
+  var output =  'text: ' + text + '<br/>'
+             +  'regex: ' + regex + '<br/><br/>';
+
   while (results = regex.exec(text)) {
-    createDiv('The full match found in the text is: ' + results[0]);
-    createDiv('Group 1 of the match is: ' + results[1]);
-    createDiv('And the index where it was found: ' + results.index);
-    // createDiv('And the input text in case you forgot: ' + results.input);
+    output   += 'The full match found in the text is: ' + results[0] + '<br/>'
+             +  'Group 1 of the match is: ' + results[1] + '<br/>';
+             +  'And the index where it was found: ' + results.index + '<br/>';
+          // +  'And the input text in case you forgot: ' + results.input);
   }
-  createP('');
+  var p2 = createP(output);
+  p2.class('text');
 
   // Demonstrates match() in String
   var text = 'This is a test of regular expressions.';  
