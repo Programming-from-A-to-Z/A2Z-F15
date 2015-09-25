@@ -7,6 +7,8 @@ function setup() {
   // Demonstrates exec() in RegExp
   var text = 'This is a test of regular expressions.';  
   var regex = /test/;
+  console.log('Test text: ' + text);
+  console.log('Regex: ' + regex);
   // The function exec() executes a search for a match in string.  the result is an array.
   var results = regex.exec(text);
   console.log(results);
@@ -26,12 +28,17 @@ function setup() {
   // And again with capturing parentheses, the global flag, and a loop
   var text = 'Now another test including phone numbers: 212-555-1234 and 917-555-4321 and 646.555.9876.';  
   // Note the use of 'g' for global matches
-  var regex = /(\d+)[-.]\d+[-.]\d+/g;               
+  var regex = /(\d+)[-.]\d+[-.]\d+/g;            
+
+  console.log('Test text: ' + text);
+  console.log('Regex: ' + regex);
+   
 
   var output =  'text: ' + text + '<br/>'
              +  'regex: ' + regex + '<br/><br/>';
 
   while (results = regex.exec(text)) {
+    console.log(results);
     output   += 'The full match found in the text is: ' + results[0] + '<br/>'
              +  'Group 1 of the match is: ' + results[1] + '<br/>';
              +  'And the index where it was found: ' + results.index + '<br/>';

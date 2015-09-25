@@ -6,34 +6,34 @@
 
 // Here is where we are working with a regex
 function process(txt) {
-  // Using match() from String is the simplest way to do this
-  // Regex that matches double words, note use of global flag
-  var regex = /\b(\w+)\b\s+\1\b/g;         
-  var results = txt.match(regex);
-
-
-  var par = createP('');
-  if (results === null) {
-    par.html('none found!');
-  } else {
-    // We get an array of matches back
-    var output = '';
-    for (var i = 0; i < results.length; i++) {
-      output += results[i] + '<br/>';
-    }
-    // Update the HTML Element
-    par.html(output);
-  }
+  var par = createP(txt);
   par.class('text');
   paragraphs.push(par);
 }
-
 
 function doublewords() {
   // What has the user entered?
   var text = input.value();
 
+  // Using match() from String is the simplest way to do this
+  // Regex that matches double words, note use of global flag
+  var regex = /\b(\w+)\b\s+\1/g;         
+  var results = text.match(regex);
+
+  var output = '';
+
+  if (results == null) {
+    pelement.html('none found!');
+  } else {
+    // We get an array of matches back
+    for (var i = 0; i < results.length; i++) {
+      output += results[i] + '<br/>';
+    }
+    // Update the HTML Element
+    pelement.html(output);
+  }
 }
+
 
 
 /***************************************************/
