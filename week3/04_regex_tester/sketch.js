@@ -126,6 +126,7 @@ function handleInput() {
 // Clear all the divs with remove()
 function clearText() {
   input.html('');
+  intputText = '';
   for (var i = 0; i < paragraphs.length; i++) {
     paragraphs[i].remove();
   }
