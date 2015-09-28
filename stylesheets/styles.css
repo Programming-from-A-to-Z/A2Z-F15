@@ -9,11 +9,20 @@
   text-align: center;
 }
 
+/* For regex tutorial*/
+.regex {
+  font-family:Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal,monospace;
+  background: #BBBBBB;
+  font-weight: bold;  
+  color:#000000;
+  padding: 4px;
+}
+
 
 body {
   padding:50px;
   font:14px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color:#777;
+  color:#666;
   font-weight:300;
 }
 
