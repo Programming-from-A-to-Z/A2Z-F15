@@ -36,8 +36,22 @@ This course focuses on programming strategies and techniques behind procedural a
 * Text input (from user, from file)
 
 
-## Week 3 - Regular Expressions
-* Project 1 (due week 6): Analyze a text (or multiple texts) and visualize / present the results to the user.
+## Week 3 - [Regular Expressions](http://shiffman.github.io/A2Z-F15/week3/notes.html)
+### [Week 2 Notes](http://shiffman.net/teaching/a2z/regex)
+* Review OOP in JS
+* Regular Expressions
+  * meta-characters
+    * position
+    * single character
+    * quantifiers
+    * character classes
+  * Regex in sublime text
+  * Regex in JS: `test()`, `search()`, `match()`, `exec()`
+  * Splitting with regex: `split()`
+  * Replace with regex: `replace()`
+  * [randexp.js](http://fent.github.io/randexp.js/)
+* Week 3 Regex Exercise: TBA
+* Project 1 (due week 6): Analyze a text (or multiple texts) and visualize / present the results to the user. Details TBA.
 
 ## Week 4 - Text Analysis Workshop
 * In class, we'll build a simple concordance together as well as demonstrate and discuss TF/IDF and Bayesian analysis.
