@@ -29,15 +29,14 @@ This course focuses on programming strategies and techniques behind procedural a
 * Client-side vs. Server-side?
 
 ## Week 2 -- [Strings and DOM](http://shiffman.github.io/A2Z-F15/week2/notes.html)
-* [Notes](http://shiffman.github.io/A2Z-F15/week1/notes.html)
+* [Notes](http://shiffman.github.io/A2Z-F15/week2/notes.html)
 * [Homework Assignment](https://github.com/shiffman/Programming-from-A-to-Z-F15/wiki/Week-2-Homework)
 * DOM manipulation in p5.js
 * Strings in JS
 * Text input (from user, from file)
 
-
 ## Week 3 - [Regular Expressions](http://shiffman.github.io/A2Z-F15/week3/notes.html)
-### [Week 2 Notes](http://shiffman.net/teaching/a2z/regex)
+* [Notes](http://shiffman.github.io/A2Z-F15/week3/notes.html)
 * Review OOP in JS
 * Regular Expressions
   * meta-characters
