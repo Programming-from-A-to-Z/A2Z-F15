@@ -146,7 +146,7 @@ console.log(replaced);</div>
 <div class="container">
   <p>Finally, in <a href="http://shiffman.github.io/A2Z-F15/week2/notes.html">my week 2 notes</a>, I described how the p5 methods <code>split()</code> and <code>splitTokens</code> chop a text up into "tokens", separated by a delimiter.  From now on, I'll be using the native JavaScript <code>split()</code> function which is part of the <code>String</code> object.  This <code>split()</code> function takes a regular expression as an argument — anything that matches that regular expression acts as a delimiter.  If the regular expression is contained in a capturing group, the delimiters are included in the returned array.</p>
     <div id="editor10" class="editor">var txt = 'It was a dark, and stormy, very very stormy - did I say stormy? - night.'; 
-var tokens     = txt.split(/[\s,-?.\n]+/);
+var tokens     = txt.split(/[\s,-?.]+/);
 var tokensKeep = txt.split(/([\s,-?.]+)/);
 console.log(txt);
 console.log(tokens);
