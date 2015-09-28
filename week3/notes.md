@@ -335,3 +335,4 @@ You can try out some regex below as well as [take a look at the code for making 
 
 <pre id="output"></pre>
 
+<p>You can also explore this <a href="http://shiffman.github.io/A2Z-F15/week3/01_regexbasics/">walk-through of JS regex functionality</a></p>.
