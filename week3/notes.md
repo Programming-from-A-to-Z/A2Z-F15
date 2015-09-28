@@ -19,6 +19,7 @@ layout: default
 * [Doubling the vowels using replace](03_voweldoubler) — [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week3/03_voweldoubler)
 * [Regex from user](04_regex_tester) — [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week3/04_regex_tester)
 * [Finding links](05_linkfinder) — [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week3/05_linkfinder)
+* [Random Expression Generator](06_reverse_regex_generator) — [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week3/06_reverse_regex_generator), thanks to <a href="http://fent.github.io/randexp.js/">randexp.js</a>.
 
 
 ## Related references
