@@ -37,9 +37,16 @@ function setup() {
 // Handle the text input field
 function handleInput() {
 
+  // Make a regex from the user input
   var regex = new RegExp(regexInput.value());
+
+  // Make a random expression generator
   var randexp = new RandExp(regex);
+
+  // Generate a random expression
   var txt = randexp.gen();
+
+  // Make a DOM element to show results
   var par = createP(txt);
   par.class('text');
   paragraphs.push(par);
