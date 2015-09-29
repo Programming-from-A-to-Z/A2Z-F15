@@ -5,13 +5,14 @@ This course focuses on programming strategies and techniques behind procedural a
 ## Info
 - Daniel Shiffman, Mondays, 12:10pm-2:40pm
 - [All class dates](http://help.itp.nyu.edu/curriculum/fall-class-dates)
-- [Course Notes](http://shiffman.net/teaching/a2z/)
-- All example code in this repo.
+- [Office Hours](https://itp.nyu.edu/inwiki/Signup/Shiffman)
 
 ## Mailing List
 * [Join ITP A2Z Google Group](https://groups.google.com/a/nyu.edu/forum/#!forum/a2z-group/).
 
 ## Week 1 - Intro
+* [Notes](http://shiffman.github.io/A2Z-F15/week1/notes.html)
+* [Homework Assignment](https://github.com/shiffman/Programming-from-A-to-Z-F15/wiki/Week-1-Homework)
 * Git and Github
    * [Introduction to Git and Command Line by Steve Klise](http://sklise.com/2012/09/22/introduction-to-git/)
    * [Git workflow for beginners](http://sklise.com/2012/10/07/git-workflow-beginner/)
@@ -27,29 +28,30 @@ This course focuses on programming strategies and techniques behind procedural a
 * JavaScript
    * [Eloquent JavaScript: Chapters 1-4](http://eloquentjavascript.net/)
 * Client-side vs. Server-side?
-* Text mashups
-   * "Cut-ups"
-      * [Cut-up Method](http://www.writing.upenn.edu/~afilreis/88v/burroughs-cutup.html) from  Leroi Jones, ed., The Moderns: An Anthology of New Writing in America (NY: Corinth Books, 1963).
-      * [Cut-up machine](http://www.languageisavirus.com/cutupmachine.html#.VfHCY51Viko)
-   * "Erasures"
-      * [Erasure Poetry](https://en.wikipedia.org/wiki/Erasure_(artform))
-      * [Make an online Erasure](http://erasures.wavepoetry.com/erasures.php?sourceid=23)
-   * "N+7" or "V+__"
-      * [N+7 technique](http://www.languageisavirus.com/articles/articles.php?subaction=showcomments&id=1161978000#.VfHDT51Viko)
-      * [N+7 machine](http://www.spoonbill.org/n+7/)
-   * Jackson Mac Low and the Diastic Technique
-      * Excerpt from Virtual Muse: Experiments In Computer Poetry pgs. 95-96
-      * [Online Diastic generator](http://www.eddeaddad.net/eDiastic/)
-* [Homework Assignment](https://github.com/shiffman/Programming-from-A-to-Z-F15/wiki/Week-1-Homework)
 
-## Week 2 -- Strings and DOM
-* Strings in JS
+## Week 2 -- [Strings and DOM](http://shiffman.github.io/A2Z-F15/week2/notes.html)
+* [Notes](http://shiffman.github.io/A2Z-F15/week2/notes.html)
+* [Homework Assignment](https://github.com/shiffman/Programming-from-A-to-Z-F15/wiki/Week-2-Homework)
 * DOM manipulation in p5.js
+* Strings in JS
 * Text input (from user, from file)
-* Assignment: Recreate assignment 1 using an algorithm.  Get text in from user via text input box or file.
 
-## Week 3 - Regular Expressions
-* Project 1 (due week 6): Analyze a text (or multiple texts) and visualize / present the results to the user.
+## Week 3 - [Regular Expressions](http://shiffman.github.io/A2Z-F15/week3/notes.html)
+* [Notes](http://shiffman.github.io/A2Z-F15/week3/notes.html)
+* Homework Assignment: TBA
+* Project 1 (due week 6): Analyze a text (or multiple texts) and visualize / present the results to the user. Details TBA.
+* Review OOP in JS
+* Regular Expressions
+  * meta-characters
+    * position
+    * single character
+    * quantifiers
+    * character classes
+  * Regex in sublime text
+  * Regex in JS: `test()`, `search()`, `match()`, `exec()`
+  * Splitting with regex: `split()`
+  * Replace with regex: `replace()`
+  * [randexp.js](http://fent.github.io/randexp.js/)
 
 ## Week 4 - Text Analysis Workshop
 * In class, we'll build a simple concordance together as well as demonstrate and discuss TF/IDF and Bayesian analysis.
