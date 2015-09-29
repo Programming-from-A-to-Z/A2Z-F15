@@ -11,7 +11,7 @@ layout: default
 
 # Callback in a Loop Problem
 
-Here's the problem we discussed in class.
+Here's the problem we discussed in class.  This discussion began as a [github gist which you can read here](https://gist.github.com/shiffman/7b96d9951bb3865e7d38).
 
 {% highlight javascript %}
 
@@ -19,6 +19,7 @@ for (var i = 0; i < 10; i++) {
   setTimeout(count, i * 1000);
 }
 
+// No good! i = 10 by the time this callback is called!
 function count() {
   console.log(i);
 }
@@ -32,6 +33,8 @@ for (var i = 0; i < 10; i++) {
   setTimeout(countIt(i), i * 1000);
 }
 
+// Generate a function that is returned as the callback
+// i is passed into num so the actual value is retained!
 function countIt(num) {
   function count() {
     console.log(num);
@@ -51,6 +54,7 @@ for (var i = 0; i < 10; i++)
   countIt(i);
 }
 
+// Maybe a bit more clear to just call setTimeout here in a separate function
 function countIt(num) {
   function count() {
     console.log(num);
@@ -67,6 +71,7 @@ for (var i = 0; i < 10; i++)
 }
 
 function countIt(num) {
+  // This is the anonymous syntax, yuck!
   setTimeout(function() {
     console.log(num);
   }, num * 1000);
@@ -80,18 +85,21 @@ var divs = [];
 
 function setup() {
   noCanvas();
+  // Make 10 divs
   for (var i = 0; i < 10; i++) 
     var div = createDiv('test ');
     divs.push(div);
   }
 
+  // Just like the previous one, call a function
+  // and pass in the div and i
   for (var i = 0; i < divs.length; i++) {
     highlight(divs[i], i);
   }
 }
 
-}
-
+// In that function the specific div is highlighted
+// at a time tied to num
 function highlight(div, num) {
   setTimeout(highlightDiv, num * 1000);
   function highlightDiv() {
@@ -112,6 +120,8 @@ function setup() {
     divs.push(div);
   }
 
+  // Using bind to bind the context of a callback
+  // to a particular object (in this case a specific div)
   for (var i = 0; i < divs.length; i++) {
     setTimeout(highlight.bind(divs[i]), i*1000)
   }
@@ -139,6 +149,8 @@ function setup() {
   }
 }
 
+// p5 does it for you!
+// this is "bound" to the specific div the callback is assigned to
 function highlight() {
   this.style('background-color', '#CCC');
 }
