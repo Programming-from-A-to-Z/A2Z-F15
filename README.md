@@ -38,8 +38,8 @@ This course focuses on programming strategies and techniques behind procedural a
 
 ## Week 3 - [Regular Expressions](http://shiffman.github.io/A2Z-F15/week3/notes.html)
 * [Notes](http://shiffman.github.io/A2Z-F15/week3/notes.html)
-* Homework Assignment: TBA
-* Project 1 (due week 6): Analyze a text (or multiple texts) and visualize / present the results to the user. Details TBA.
+* Homework Assignment: [Regular Expression Exercise](https://github.com/shiffman/A2Z-F15/wiki/Week-3-Homework)
+* Project 1 (due week 6): Use a text input source (user input, raw text file, API/data source) to generate an output presented back to the user in the browser.  Possibilities include data visualization of text data, generative text maker, etc. We'll discuss details in class.
 * Review OOP in JS
 * Regular Expressions
   * meta-characters
@@ -53,16 +53,16 @@ This course focuses on programming strategies and techniques behind procedural a
   * Replace with regex: `replace()`
   * [randexp.js](http://fent.github.io/randexp.js/)
 
-## Week 4 - Text Analysis Workshop
+## Week 4 - Data/API Workshop
+* APIs -- NY Times, twitter (temboo)
+* Working with google sheets
+* Parse
+
+## Week 5 - Text Analysis Workshop
 * In class, we'll build a simple concordance together as well as demonstrate and discuss TF/IDF and Bayesian analysis.
 * Simple Concordance
 * TF/IDF
 * Bayesian Analysis
-
-## Week 5 - Data/API Workshop
-* APIs -- NY Times, twitter (temboo)
-* Working with google sheets
-* Parse
 
 ## Week 6 - Show text analysis projects
 
