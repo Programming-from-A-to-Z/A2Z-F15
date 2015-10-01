@@ -2,31 +2,41 @@
 // Daniel Shiffman
 // https://github.com/shiffman/A2Z-F15
 
-
+// Arrays of words to be used in replacing
 var four = ["text", "golf", "rain"];
 var five = ["hello", "shirt", "plush"];
 
 // Here is where we are working with a regex
 function process(txt) {
   
+  // The second argument is a function
   var output = txt.replace(/\b[a-z]{3,5}\b/i, replacer);
 
+  // Whatever that function returns will be used to replace
+  // the matched text.  The matched text is available as
+  // a parameter.  If there were also captured groups, there 
+  // would be additional parameters.
   function replacer(match) {
-     var len = match.length;
+    var len = match.length;
 
-     if (len == 3) {
-       return match.toUpperCase();
-     } else if (len == 4) {
-       var index = floor(random(0, four.length));
-       return four[index];
-     } else if (len == 5) {
-       var index = floor(random(0, five.length));
-       return five[index]; 
-     } 
+    // This is completely arbitrary but just demonstrating
+    // you can make up your own logic
+    if (len == 3) {
+      // Make the word upper case
+      return match.toUpperCase();
+    } else if (len == 4) {
+      // Pick a random word from the array
+      var index = floor(random(0, four.length));
+      return four[index];
+    } else if (len == 5) {
+      // Pick a random word from the array
+      var index = floor(random(0, five.length));
+      return five[index]; 
+    } 
 
   }
 
-  // This is how to make everything back to one big paragraph with join()
+  // Show what happened
   var par1 = select('#results');
   par1.html(output);
   par1.class('text');
