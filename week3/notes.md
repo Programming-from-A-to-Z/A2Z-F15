@@ -20,6 +20,8 @@ layout: default
 * [Regex from user](04_regex_tester) — [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week3/04_regex_tester)
 * [Finding links](05_linkfinder) — [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week3/05_linkfinder)
 * [Random Expression Generator](06_reverse_regex_generator) — [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week3/06_reverse_regex_generator), thanks to <a href="http://fent.github.io/randexp.js/">randexp.js</a>.
+* [Split and rebuild text](07_split_and_rebuild_text) — [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week3/07_split_and_rebuild_text)
+* [Replace with a callback](08_replace_with_callback) — [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week3/08_replace_with_callback)
 
 
 ## Related references
