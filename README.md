@@ -38,6 +38,7 @@ This course focuses on programming strategies and techniques behind procedural a
 
 ## Week 3 - [Regular Expressions](http://shiffman.github.io/A2Z-F15/week3/notes.html)
 * [Notes](http://shiffman.github.io/A2Z-F15/week3/notes.html)
+* [Notes on callbacks in a loop](http://shiffman.github.io/A2Z-F15/week3/callback.html)
 * Homework Assignment: [Regular Expression Exercise](https://github.com/shiffman/A2Z-F15/wiki/Week-3-Homework)
 * Project 1 (due week 6): Use a text input source (user input, raw text file, API/data source) to generate an output presented back to the user in the browser.  Possibilities include data visualization of text data, generative text maker, etc. We'll discuss details in class.
 * Review OOP in JS
