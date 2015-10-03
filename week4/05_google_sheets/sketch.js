@@ -2,38 +2,51 @@
 // Daniel Shiffman
 // https://github.com/shiffman/A2Z-F15
 
+// This sheet
+// | ----------------|
+// | label  | number |
+// | ----------------|
+// | apple  | 9      |
+// | ----------------|
+// | pear   | 4      |
+// | ----------------|
+// | orange | 3      |
+// | ----------------|
 
+// Turns into:
 
-// function setup() {
-  // var ds = new Miso.Dataset({
-  //   importer : Miso.Dataset.Importers.GoogleSpreadsheet,
-  //   parser : Miso.Dataset.Parsers.GoogleSpreadsheet,
-  //   key : "1DWcDbrMCilhR8IfUEb6bJLw9_iBafdvfCeDFPF3pdwc",
-  //   worksheet : "1"
-  // });
+// [ { label: apple, number: 9 }, { label: pear, number: 4 }, { label: orange, number: 3 } ]
 
-
-  // ds.fetch({ 
-  //   success : function() {
-  //     console.log(ds.columnNames());
-  //   },
-  //   error : function() {
-  //     console.log("Are you sure you are connected to the internet?");
-  //   }
-  // });
-// }
-
-  window.onload = function() { init() };
+function setup() {
+  // This is the URL for my google sheet
+  // The sheet is generated from this form: http://goo.gl/forms/0X67GZJTZJ
+  // The sheet must set to File --> Published for the Web
   var url = 'https://docs.google.com/spreadsheets/d/1YQ7js53a5Gdidi3XS5HxkDvHWgmAS1kCCi9NnmH7Uc0/pubhtml';
-  var public_spreadsheet_url = 'https://docs.google.com/spreadsheet/pub?hl=en_US&hl=en_US&key=0AmYzu_s7QHsmdDNZUzRlYldnWTZCLXdrMXlYQzVxSFE&output=html';
 
-  function init() {
-    Tabletop.init( { key: url,
-                     callback: showInfo,
-                     simpleSheet: true } )
+  // Tabletop expects some settings
+  var settings = {
+    key: url,            // The url of the published google sheet
+    callback: gotData,   // A callback for when the data comes in
+    simpleSheet: true    // This makes things simpler for just a single worksheet of rows
   }
 
-  function showInfo(data, tabletop) {
+  // Make the request
+  Tabletop.init(settings);
+
+  // The data comes back as an array of objects
+  // Each object contains all the data for one row of the sheet
+  // See comment above
+  function gotData(data) {
+    // Look at the data in the console 
     console.log(data);
-    console.log(tabletop);
+
+    // Make an HTML list
+    var list = createElement('ol');
+    list.parent('data');
+    for (var i = 0; i < data.length; i++) {
+      var item = createElement('li', data[i].label + ': ' + data[i].Number + ", submited at " + data[i].Timestamp);
+      item.parent(list);
+    }
   }
+}
+
