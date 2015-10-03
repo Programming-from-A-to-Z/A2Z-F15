@@ -51,7 +51,9 @@ function setup() {
 
         return newtext;
       }
-      createP(madlib);
+      var par = createP(madlib);
+      par.parent('madlib');
+      par.class('text');
     }
 
 
