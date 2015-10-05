@@ -10,7 +10,7 @@ var five = ["hello", "shirt", "plush"];
 function process(txt) {
   
   // The second argument is a function
-  var output = txt.replace(/\b[a-z]{3,5}\b/i, replacer);
+  var output = txt.replace(/\b[a-z]{3,5}\b/gi, replacer);
 
   // Whatever that function returns will be used to replace
   // the matched text.  The matched text is available as
