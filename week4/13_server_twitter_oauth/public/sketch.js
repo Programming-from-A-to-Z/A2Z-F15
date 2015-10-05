@@ -45,7 +45,8 @@ function getTweets() {
 function gotTweets(tweets) {
   // Just stick them in the window
   for (var i = 0; i < tweets.length; i++) {
-    createP(tweets[i].text);
+    var par = createP(tweets[i].text);
+    par.class('text');
   }
 }
 
