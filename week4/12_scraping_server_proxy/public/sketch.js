@@ -7,7 +7,7 @@
 function setup() {
   noCanvas();
 
-  loadStrings('http://www.imdb.com/title/tt0058331/', gotData);
+  loadStrings('load?url=http://www.imdb.com/title/tt0058331/', gotData);
 
   function gotData(data) {
     console.log(data);

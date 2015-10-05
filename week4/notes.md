@@ -1,5 +1,5 @@
 ---
-title: Programming from A to Z Week 3 Notes
+title: Programming from A to Z Week 4 Notes
 layout: default
 ---
 
@@ -12,10 +12,8 @@ layout: default
 # Week 4 Notes
 
 ## All examples
+
 ## Related references
-
-
-## Exercise ideas
 
 ## Data 
 
@@ -143,7 +141,7 @@ row.setString("name", "new label");
 
 <pre data-type="programlisting">
 // If the table has more than 10 rows
-if (table.getRowCount() &gt; 10) {
+if (table.getRowCount() > 10) {
 
   table.removeRow(0); <span class="callout-bubble pos-5">Delete the first row (index 0).</span>
 }
@@ -202,7 +200,7 @@ void mousePressed() {
   row.setFloat("diameter", random(40, 80));
   row.setString("name", "Blah");
 
-  if (table.getRowCount() &gt; 10) {<span class="callout-bubble pos-7">If the table has more than 10 rows, delete the oldest row.</span>
+  if (table.getRowCount() > 10) {<span class="callout-bubble pos-7">If the table has more than 10 rows, delete the oldest row.</span>
     table.removeRow(0);
   }
 
@@ -362,21 +360,21 @@ String giveMeTextBetween(String s, String startTag, String endTag) { <span class
 <p>It’s up to me to pore through the raw source and find the data I am looking for. Let's say I want to know the running time of the movie and grab the movie poster image. After some digging, I find that the movie is 139 minutes long as listed in the following HTML.</p>
 
 <pre data-type="programlisting">
-&lt;div class="txt-block"&gt;
-  &lt;h4 class="inline"&gt;Runtime:&lt;/h4&gt; 
-    &lt;time itemprop="duration" datetime="PT139M"&gt;139 min&lt;/time&gt;
-&lt;/div&gt;
+&lt;div class="txt-block">
+  &lt;h4 class="inline">Runtime:&lt;/h4> 
+    &lt;time itemprop="duration" datetime="PT139M">139 min&lt;/time>
+&lt;/div>
 </pre>
 
 <p>For any given movie, the running time itself will be variable, but the HTML structure of the page will stay the same. I can therefore deduce that running time will always appear in between:</p>
 
 <pre data-type="programlisting">
-&lt;time itemprop="duration" datetime="PT139M"&gt;</pre>
+&lt;time itemprop="duration" datetime="PT139M"></pre>
 
 <p>and:</p>
 
 <pre data-type="programlisting">
-&lt;/time&gt;</pre>
+&lt;/time></pre>
 
 <p>Knowing where the data starts and ends, I can use <code>giveMeTextBetween()</code> to pull out the running time.</p>
 
@@ -389,14 +387,14 @@ String html = join(lines, " ");
 
 
 // Searching for running time
-String start = "&lt;time itemprop=\"duration\" datetime=\"PT139M\"&gt;"; <span class="callout-bubble pos-3 width-10 below">A quote in Java marks the beginning or end of a string. So how do you include an actual quote in a <code>String</code> object? The answer is via an “escape” sequence. (You encountered this in <a data-type="xref" href="#display_text_that_is_centered_and_rotate">#display_text_that_is_centered_and_rotate</a>.) A quote can be included using a backward slash, followed by a quote. For example: <code>String q = "This String has a quote \"in it";</code></span>
+String start = "&lt;time itemprop=\"duration\" datetime=\"PT139M\">"; <span class="callout-bubble pos-3 width-10 below">A quote in Java marks the beginning or end of a string. So how do you include an actual quote in a <code>String</code> object? The answer is via an “escape” sequence. (You encountered this in <a data-type="xref" href="#display_text_that_is_centered_and_rotate">#display_text_that_is_centered_and_rotate</a>.) A quote can be included using a backward slash, followed by a quote. For example: <code>String q = "This String has a quote \"in it";</code></span>
 
 
 
 
 
 
-String end = "&lt;/time&gt;";
+String end = "&lt;/time>";
 String runningtime = giveMeTextBetween(html, start, end);
 println(runningtime);
  
@@ -436,12 +434,12 @@ void loadData() {
   String html = join(lines, "");
 
 
-  String start = "&lt;time itemprop=\"duration\" datetime=\"PT139M\"&gt;";
-  String end = "&lt;/time&gt;";
+  String start = "&lt;time itemprop=\"duration\" datetime=\"PT139M\">";
+  String end = "&lt;/time>";
   runningtime = giveMeTextBetween(html, start, end);<span class="callout-bubble pos-12">Searching for running time.</span>
 
   start = "&lt;link rel='image_src' href=\"";
-  end = "\"&gt;";
+  end = "\">";
   String imgUrl = giveMeTextBetween(html, start, end);<span class="callout-bubble pos-12">Searching for the URL of the poster image.</span>
   poster = loadImage(imgUrl);<span class="callout-bubble below">Now, load that image!</span>
 }
@@ -504,8 +502,6 @@ String giveMeTextBetween(String s, String before, String after) {
 
 <p>This is how it might look if you typed it into your code directly (the quotes are no longer necessary.)</p>
 
-<pre data-type="programlisting">
-
 {% highlight javascript %}
 var person = {
   name: "Olympia",
@@ -534,17 +530,17 @@ var person = {
 <p>To compare to data format like XML, the preceding JSON data would look like the following (for simplicity I'm avoiding the use of XML attributes).</p>
 
 {% highlight xml %}
-&lt;xml version="1.0" encoding="UTF-8"?&gt;
-&lt;person&gt;
-  &lt;name&gt;Olympia&lt;/name&gt;
-  &lt;age&gt;3&lt;/age&gt;
-  &lt;height&gt;96.5&lt;/height&gt;
-  &lt;state&gt;giggling&lt;/state&gt;
-  &lt;brother&gt;
-    &lt;name&gt;Elias&lt;/name&gt;
-    &lt;age&gt;6&lt;/age&gt;
-  &lt;/brother&gt;
-&lt;/person&gt;
+<xml version="1.0" encoding="UTF-8"?>
+<person>
+  <name>Olympia</name>
+  <age>3</age>
+  <height>96.5</height>
+  <state>giggling</state>
+  <brother>
+    <name>Elias</name>
+    <age>6</age>
+  </brother>
+</person>
 {% endhighlight %}
 
 <p>Multiple JSON objects can appear in the data as an array. A JSON array is simply a list of values (primitives or objects). The syntax is identical to JavaScript syntax. Here is a simple JSON array of integers:</p>
@@ -558,46 +554,11 @@ You might find an array as part of an object. Below the value of “favorite col
 {% highlight javascript %}
 {
   "name":"Olympia",
-  "favorite colors":[
-    "purple",
-    "blue",
-    "pink"
-  ]
+  "favorite colors":["purple","blue","pink"]
 }
 {% endhighlight %}
 
-<p>You also might find an array of objects themselves. For example, here is an array of "Bubble" objects in JSON. Notice how this JSON data is organized as a single JSON object "bubbles," which contains a JSON array of JSON objects, the bubbles.</p>
-
-{% highlight javascript %}
-{
-  "bubbles":[
-    {
-      "position":{
-        "x":160,
-        "y":103
-      },
-      "diameter":43.19838,
-      "label":"Happy"
-    },
-    {
-      "position":{
-        "x":372,
-        "y":137
-      },
-      "diameter":52.42526,
-      "label":"Sad"
-    },
-    {
-      "position":{
-        "x":273,
-        "y":235
-      },
-      "diameter":61.14072,
-      "label":"Joyous"
-    }
-  ]
-}
-{% endhighlight %}
+A great place to find a selection of JSON data sources to play with is <a href="https://github.com/dariusk/corpora">corpora</a>, a github repository maintained by <a href="http://tinysubversions.com/">Darius Kazemi</a>.  For example, here's <a href="https://github.com/dariusk/corpora/blob/master/data/animals/birds_antarctica.json">a JSON file containing information about birds in Antarctica</a>.
 
 ## Loading JSON into your code
 
@@ -605,7 +566,7 @@ You might find an array as part of an object. Below the value of “favorite col
 
 {% highlight javascript %}
 function setup() {
-  loadJSON('file.json', gotData);
+  loadJSON('birds_antarctica.json', gotData);
 }
 
 function gotData(data) {
@@ -614,379 +575,142 @@ function gotData(data) {
 }
 {% endhighlight %}
 
-The data from the JSON file is passed into the argument <code>data</code> in the <code>gotData</code> callback.
+The data from the JSON file is passed into the argument <code>data</code> in the <code>gotData</code> callback.  Then it becomes a bit of detective work.  How is the data structured — a single object? an array of objects?  An object full of arrays of objects?  Let's look at a snippet from the birds of Antarctica.
 
-<p>Sample 1:</p>
-
-<pre class="pre" data-type="programlisting">
-[
-  {
-    "name":"Elias"
-  },
-  {
-    "name":"Olympia"
-  }
-]
-</pre>
-
-<p>Sample 2:</p>
-
-<pre class="pre" data-type="programlisting">
+{% highlight javascript %}
 {
-  "names":[
+  "description": "Birds of Antarctica, grouped by family",
+  "source": "https://en.wikipedia.org/wiki/List_of_birds_of_Antarctica",
+  "birds": [
     {
-      "name":"Elias"
+      "family": "Albatrosses",
+      "members": [
+        "Wandering albatross",
+        "Sooty albatross",
+        "Light-mantled albatross"
+      ]
     },
     {
-      "name":"Olympia"
+      "family": "Cormorants",
+      "members": [
+        "Antarctic shag",
+        "Imperial shag",
+        "Crozet shag"
+      ]
     }
   ]
 }
-</pre>
+{% endhighlight %}
 
-<p>Look how similar the above two samples look. They both contain exactly the same data, two names "Elias" and "Olympia." There is one, very key difference, however, to how the data is formatted: the very first character. Is it a "[" or a "{"? The answer will determine whether you’re loading an array ("[") or an object("{").</p>
+If the JSON file is loaded into the variable <code>data</code>, the way you access that data is no different than if you had said:
 
-<pre class="pre" data-type="programlisting">
-JSONObject json = loadJSONObject("file.json"); <span class="callout-bubble pos-9">JSON objects start with a curly bracket: {</span>
-</pre>
-
-<pre class="pre" data-type="programlisting">
-JSONArray json = JSONArray("file.json");  <span class="callout-bubble pos-9">JSON arrays start with a square bracket: [</span>
-</pre>
-
-<p>Typically, even if the data is ultimately organized as an array of objects (such as the array of "bubble" objects), the root element of the JSON data will be an object that contains that array. Let's look at the bubble data one more time.</p>
-
-<pre class="pre" data-type="programlisting">
-{
-  "bubbles":[
-    {
-      "position":{
-        "x":160,
-        "y":103
-      },
-      "diameter":43.19838,
-      "label":"Happy"
-    },
-    {
-      "position":{
-        "x":372,
-        "y":137
-      },
-      "diameter":52.42526,
-      "label":"Sad"
-    }
-  ]
+{% highlight javascript %}
+var data = {
+  "description": "Birds of Antarctica, grouped by family",
+  "source": "https://en.wikipedia.org/wiki/List_of_birds_of_Antarctica"
+  // etc
 }
-</pre>
+{% endhighlight %}
 
-<p>With the above, I first load an object and then pull the array out of that object.</p>
+For example, if you wanted to display the description and link it to the source you would say:
 
-<pre class="pre" data-type="programlisting">
-JSONObject json = loadJSONObject("data.json"); <span class="callout-bubble pos-10">Load the entire JSON file as an object.</span>
-JSONArray bubbleData = json.getJSONArray("bubbles");<span class="callout-bubble pos-8 below">Pull the array of bubbles out of that object.</span>
+{% highlight javascript %}
+createA(data.source, data.description);
+{% endhighlight %}
 
+And since <code>birds</code> is an array of objects, you can use a <code>for</code> loop just the way you always do with arrays.  Each element of the array is an object itself with properties that can be accessed like <code>family</code> and <code>members</code> (which is also an array!).
 
-</pre>
-
-<p>Just as with XML, the data from an element is accessed via its name, in this case "bubbles." With a <code>JSONArray</code>, however, each element of the array is retrieved via its numeric index.</p>
-
-<pre class="pre" data-type="programlisting">
-for (int i = 0; i &lt; bubbleData.size(); i++) {<span class="callout-bubble pos-10">Iterating over a <code>JSONArray</code>.</span>
-  JSONObject bubble = bubbleData.getJSONObject(i); 
-}</pre>
-
-<p>And when you're looking for a specific piece of data from a <code>JSONObject</code>, such as an integer or string, the functions are identical to those of XML attributes.</p>
-
-<pre class="pre" data-type="programlisting">
-  JSONObject position = bubble.getJSONObject("position");<span class="callout-bubble pos-12">Get the position object from the bubble object.</span>
-
-
-  int x = position.getInt("x");<span class="callout-bubble pos-8">Get x and y as integers from the position object.</span>
-  int y = position.getInt("y");
-
-  float diameter = bubble.getFloat("diameter");
-  String label = bubble.getString("label");<span class="callout-bubble pos-9">Diameter and label are available directly from the <code>Bubble</code> object.</span>
-  
-</pre>
-
-<p>Putting this all together, I can now make a JSON version of the bubbles example (leaving out the <code>draw()</code> function and <code>Bubble</code> class which haven't changed.)</p>
-
-<div data-type="example" id="loadJSON">
-<h5>Using Processing’s JSON classes</h5>
-
-<pre data-type="programlisting">
-// An Array of Bubble objects
-Bubble[] bubbles;
-
-void setup() {
-  size(480, 360);
-  loadData();
-}
-
-void loadData() {
-  JSONObject json = loadJSONObject("data.json");<span class="callout-bubble pos-12">Load the JSON file and grab the array.</span>
-  JSONArray bubbleData = json.getJSONArray("bubbles");
-
-
-  bubbles = new Bubble[bubbleData.size()]; <span class="callout-bubble pos-9">The size of the array of <code>Bubble</code> objects is determined by the length of the JSON array</span>
-
-
-  for (int i = 0; i &lt; bubbleData.size(); i++) {
-
-    JSONObject bubble = bubbleData.getJSONObject(i); <span class="callout-bubble pos-12">Iterate through the array, grabbing each JSON object one at a time.</span>
-
-    // Get a position object
-    JSONObject position = bubble.getJSONObject("position");
-    // Get (x,y) from JSON object "position"
-    int x = position.getInt("x");
-    int y = position.getInt("y");
-    
-    // Get diamter and label
-    float diameter = bubble.getFloat("diameter");
-    String label = bubble.getString("label");
-
-    bubbles[i] = new Bubble(x, y, diameter, label);<span class="callout-bubble pos-12">Put the <code>Bubble</code> objects into an array.</span>
+{% highlight javascript %}
+for (var i = 0; i < data.birds.length; i++) {
+  var family  = data.birds[i].family;
+  createElement('h2', family);
+  var members = data.birds[i].members;
+  for (var j = 0; j < members.length; j++) {
+    createDiv(members(i));
   }
 }
-</pre>
+{% endhighlight %}
+
+Here's what this looks like:
+
+<div style = "padding:24px;background-color:#f8f8f8;margin-bottom:24px">
+<p><a href="https://en.wikipedia.org/wiki/List_of_birds_of_Antarctica">Birds of Antarctica, grouped by family</a></p>
+<h2>Albatrosses</h2>
+<div>Wandering albatross</div>
+<div>Sooty albatross</div>
+<div>Light-mantled albatross</div>
+<p></p>
+<h2>Cormorants</h2>
+<div>Antarctic shag</div>
+<div>Imperial shag</div>
+<div>Crozet shag</div>
 </div>
 
-<aside class="exercise" data-type="sidebar" id="open_weather_JSON">
-<h5>Retrieve the description and current temperature using the following JSON from <a href="http://openweathermap.org/current">openweathermap.org</a>.</h5>.
 
-<pre data-type="programlisting">
-{
-  "weather":[
-    {
-      "id":801,
-      "main":"Clouds",
-      "description":"few clouds",
-      "icon":"02d"
-    }
-  ],
-  "main":{
-    "temp":73.45,
-    "humidity":83,
-    "pressure":999,
-    "temp_min":70,
-    "temp_max":75.99
-  }
-}
-</pre>
+## APIs
 
-<pre data-type="programlisting">
-JSONObject json = loadJSONObject(
-   "http://api.openweathermap.org/data/2.5/weather?q=New%20York");
+<p>What makes something an API versus just some data you found, and what are some pitfalls you might run into when using an API?</p>
 
-JSONObject main = json.getJSONObject(____________);
-
-int temp = main.____________("temp");
-
-// Grab the description (this is just one way to do it)
-
-____________ weather = json.getJSON___________("weather");
-
-String des = weather.getJSONObject(____)._________(_________);
-</pre>
-</aside>
-</section>
-
-<section data-type="sect1" id="Threads">
-<h1>Threads</h1>
-
-<p>As you have seen, the various loading functions — <code>loadStrings()</code>, <code>loadTable()</code>, <code>loadXML()</code>, and <code>loadJSONObject()</code> — can be used for retrieving data from URLs. Nonetheless, unless your sketch only needs to load the data once during <code>setup()</code>, you may have a problem. For example, consider a sketch that grabs the price of AAPL stock from an XML feed every five minutes. Each time <code>loadXML()</code> is called, the sketch will pause while waiting to receive the data. Any animation will stutter. This is because these loading functions are “blocking.” In other words, the sketch will sit and wait at that line of code until <code>loadXML()</code> completes its task. With a local data file, this is extremely fast. Nonetheless, a request for a URL (known as an “HTTP request”) in Processing is <em>synchronous</em>, meaning your sketch waits for a response from the server before continuing. Who knows how will that take? No one; you are at the mercy of the server!</p>
-
-<p>The answer to this problem lies in the concept of <em>threads</em>. By now you are quite familiar with the idea of writing a program that follows a specific sequence of steps — <code>setup()</code> first then <code>draw()</code> over and over and over again! A thread is also a series of steps with a beginning, a middle, and an end. A Processing sketch is a single thread, often referred to as the <em>animation</em> thread. Other threads’ sequences, however, can run independently of the main animation loop. In fact, you can launch any number of threads at one time, and they will all run concurrently.</p>
-
-<p>Processing does this quite often, such as with library functions like <code>captureEvent()</code> and <code>movieEvent()</code>. These functions are triggered by a different thread running behind the scenes, and they alert Processing whenever they have something to report. This is useful when you need to perform a task that takes too long and would slow down the main animation's frame rate, such as grabbing data from the network. Here, you want to handle the request <em>asynchronously</em> in a different thread. If that thread gets stuck or has an error, the entire program won't grind to a halt, since the error only stops that individual thread and not the main animation loop.</p>
-
-<p>Writing your own thread can be a complex endeavor that involves extending the Java <a href="https://docs.oracle.com/javase/tutorial/essential/concurrency/threads.html"><code>Thread</code></a> class. However, the <code>thread()</code> method is a quick and dirty way to implement a simple thread in Processing. By passing in a string that matches the name of a function declared elsewhere in the sketch, Processing will execute that function in a separate thread. Let's take a look at a skeleton of how this works.</p>
-
-<pre data-type="programlisting">
-void setup() {
-  thread("someFunction");
-}
- 
-void draw() {
- 
-}
- 
-void someFunction() {
-  // This function will run as a thread when called via
-  // thread("someFunction") as it was in setup!
-}
-</pre>
-
-<p>The <code>thread()</code> function receives a string as an argument. The string should match the name of the function you want to run as a thread. In the above example it’s <code>"someFunction"</code>.</p>
-
-<p class="pagebreak-before">Let's look at a more practical example. For an example of data that changes often, I'll use <a href="http://time.jsontest.com/">time.jsontest.com</a> which gives you the current time (in milliseconds). While I could retrieve this from the system clock, this works well for demonstrating continuously requesting data that changes over time. Not knowing about threads, my first instinct might be to say:</p>
-
-<pre data-type="programlisting">
-void draw() {
-  JSONObject json = loadJSONObject("http://time.jsontest.com/");<span class="callout-bubble pos-10 below">The code will stop here and wait to receive the data before moving on.</span>
-  String time = json.getString("time");
-  text(time, 40, 100);
-}
-</pre>
-
-<p>This would give me the current time every cycle through <code>draw()</code>. If I examine the frame rate, however, I'll notice that the sketch is running incredibly slowly (and all it needs to do is draw a single string!). This is where calling the parsing code as a separate thread will help a lot.</p>
-
-<pre data-type="programlisting">
-String time = "";
-
-void draw() {
-  thread("requestData");<span class="callout-bubble width-5">Now the code will move on to the next line while <code>requestData()</code> executes in a separate thread.</span>
-  text(time, 40, 100);
-}
-
-void requestData() {
-  JSONObject json = loadJSONObject("http://time.jsontest.com/");
-  time = json.getString("time");
-}
-</pre>
-
-<p>The logic is identical, only I am not requesting the data directly in <code>draw()</code>, but executing that request as a separate thread.  Notice that I am not doing any drawing in <code>requestData()</code>.  This is key as executing drawing functions in code that runs on a separate thread can cause conflicts with the main animation thread (i.e., <code>draw()</code>) resulting in strange behavior and errors.</p>
-
-<p>In the above example, I likely don't want to request the data sixty times per second (the default frame rate). Instead I might make use of the <code>Timer</code> class from </p>
-
-<div data-type="example" id="threads">
-<h5>Threads</h5>
-
-<figure class="float-right" id="fig_18_19_thread"><img alt="fig_18_19_thread" src="images/fig_18_19_thread.png" />
-<figcaption> </figcaption>
-</figure>
-
-<pre data-type="programlisting">
-Timer timer = new Timer(1000);
-String time = "";
-
-void setup() {
-  size(200, 200);
-  thread("retrieveData");<span class="callout-bubble width-3">Start by requesting the data asynchronously in a thread.</span>
-  timer.start();
-}
-
-void draw() {
-  background(255);
-  if (timer.isFinished()) {<span class="callout-bubble width-3">Every one second, make a new request.</span>
-    retrieveData();
-
-    timer.start();<span class="callout-bubble width-3">And restart the timer.</span>
-  }
-
-  fill(0);
-  text(time, 40, 100);
-
-  translate(20, 100);
-  stroke(0);
-  rotate(frameCount*0.04);<span class="callout-bubble pos-5 width-3">Here I draw a little animation to demonstrate that the <code>draw()</code> loop never pauses.</span>
-  for (int i = 0; i &lt; 10; i++) {
-    rotate(radians(36));
-    line(5, 0, 10, 0);
-  }
-}
-
-// get the data
-void retrieveData() {
-  JSONObject json = loadJSONObject("http://time.jsontest.com/");
-  time = json.getString("time");
-}
-</pre>
-</div>
-
-<aside class="exercise empty" data-type="sidebar" id="thread_exercise">
-<h5><em>Update the weather XML or weather JSON example to request the data in a thread.</em></h5>
-</aside>
-</section>
-
-<section data-type="sect1" id="APIS">
-<h1>APIs</h1>
-
-<p>It’s a bit silly for me to call this section “APIs” given that most of this chapter is about data from APIs. Still, it’s worth taking a moment to pause and reflect. What makes something an API versus just some data you found, and what are some pitfalls you might run into when using an API?</p>
-
-<p>As I've stated, an API (Application Programming Interface) is an interface through which one application can access the services of another. These can come in many forms. Openweathermap.org, as you saw in <a data-type="xref" href="#open_weather_JSON">#open_weather_JSON</a>, is an API that offers its data in JSON, XML, and HTML formats. The key element that makes this service an API is exactly that offer; openweathermap.org's sole purpose in life is to offer you its data. And not just offer it, but allow you to query it for specific data in a specific format. Let's look at a short list of sample queries.</p>
+<p>An API (Application Programming Interface) is an interface through which one application can access the services of another. These can come in many forms. <a href="http://openweathermap.org/">Openweathermap.org</a> is an API that offers its data in JSON, XML, and HTML formats. The key element that makes this service an API is exactly that offer; openweathermap.org's sole purpose in life is to offer you its data. And not just offer it, but allow you to query it for specific data in a specific format. Let's look at a short list of sample queries.</p>
 
 <dl>
-  <dt><em>http://api.openweathermap.org/data/2.5/weather?lat=35&amp;lon=139</em></dt>
-  <dd>A request for current weather data for a specific latitude and longitude.</dd>
-  <dt><em>http://api.openweathermap.org/data/2.5/forecast/daily?q=London&amp;mode=xml&amp;units=metric&amp;cnt=7&amp;lang=zh_cn</em></dt>
-  <dd>A request for a seven day London forecast in XML format with metric units and in Chinese.</dd>
-  <dt><em>http://api.openweathermap.org/data/2.5/history/station?id=5091&amp;type=day</em></dt>
+  <dt><a href="http://api.openweathermap.org/data/2.5/weather?lat=35&amp;lon=139">http://api.openweathermap.org/data/2.5/weather?lat=35&amp;lon=139</a></dt>
+
+  <dd style="margin-bottom:8px">A request for current weather data for a specific latitude and longitude.</dd>
+
+  <dt><a href="http://api.openweathermap.org/data/2.5/forecast/daily?q=London&amp;mode=xml&amp;units=metric&amp;cnt=7&amp;lang=zh_cn">http://api.openweathermap.org/data/2.5/forecast/daily?q=London&amp;mode=xml&amp;units=metric&amp;cnt=7&amp;lang=zh_cn</a></dt>
+
+  <dd style="margin-bottom:8px">A request for a seven day London forecast in XML format with metric units and in Chinese.</dd>
+
+  <dt><a href="http://api.openweathermap.org/data/2.5/history/station?id=5091&amp;type=day">http://api.openweathermap.org/data/2.5/history/station?id=5091&amp;type=day</a></dt>
+
   <dd>A request for a historical data for a given weather station.</dd>
 </dl>
 
-<p>One thing to note about openweathermap.org is that it does not require that you tell the API any information about yourself. You simply send a request to a URL and get the data back. Other APIs, however, require you to sign up and obtain an access token. <em>The New York Times</em> API is one such example. Before you can make a request from Processing, you'll need to visit <a href="http://developer.nytimes.com/"><em>The New York Times</em> Developer site</a> and request an API key. Once you have that key, you can store it in your code as a string.</p>
+<p>One thing to note about openweathermap.org is that it does not require that you tell the API any information about yourself. You simply send a request to a URL and get the data back. Other APIs, however, require you to sign up and obtain an access token. <em>The New York Times</em> API is one such example. Before you can make a request, you'll need to visit <a href="http://developer.nytimes.com/"><em>The New York Times</em> Developer site</a> and request an API key. Once you have that key, you can store it in your code as a string.</p>
 
-<pre data-type="programlisting">
+{% highlight javascript %}
 // This is not a real key
-String apiKey = "40e2es0b3ca44563f9c62aeded4431dc:12:51913116";
-</pre>
+var apiKey = "40e2es0b3ca44563f9c62aeded4431dc:12:51913116";
+{% endhighlight %}
 
 <p>You also need to know what the URL is for the API itself. This information is documented for you on the developer site, but here it is for simplicity:</p>
 
-<pre data-type="programlisting">
-String url = "http://api.nytimes.com/svc/search/v2/articlesearch.json";
-</pre>
+{% highlight javascript %}
+var url = "http://api.nytimes.com/svc/search/v2/articlesearch.json";
+{% endhighlight %}
 
-<p>Finally, you have to tell the API what it is you are looking for. This is done with a “query string,” a sequence of name value pairs describing the parameters of the query joined with an ampersand. This functions similarly to how you pass arguments to a function in Processing. If you wanted to search for the term "processing" from a <code>search()</code> function you might say:</p>
+<p>Finally, you have to tell the API what it is you are looking for. This is done with a “query string,” a sequence of name value pairs describing the parameters of the query joined with an ampersand. This functions similarly to how you pass arguments to a function. If you wanted to search for the term "JavaScript" from a <code>search()</code> function you might say:</p>
 
-<pre data-type="programlisting">
-search("processing");
-</pre>
+{% highlight javascript %}
+search("JavaScript");
+{% endhighlight %}
 
-<p>Here, the API acts as the function call, and you send it the arguments via the query string. Here is a simple example asking for a list of the oldest articles that contain the term "processing" (the oldest of which turns out to be May 12th, 1852).</p>
+<p>Here, the API acts as the function call, and you send it the arguments via the query string. Here is a simple example asking for a list of the oldest articles that contain the term "JavaScript" (the oldest of which turns out to be May 12th, 1852).</p>
 
-<pre data-type="programlisting">
-String query = "?q=processing&amp;sort=oldest";<span class="callout-bubble pos-9">The name/value pairs that configure the API query are: (q,processing) and (sort,oldest)</span>
+{% highlight javascript %}
+// The name/value pairs that configure the API query are: (q,JavaScript) and (sort,oldest)
+var query = "?q=JavaScript&sort=oldest";
+{% endhighlight %}
 
-</pre>
+<p>This isn't just guesswork. Figuring out how to put together a query string requires reading through the API's documentation. For <em>The New York Times</em>, it’s all outlined on <a href="http://developer.nytimes.com/docs/read/article_search_api_v2">the <em>Times'</em> developer website</a>. Once you have your query you can join all the pieces together and pass it to <code>loadJSON()</code>. Here is a tiny example that simply displays the most recent headline.</p>
 
-<p>This isn't just guesswork. Figuring out how to put together a query string requires reading through the API's documentation. For <em>The New York Times</em>, it’s all outlined on <a href="http://developer.nytimes.com/docs/read/article_search_api_v2">the <em>Times'</em> developer website</a>. Once you have your query you can join all the pieces together and pass it to <code>loadJSONObject()</code>. Here is a tiny example that simply displays the most recent headline.</p>
-
-<div data-type="example" id="nytimes">
-<h5>NYTimes API query</h5>
-
-<pre data-type="programlisting">
-void setup() {
-  size(200, 200);
+{% highlight javascript %}
+function setup() {
   
-  String apiKey = "40e2ea0b3ca44563f9c62aeded0431dc:18:51513116";
-  String url = "http://api.nytimes.com/svc/search/v2/articlesearch.json";
-  String query = "?q=processing&amp;sort=newest";
+  var apiKey = "sample-key";
+  var url = "http://api.nytimes.com/svc/search/v2/articlesearch.json";
+  var query = "?q=JavaScript&sort=newest";
 
-  // Make the API query
-  JSONObject json = loadJSONObject(url+query+"&amp;api-key="+apiKey);<span class="callout-bubble pos-8 below">Here, I format the call to the API by joing the URL with the API key with the query string.</span>
+  // Here, I format the call to the API by joing the URL with the API key with the query string.
+  loadJSON(url+query+"&api-key="+apiKey, gotData);
 
-
-
-
-  String headline = json.getJSONObject("response").getJSONArray("docs").
-    getJSONObject(0).getJSONObject("headline").getString("main");<span class="callout-bubble pos-8 below">Grabbing a single headline from the results.</span>
-  background(255);
-  fill(0);
-  text(headline, 10, 10, 180, 190);
+  function gotData(data) {
+    // Grabbing a single headline from the results.
+    var headline = data.response.docs[0].headline.main;
+    createP(headline);
+  }
 }
-</pre>
-</div>
+{% endhighlight %}
 
-<p>Some APIs require a deeper level of authentication beyond an API access key. Twitter, for example, uses an authentication protocol known as “OAuth” to provide access to its data. Writing an OAuth application requires more than just passing a String into a request and is beyond the scope of this book. However, in these cases, if you’re lucky, you can find a Processing library that handles all of the authentication for you. There are several APIs that can be used directly with Processing via a library, and you can find a list of them in the “Data / Protocols” section of the like:</p>
-
-<pre data-type="programlisting">
-TembooSession session = new TembooSession("ACCOUNT_NAME", "APP_NAME", "APP_KEY");<span class="callout-bubble width-7 pos-5 below">Temboo acts as a go-between you and Twitter, so first you just authenticate with Temboo.</span>
-
-
-
-Tweets tweets = new Tweets(session);
-tweets.setCredential("your-twitter-name");<span class="callout-bubble pos-9">Then you can configure a query to send to Twitter itself and grab the results.</span>
-tweetsChoreo.setQuery("arugula");
-TweetsResultSet tweetsResults = tweets.run();
-
-JSONObject searchResults = parseJSONObject(tweetsResults.getResponse());
-
-JSONArray statuses = searchResults.getJSONArray("statuses");
-
-JSONObject tweet = statuses.getJSONObject(0);<span class="callout-bubble pos-9 below">Finally, you can search through the results and grab a tweet.</span>
-String tweetText = tweet.getString("text"); 
-</pre>
-</section>
-</section>
+<p>Some APIs require a deeper level of authentication beyond an API access key. Twitter, for example, uses an authentication protocol known as “OAuth” to provide access to its data. Writing an OAuth application requires more than just passing a string into a request.  There are some examples this week that use server-side programming in Node to perform the authentication.</p>
