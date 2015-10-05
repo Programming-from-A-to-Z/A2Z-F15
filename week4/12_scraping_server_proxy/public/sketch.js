@@ -24,7 +24,7 @@ function gotData(data) {
   var raw = data.join('\n');
   //console.log(raw);
 
-  var time = /<time itemprop="duration" datetime="PT139M">(.*?)<\/time>/
+  var time = /<time itemprop="duration" datetime="\w+?">(.*?)<\/time>/
   var matches = raw.match(time);
 
   createP(matches[1]);
