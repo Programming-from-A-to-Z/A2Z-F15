@@ -17,11 +17,13 @@ port(8080);
 // npm install twit
 var Twit = require('twit');
 var T = new Twit({
-  consumer_key:         '_', 
-  consumer_secret:      '_',
-  access_token:         '_',
-  access_token_secret:  '_'
+  consumer_key:         '', 
+  consumer_secret:      '',
+  access_token:         '',
+  access_token_secret:  ''
 });
+
+
 
 // This is basically just like 'python -m SimpleHTTPServer'
 // We are just serving up a directory of files

@@ -15,11 +15,11 @@ function setup() {
   noCanvas();
   
   // Get all the HTML elements
-  searchInput = getElement('searchInput');
-  postInput = getElement('postInput');
-  var button1 = getElement('searchButton');
-  var button2 = getElement('postButton');
-  numchars = getElement('numchars');
+  searchInput = select('#searchInput');
+  postInput = select('#postInput');
+  var button1 = select('#searchButton');
+  var button2 = select('#postButton');
+  numchars = select('#numchars');
 
   // Assign the callbacks to the functions
   button1.mousePressed(getTweets);
@@ -27,6 +27,8 @@ function setup() {
 
   // Set the current tweet character count
   countChars();
+
+  postInput.elt.addEventListener('input', countChars);
 }
 
 // Update the div that says how many characters are in the tweet

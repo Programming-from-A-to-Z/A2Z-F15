@@ -20,19 +20,23 @@
         margin-top: 24px;
         margin-bottom: 4px;
       }    
+      .apiquery {
+        margin: 0 0 20 0;
+      }
     </style>
-
   </head>
   <body>
+    <p class = 'apiquery'>
+      <div class ='info'>Search for tweets:</div>
+      <input id='searchInput' value = 'JavaScript'></input>
+      <button id = 'searchButton'>Search!</button>
+    </p>
 
-    <h1>Scraping</h1>
-
-    <p>This page scrapes data from <a href="http://imdb.com">imbdb.com</a>.
-
-    <p>Paste in an IMDB movie url: <input id="url" size="50" value="http://www.imdb.com/title/tt0058331/"></input>
-
-    <p><a href="#" id="submit">fetch data</a></p>
-
-
+    <p class = 'apiquery'>
+      <div class ='info'>Tweet this:</div>
+      <input id='postInput' value = 'A test tweet.' size='50'></input>
+      <button id = 'postButton'>Tweet!</button>
+      <div id='numchars' style='display:inline'></div>
+    </p>
   </body>
 </html>
