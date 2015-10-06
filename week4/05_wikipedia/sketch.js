@@ -2,31 +2,35 @@
 // Daniel Shiffman
 // https://github.com/shiffman/A2Z-F15
 
-// API documentation
-// http://developer.nytimes.com
-// Weirdly it seems to work with 'sample-key'
-// But you should probably get your own
+// Documentation for Wikipedia API
+// https://en.wikipedia.org/w/api.php
 
-
+// Input from user
 var input;
 
 function setup() {
   noCanvas();
 
+  // Grab the input and button from HTML
   input = select('#search');
   var button = select('#submit');
+  // Attach a callback to button press
   button.mousePressed(search);
 }
 
+// Run the API call
 function search() {
   var term = input.value();
 
-  // URL for querying the times
+  // URL for querying wikipedia
   var url = 'http://en.wikipedia.org/w/api.php?action=opensearch&format=json&search='
           + '&search=' + term;
 
+  // Query the URL, set a callback
+  // 'jsonp' is needed for security
   loadJSON(url, gotData, 'jsonp');
 }
+
 
 // We got the list of articles
 function gotData(data) {
@@ -46,20 +50,24 @@ function gotData(data) {
     a.parent(li);
     li.parent('list');
     // Another callback
-    a.mousePressed(getContent(articles[i]));
+    setCallback(a, articles[i]);
+    //a.mousePressed(getContent(articles[i]));
   }
 }
 
 
-// A closure function factory
-// Execute another API query
-function getContent(article) {
+// A closure to attach a callback
+// to an <a> anchor tag
+function setCallback(a, article) {
   // Form the URL
   var url = 'http://en.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&format=json';
-  return function() {
+  a.mousePressed(loadData);
+
+  function loadData() {
+    // Wikipedia wants underscores instead of spaces
     article = article.replace(/\s+/,'_');
     console.log(url + '&titles=' + article);
-    // The callback for this is get content
+    // The callback for this is gotContent
     loadJSON(url + '&titles=' + article, gotContent, 'jsonp');
   }
 }

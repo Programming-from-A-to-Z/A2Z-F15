@@ -1,6 +1,6 @@
+// A2Z F15
 // Daniel Shiffman
-// Programming from A to Z, Fall 2014
-// https://github.com/shiffman/Programming-from-A-to-Z-F14
+// https://github.com/shiffman/A2Z-F15
 
 // Thank you to: https://github.com/dariusk/metaphor-a-minute/blob/master/metaphor.js
 

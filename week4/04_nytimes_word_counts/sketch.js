@@ -20,6 +20,7 @@ function makeURL(term,year) {
 }
 
 function setup() {
+  // A canvas for drawing!
   var canvas = createCanvas(800, 200);
   background(51);
 
@@ -38,35 +39,49 @@ function setup() {
   button.mousePressed(searchIt);
 }
 
+// This callback is for when the user clicks the button
+function searchIt() {
+  var term = input.value();
+  // Loop through every year
+  for (var i = 0; i < total; i++) {
+    var year = start + i;
+    // Make the API query URL
+    var url = makeURL(term, year);
+    //console.log(url);
+    // Run the query and keep track of the index
+    goJSON(url, i);
+  }
+}
+
+
 
 
 function goJSON(url, index) {
+
+  // The NYTimes will complain if you hit them too quickly with
+  // many requests, so this spaces them out by 100 millis
   setTimeout(delayLoad, index * 100);
 
+  // Run the query with that specific URL
   function delayLoad() {
     loadJSON(url, loaded, 'jsonp');
   }
   
-  var total = 0;
   function loaded(data) {
+    // Set a default total to 0
+    var count = 0;
+    // If you get good data, get the real count
     if (data.response.facets.source.terms[0]) {
-      total = data.response.facets.source.terms[0].count;
+      count = data.response.facets.source.terms[0].count;
     }
-    var h = map(total, 0, 1000, 0, 50);
+    // Map the count to a range to fit in canvas
+    // Could do better here
+    var h = map(count, 0, 1000, 0, 50);
     fill(175);
     stroke(0);
-    rect(index*w, height - h, w-2, h);
-    console.log(total);
+    // Draw a bar for the graph 
+    rect(index * w, height - h, w-2, h);
   }
 }
 
-function searchIt() {
-  var term = input.value();
-  for (var i = 0; i < total; i++) {
-    var year = start + i;
-    var url = makeURL(term, year);
-    //console.log(url);
-    goJSON(url, i);
-  }
-}
 
