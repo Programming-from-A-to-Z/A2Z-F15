@@ -11,7 +11,25 @@ layout: default
 
 # Week 4 Notes
 
-## All examples
+## All examples (client-side)
+* [Wordnik -- get random words](01_wordnik_randomwords/), [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week4/01_wordnik_randomwords)
+* [Wordnik -- other API calls](02_wordnik_word_info/), [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week4/02_wordnik_word_info)
+* [NYTimes -- article search](03_nytimes_articles/), [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week4/03_nytimes_articles)
+* [NYTimes -- word counts](04_nytimes_word_counts/), [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week4/04_nytimes_word_counts)
+* [Wikipedia -- article search](05_wikipedia/), [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week4/05_wikipedia)
+* [Google Custom Search](06_google_image_search/), [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week4/06_google_image_search)
+* [Instagram](07_instagram_image_search/), [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week4/07_instagram_image_search)
+* [Google Sheets with tabletop.js](08_google_sheets/), [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week4/08_google_sheets)
+* [Mad Libs with Google Sheets with tabletop.js](08_google_sheets/), [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week4/09_google_sheets_madlibs)
+* [Saving data to parse.com](10_parse_form/), [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week4/10_parse_form)
+* [Mad libs with parse.com](11_parse_madlibs), [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week4/11_parse_madlibs)
+
+## Examples requiring server-side
+
+* [Web scraping with proxy](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week4/12_server_proxy_scraping)
+* [Twitter search and posting](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week4/13_server_twitter_oauth)
+
+
 
 ## Related references
 
