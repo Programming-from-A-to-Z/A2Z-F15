@@ -18,6 +18,9 @@ function setup() {
   button.mousePressed(madlibber);
 
   function madlibber() {
+
+    // I'm forming my own special syntax for how to substitute
+    // this will help the regex and replace function
     var txt = '"$Exclamation$!" she said $Adverb$ as she jumped into her convertible $Noun$ ' 
                + 'and drove off with her $Adjective$ $Noun$.';
 
@@ -35,11 +38,17 @@ function setup() {
     // Each object contains all the data for one row of the sheet
     // See comment above
     function gotData(data) {
+
+      // Run the replace function with a callback
       var madlib = txt.replace(/\$(.*?)\$/g, replacer);
-      console.log(data);
+
+
+      // This function replaces words
       function replacer(match, what) {
+        // Pick a random entry
         var i = floor(random(data.length));
 
+        // Now get the 
         var newtext = data[i][what];
 
         if (what === 'Exclamation') {
