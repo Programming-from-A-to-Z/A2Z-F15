@@ -28,6 +28,7 @@ layout: default
 * [Chapter 1, Mastering Regular Expressions](http://safari.oreilly.com/0596002890/mastregex2-CHP-1)
 * [Guide to regex in JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions)
 * [Eloquent JavaScript Regular Expressions](http://eloquentjavascript.net/09_regexp.html)
+* [regexplained - a tool to visualize a regular expression](http://www.regexplained.co.uk/)
 * [Play the regex crossword!](http://regexcrossword.com/)
 
 ## Exercise ideas
