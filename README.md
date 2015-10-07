@@ -54,10 +54,12 @@ This course focuses on programming strategies and techniques behind procedural a
   * Replace with regex: `replace()`
   * [randexp.js](http://fent.github.io/randexp.js/)
 
-## Week 4 - Data/API Workshop
-* APIs -- NY Times, twitter (temboo)
+## Week 4 - [Data/API Workshop]((http://shiffman.github.io/A2Z-F15/week4/notes.html))
+* [Notes and examples](http://shiffman.github.io/A2Z-F15/week4/notes.html)
+* APIs
 * Working with google sheets
 * Parse
+* Homework: Start working on a [text analysis project](https://github.com/shiffman/A2Z-F15/wiki/Project-1), due Week 6 (October 19).
 
 ## Week 5 - Text Analysis Workshop
 * In class, we'll build a simple concordance together as well as demonstrate and discuss TF/IDF and Bayesian analysis.
