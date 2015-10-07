@@ -20,7 +20,7 @@ layout: default
 * [Google Custom Search](06_google_image_search/), [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week4/06_google_image_search)
 * [Instagram](07_instagram_image_search/), [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week4/07_instagram_image_search)
 * [Google Sheets with tabletop.js](08_google_sheets/), [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week4/08_google_sheets)
-* [Mad Libs with Google Sheets with tabletop.js](08_google_sheets/), [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week4/09_google_sheets_madlibs)
+* [Mad Libs with Google Sheets with tabletop.js](09_google_sheets_madlibs/), [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week4/09_google_sheets_madlibs)
 * [Saving data to parse.com](10_parse_form/), [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week4/10_parse_form)
 * [Mad libs with parse.com](11_parse_madlibs), [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week4/11_parse_madlibs)
 
