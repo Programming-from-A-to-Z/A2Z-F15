@@ -732,3 +732,17 @@ function setup() {
 {% endhighlight %}
 
 <p>Some APIs require a deeper level of authentication beyond an API access key. Twitter, for example, uses an authentication protocol known as “OAuth” to provide access to its data. Writing an OAuth application requires more than just passing a string into a request.  There are some examples this week that use server-side programming in Node to perform the authentication.</p>
+
+## Encoding URLs
+
+Certain characters and invalid in URLs.  For example, let's say you were querying wordnik for the words "bath towel".  You would have to say <code>bath%20towel</code>.  You could do this yourself with a regex or use URI encoding with <code>encodeURI()</code>.  [Here is more documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI) and an example below.
+
+{% highlight javascript %}
+var query = 'http://api.wordnik.com/v4/word.json/bath towel/api_key=apikeyblahblahblah';
+// Encode the query before you ask for it
+var encoded = encodeURI(query);
+loadJSON(encoded, callback);
+{% endhighlight %}
+
+<code>encodeURI</code> does not encode the following characters: <code>, / ? : @ & = + $ #</code>. This is as it should be since these are used in URLs to mean certain things.  However, if you wanted to have a $ or / as part of some text you are passing into a key/value pair you *would* want to encode these characters.  For this <code>encodeURIcomponent()</code> can be used.
+
