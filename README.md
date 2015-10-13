@@ -61,7 +61,8 @@ This course focuses on programming strategies and techniques behind procedural a
 * Parse
 * Homework: Start working on a [text analysis project](https://github.com/shiffman/A2Z-F15/wiki/Project-1), due Week 6 (October 19).
 
-## Week 5 - Text Analysis Workshop
+## Week 5 - [Text Analysis Workshop](http://shiffman.github.io/A2Z-F15/week5/notes.html)
+* [Notes and examples](http://shiffman.github.io/A2Z-F15/week5/notes.html)
 * In class, we'll build a simple concordance together as well as demonstrate and discuss TF/IDF and Bayesian analysis.
 * Simple Concordance
 * TF/IDF
