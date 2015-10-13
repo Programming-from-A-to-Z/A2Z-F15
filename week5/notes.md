@@ -26,8 +26,17 @@ layout: default
 * [Monty Hall and Bayes](http://sciencehouse.wordpress.com/2009/04/19/monty-hall-and-bayes/)
 * [An Intuitive Explanation of Bayes' Theorem by Eliezer S. Yudkowsky](http://yudkowsky.net/rational/bayes)
 * [The RiTa Library](http://rednoise.org/rita/)
-* [Luke Dubois' Missed Connections](http://lukedubois.com/)
+
+## Related Projects
+* [SPEECH COMPARISON](http://www.runemadsen.com/work/speech-comparison/) by Rune Madsen
+* [Book-Book](http://www.sarahgp.com/index.html) by Sarah Groff-Palermo
+* [Word Tree](https://www.jasondavies.com/wordtree/) by Jason Davies
+* [Wordle](http://www.wordle.net/)
+* [OK GO album covers](http://www.stefanieposavec.co.uk/-everything-in-between/#/ok-go-of-the-blue-colour-of-the-sky/) by Stefanie Posavec
+* [Luke Dubois' Missed Connections](http://thecreatorsproject.vice.com/blog/craigslists-missed-connections-get-matched-by-an-algorithmic-cupid)
+* [Luke Dubois' HindSight is always 20/20](http://hindsightisalways2020.net/)
 * [Nicholas Felton's 2013 Annual Report](http://feltron.com/FAR13.html), [NY Times Article](http://bits.blogs.nytimes.com/2014/08/19/a-life-in-data-nicholas-feltons-self-surveillance/?_php=true&_type=blogs&_r=0)
+* [Lyrical Indicators](http://style.org/lyrics/) and [Parsing the State of the Union](http://style.org/stateoftheunion/) by Jonathan Corum
 
 ## Exercise ideas
 * Visualize the results of a concordance using canvas (or some other means).
