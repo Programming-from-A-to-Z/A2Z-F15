@@ -182,7 +182,7 @@ header ul a strong {
 section {
   width:800px;
   float:left;
-  margin-left: 250px;
+  margin-left: 300px;
   padding-bottom:50px;
 }
 
@@ -232,11 +232,11 @@ footer {
     display:inline;
   }
 
-  header ul {
+/*  header ul {
     position:absolute;
     right:50px;
     top:52px;
-  }
+  }*/
 }
 
 @media print, screen and (max-width: 720px) {
