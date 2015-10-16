@@ -11,7 +11,8 @@ layout: default
 * [Text Classification - Naive Bayes](05_naive_bayes_classifier/) — [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week5/05_naive_bayes_classifier)
 
 ## With [RiTa.js](http://rednoise.org/rita/)
-* [Sentence Analysis](03_rita_basics/) — [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week5/03_rita_basics)
+* [Sentence Analysis](03a_rita_simple_syllable_count/) — [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week5/03a_rita_simple_syllable_count)
+* [Sentence Analysis](03b_rita_basics/) — [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week5/03b_rita_basics)
 * [Parts of Speech Concordance](04_parts_of_speech_concordance/) — [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week5/04_parts_of_speech_concordance)
 
 ## Sample datasets:
