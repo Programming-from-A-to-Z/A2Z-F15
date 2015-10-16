@@ -10,31 +10,31 @@ function Concordance() {
   
 
   // Splitting up the text
-  function split(text) {
+  this.split = function(text) {
     // Split into array of tokens
     return text.split(/\W+/);
   }
 
   // A function to validate a toke 
-  function validate(token) {
+  this.validate = function(token) {
     return /\w{2,}/.test(token);
   }
 
   // Process new text
   this.process = function(data) {
     var tokens;
-
+    // Is it already split?
     if (data instanceof Array) {
       tokens = data;
     } else {
-      tokens = split(data);
+      tokens = this.split(data);
     }
-
+    
     // For every token
     for (var i = 0; i < tokens.length; i++) {
       // Lowercase everything to ignore case
       var token = tokens[i].toLowerCase();
-      if (validate(token)) {
+      if (this.validate(token)) {
         // Increase the count for the token
         this.increment(token);
       }
@@ -54,7 +54,7 @@ function Concordance() {
   // Increment the count for a word
   this.increment = function(word) {
     // Is this a new word?
-    if (this.dict[word] == undefined) {
+    if (!this.dict[word]) {
       this.dict[word] = 1;
       this.keys.push(word);
     // Otherwise just increment its count
@@ -65,12 +65,19 @@ function Concordance() {
   
   // Sort array of keys by counts
   this.sortByCount = function() {
+    // For this function to work for sorting, I have
+    // to store a reference to this so the context is not lost!
+    var concordance = this;
+
     // A fancy way to sort each element
     // Compare the counts
-    var conc = this;
-    this.keys.sort(function(a,b) {
-      return (conc.getCount(b) - conc.getCount(a));
-    });
+    function sorter(a, b) {
+      var diff = concordance.getCount(b) - concordance.getCount(a);
+      return diff;
+    }
+    
+    // Sort using the function above!
+    this.keys.sort(sorter);
   }
 
 }
