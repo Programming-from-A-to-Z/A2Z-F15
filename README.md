@@ -71,26 +71,41 @@ This course focuses on programming strategies and techniques behind procedural a
 ## Week 6 - Show text analysis projects
 
 ## Week 7 - Text Generation Workshop: Markov chains
-* In class we'll build and use a simple markov chain generator
-* Project 2 (due Week 10): Create a bot the generates text 
+* Using google sheets for text input
+* Object "prototypes"
+* ngrams and markov chains
+* Assignment: make a single page text generator using markov chain
 
 ## Week 8 - Text Generation: Grammars
-* In class we'll build and use a CFG generator
+* Using parse for saving data
+* Closures
+* Context free grammars
+* Assignment: make a single page text generator using a CFG. Create "permalinks" to generated text using Parse.
 
-## Week 9 - Bots
-* Twitter
-* Youtube?
+## Week 9 - bots and chrome extensions part 1
+* Server side programming with Node
+* How to do data scraping
+* How to make your own "API"
+* How to make a Twitter bot
+* Assignment: Use your assignment form week 7 or 8 (or something else) to make a "bot"
 
-## Week 10 - Bot presentations
-* Assignment: Create a final project proposal (due week 12)
+## Week 10 - bots and chrome extensions part 2
+* How to deploy to heroku
+* How to build a chrome extension
+* Assignment: Final project proposals
 
-## Week 11 - Visualizing with text workshop
-* Return to p5.js canvas
-* More DOM
-* Physics?
-* Font outlines
+## Week 12 - Final Project Proposals part 1
+* half of you talk about ideas this week
+* Additional topic
+   * Visualizing with text workshop
+   * Return to p5.js canvas
+   * More DOM
+   * Physics?
+   * Font outlines
 
-## Week 12 - Final Project Proposals
+## Week 12 - Final Project Proposals part 2
+* half of you talk about ideas this week
+* Additional topic TBA?
 
 ## Week 13 - User Testing
 
