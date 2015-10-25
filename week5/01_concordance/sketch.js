@@ -2,8 +2,6 @@
 // Daniel Shiffman
 // https://github.com/shiffman/A2Z-F15
 
-
-
 function process(txt) {
   clearText();
   var concordance = new Concordance();
