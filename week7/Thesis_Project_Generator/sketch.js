@@ -2,6 +2,10 @@
 // Daniel Shiffman
 // https://github.com/shiffman/A2Z-F15
 
+// Venue IDs
+// 108-131
+// 4 8 31 44 48 60 73 81 89 101 107 96
+
 // An array of lines from a text file
 var lines;
 
@@ -15,7 +19,7 @@ function setup() {
   // The Markov Generator
   // First argument is N-gram length, second argument is max length of generated text
   titleMarkov = new MarkovGenerator(3, 50);
-  descriptionMarkov = new MarkovGenerator(5, 500);
+  descriptionMarkov = new MarkovGenerator(5, 2000);
 
   loadJSON('years/1981.json', process)
 
