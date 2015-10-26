@@ -43,13 +43,17 @@
     <p>This example is identical to <a href="../01_markov_bychar_short">the first basic example</a> with a few exceptions.</p>
 
     <ol>
-      <li>Using <a href="https://github.com/jsoma/tabletop">tabletop.js</a> this page reads data from a <a href="https://docs.google.com/spreadsheets/d/1z3RN9vPeVvWZSQVkzqI7m0FXqSI6dXAmY8HQi5NXqNo/pubhtml">google spreadsheet</a> (which can be submitted to from <a href="http://goo.gl/forms/hwSX7MPMCP">this form</a>.)</li>
+      <li>Pulls source text from <a href="https://www.reddit.com/dev/api">the reddit API</a>.</li>
       <li>The <a href="https://en.wikipedia.org/wiki/N-gram">n-gram</a> <em>n</em> can be adjusted with a slider.</li>
+      <li>Including a loading animation while pulling all the data from the API.  The interface is not shown until the data is loaded.</li>
     </ol>
+
+    <p><a href="https://github.com/shiffman/A2Z-F15/issues">File issues</a> and <a href="https://github.com/shiffman/A2Z-F15/tree/gh-pages/week7/08_markov_width_api">view source</a> on github</a>.</p>
 
     <div id="loading">
 
     </div>
+
     <div id="interface">
     <p><input id="slider" type="range" min="2" max="10" value="3"></input><br/>
       order: <span id="order">3</span> (lower more nonsensy)</p>
