@@ -6,8 +6,8 @@ layout: default
 # N-Grams and Markov Chains
 
 <head>
-<script language="javascript" type="text/javascript" src="/javascripts/p5/p5.js"></script>
-<script language="javascript" type="text/javascript" src="/javascripts/p5/p5.dom.js"></script>
+<script language="javascript" type="text/javascript" src="../javascripts/p5/p5.js"></script>
+<script language="javascript" type="text/javascript" src="../javascripts/p5/p5.dom.js"></script>
 <script language="javascript" type="text/javascript" src="generate.js"></script>
 </head>
 
