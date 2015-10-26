@@ -26,6 +26,13 @@ layout: default
 * [Testing making 10,000 DOM elements](10_many_elements_test/) — [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week7/10_many_elements_test)
 * [Making 10,000 API calls and DOM elements](11_many_elements_api_calls/) — [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week7/11_many_elements_api_calls)
 
+## Markov projects
+* [http://static.decontextualize.com/toys/next_semester](ITP Course Generator by Allison Parrish)
+* [WebTrigrams by Chris Harrison](http://www.chrisharrison.net/index.php/Visualizations/WebTrigrams)
+* [GenGen by Darius Kazemi](http://tinysubversions.com/gengen/)
+* [King James Programming](http://kingjamesprogramming.tumblr.com/)
+* [Gnoetry](http://www.beardofbees.com/gnoetry.html)
+
 ## Related references
 * [Animated Markov Chain explanation](http://setosa.io/blog/2014/07/26/markov-chains/) 
 * [N-Grams and Markov Chains by Allison Parrish](http://www.decontextualize.com/teaching/rwet/n-grams-and-markov-chains/)
