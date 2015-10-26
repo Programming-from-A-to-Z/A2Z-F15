@@ -26,15 +26,12 @@ function clearIt() {
 
 
 function generate() {
-  // Get the HTML elements we need
-  var order = select('#order');
-  var length = select('#length');
   
   // Get the input text
   var textinput = select('#text');
 
   // Create a generator with parameters
-  var markov = new MarkovGeneratorWord(Number(order.value()), Number(length.value()));
+  var markov = new MarkovGeneratorWord(2, 50);
 
   // Split it up into line breaks
   var lines = textinput.value().split('\n');
@@ -72,7 +69,7 @@ function generate() {
     generatedText += options.choice() + ' ';
   }
 
-  var par = createP(generatedPos + '<br/>' + generatedText);
+  var par = createP(generatedPos + '<br/><br/>' + generatedText);
   par.class('markov');
   par.parent('results');
 
