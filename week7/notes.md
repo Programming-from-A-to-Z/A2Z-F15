@@ -5,12 +5,26 @@ layout: default
 
 # N-Grams and Markov Chains
 
-
 <head>
 <script language="javascript" type="text/javascript" src="/javascripts/p5/p5.js"></script>
 <script language="javascript" type="text/javascript" src="/javascripts/p5/p5.dom.js"></script>
 <script language="javascript" type="text/javascript" src="generate.js"></script>
 </head>
+
+## Examples
+* [Markov chain generation by character (short)](01_markov_bychar_short/) — [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week7/01_markov_bychar_short)
+* [Markov chain generation by character (long)](02_markov_bychar_long/) — [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week7/02_markov_bychar_long)
+* [Markov chain generation by word](03_markov_byword/) — [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week7/03_markov_byword)
+* [Markov chain generation by part of speech (using RiTa.js)](04_markov_pos/) — [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week7/04_markov_pos)
+* [Markov chain two sources text](05_markov_mixer/) — [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week7/05_markov_mixer)
+* [Markov chain pulling data from google sheet](06_markov_google_sheet/) — [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week7/06_markov_google_sheet)
+* [Markov chain pulling data from API 1 (itp thesis)](07_Thesis_Project_Generator/) — [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week7/07_Thesis_Project_Generator)
+* [Markov chain pulling data from API 2 (reddit)](08_markov_with_api/) — [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week7/07_markov_with_api)
+* [Using built-in RiTa markov chain](09_markov_RiTa/) — [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week7/09_markov_RiTa)
+
+## Aside examples (many callbacks, many DOM elements)
+* [Testing making 10,000 DOM elements](10_many_elements_test/) — [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week7/10_many_elements_test)
+* [Making 10,000 API calls and DOM elements](11_many_elements_api_calls/) — [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week7/11_many_elements_api_calls)
 
 ## Related references
 * [Animated Markov Chain explanation](http://setosa.io/blog/2014/07/26/markov-chains/) 
