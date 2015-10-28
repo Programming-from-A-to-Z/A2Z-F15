@@ -38,7 +38,13 @@ function MarkovGeneratorWord(n, max) {
   // A function to feed in text to the markov chain
   this.feed = function(text) {
 
-    var tokens = text.tokenize();
+    // We might have an array or not!
+    var tokens;
+    if (text instanceof Array) {
+      tokens = text;
+    } else {
+      tokens = text.tokenize();
+    }
 
     // Discard this line if it's too short
     if (tokens.length < this.n) {
@@ -57,7 +63,7 @@ function MarkovGeneratorWord(n, max) {
       next = tokens[i + this.n];
 
       // Is this a new one?
-      if (!this.ngrams[gram])) {
+      if (!this.ngrams[gram]) {
         this.ngrams[gram] = [];
       }
       // Add to the list

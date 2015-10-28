@@ -57,7 +57,7 @@ function MarkovGeneratorWord(n, max) {
       next = tokens[i + this.n];
 
       // Is this a new one?
-      if (!this.ngrams[gram])) {
+      if (!this.ngrams[gram]) {
         this.ngrams[gram] = [];
       }
       // Add to the list
