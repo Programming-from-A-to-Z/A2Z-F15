@@ -12,7 +12,6 @@ var markov;
 var sheet;
 
 
-
 function setup() {
   noCanvas();
   // The Markov Generator
@@ -38,9 +37,10 @@ function setup() {
   // Each object contains all the data for one row of the sheet
   // See comment above
   function gotData(data) {
-    // Look at the data in the console 
+    // Save the data to use it again later
     sheet = data;
 
+    // Feed it into the markov generator
     for (var i = 0; i < data.length; i++) {
       markov.feed(data[i].name);
     }
@@ -55,6 +55,7 @@ function setup() {
   slider.input(changeOrder);
 
   // Regenerate the markov chain with new order value
+  // whenver the slider is updated
   function changeOrder() {
     order = slider.value();
     // Update DOM element to show user changed value
