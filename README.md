@@ -70,11 +70,11 @@ This course focuses on programming strategies and techniques behind procedural a
 
 ## Week 6 - Show text analysis projects
 
-## Week 7 - Text Generation Workshop: Markov chains
+## Week 7 - [Text Generation: Markov chains](http://shiffman.github.io/A2Z-F15/week7/notes.html)
 * Using google sheets for text input
 * Object "prototypes"
 * ngrams and markov chains
-* Assignment: make a single page text generator using markov chain
+* [Homework Assignment](https://github.com/shiffman/Programming-from-A-to-Z-F15/wiki/Week-7-Homework)
 
 ## Week 8 - Text Generation: Grammars
 * Using parse for saving data
