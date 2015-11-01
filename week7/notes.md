@@ -27,7 +27,7 @@ layout: default
 * [Making 10,000 API calls and DOM elements](11_many_elements_api_calls/) — [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week7/11_many_elements_api_calls)
 
 ## Markov projects
-* [http://static.decontextualize.com/toys/next_semester](ITP Course Generator by Allison Parrish)
+* [ITP Course Generator by Allison Parrish](http://static.decontextualize.com/toys/next_semester)
 * [WebTrigrams by Chris Harrison](http://www.chrisharrison.net/index.php/Visualizations/WebTrigrams)
 * [GenGen by Darius Kazemi](http://tinysubversions.com/gengen/)
 * [King James Programming](http://kingjamesprogramming.tumblr.com/)

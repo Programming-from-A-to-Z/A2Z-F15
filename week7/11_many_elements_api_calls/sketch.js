@@ -7,13 +7,12 @@
 
 // Main API URL
 var wordnik = 'http://api.wordnik.com/v4/word.json/';
-// API Key
+// Looking up word frequency vetween 1800 and 2015
 var command = '/frequency?startYear=1800&endYear=2015'
+// API Key
 var api_key = '&api_key=48dd829661f515d5abc0d03197a00582e888cc7da2484d5c7'
 
-
-// var words = ['rainbow', 'unicorn', 'heart'];
-
+// Getting words from Pride and Prejudice
 var lines;
 function preload() {
   lines = loadStrings('prideprejudice.txt');
@@ -22,33 +21,36 @@ function preload() {
 function setup() {
   noCanvas();
 
+  // Put everything into a concordance
   var txt = lines.join('\n');
   var counts = new Concordance();
   counts.process(txt);
 
   var keys = counts.getKeys();
-  console.log(keys);
+  // Look at every single word
   for (var i = 0; i < keys.length; i++) {
-  //for (var i = 0; i < 50; i++) {
+    // Make the URL to query wordnik
     var url = wordnik + keys[i] + command + api_key;
+    // Use a closure function to trigger the API calls with a delay
     delayQuery(url, i);
+    // This below would break things!
     // loadJSON(url, gotData);  
   }
 
-  // for (var i = 0; i < words.length; i++) {
-  //   var url = wordnik + words[i] + command + api_key;
-  //   loadJSON(url, gotData);
-  // }
 }
 
-
-function delayQuery(url, i) {
-  setTimeout(runQuery, i * 10);
+// Here is the closure
+// Get a url and count
+function delayQuery(url, count) {
+  // Wait 10 seconds between each query
+  setTimeout(runQuery, count * 10);
+  // We've got access the the URL here!
   function runQuery() {
     loadJSON(url, gotData);  
   }
 }
 
+// Make a div with the data tha came back from the API
 function gotData(data) {
   createDiv(data.word + ': ' + data.totalCount);
 }

@@ -38,8 +38,8 @@ function MarkovGeneratorWord(n, max) {
   // A function to feed in text to the markov chain
   this.feed = function(text) {
 
+    // We might have an array or not!
     var tokens;
-
     if (text instanceof Array) {
       tokens = text;
     } else {
@@ -57,10 +57,13 @@ function MarkovGeneratorWord(n, max) {
       
       // Now let's go through everything and create the dictionary
     for (var i = 0; i < tokens.length - this.n; i++) {
+      // Usings slice to pull out N elements from the array
       gram = tokens.slice(i, i + this.n).join(' ');
-      next = tokens[i + this.n];      // Is this a new one?
+      // What's the next element in the array?
+      next = tokens[i + this.n];
 
-      if (!this.ngrams.hasOwnProperty(gram)) {
+      // Is this a new one?
+      if (!this.ngrams[gram]) {
         this.ngrams[gram] = [];
       }
       // Add to the list
@@ -81,7 +84,7 @@ function MarkovGeneratorWord(n, max) {
     // Generate a new token max number of times
     for (var i = 0; i < this.max; i++) {
       // If this is a valid ngram
-      if (this.ngrams.hasOwnProperty(current)) {
+      if (this.ngrams[current]) {
         // What are all the possible next tokens
         var possible_next = this.ngrams[current];
         // Pick one randomly
