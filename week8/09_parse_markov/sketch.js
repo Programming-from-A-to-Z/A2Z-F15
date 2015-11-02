@@ -2,101 +2,171 @@
 // Daniel Shiffman
 // https://github.com/shiffman/A2Z-F15
 
-// Get input from user
-var fruitInput;
-var totalInput;
+// Venue IDs
+// 108-131
+// 4 8 31 44 48 60 73 81 89 101 107 96
 
-// Keep list of DOM elements for clearing later when reloading
-var listItems = [];
+var venues = [4, 8, 31, 44, 48, 60, 73, 81, 89, 101, 107, 96];
+
+// An array of lines from a text file
+var lines;
+
+// Two generators, one for titles one for elevator pitches
+var titleMarkov;
+var elevatorMarkov;
+
+var thesisTitle;
+var thesisElevator;
+
+var permabutton;
 
 function setup() {
-  
+  noCanvas();
+
   // Start parse
   // See: https://parse.com/apps/quickstart
-  Parse.initialize("63MFKUwjDE4syXL3vr3hFJw6Ic5brmF7VfHbJgti", "P9eoSLPUbdkVLr60iYHd58iD4Jje2fgrFXHiN5Oc");
+  Parse.initialize("63MFKUwjDE4syXL3vr3hFJw6Ic5brmF7VfHbJgti", 
+    "P9eoSLPUbdkVLr60iYHd58iD4Jje2fgrFXHiN5Oc");
 
-  // Input fields
-  fruitInput = select('#fruit');
-  totalInput = select('#total');
+  var params = getURLParams();
+  if (params.id) {
+    loadThesis(params.id);
+  }
 
-  // Submit button
-  var submit = select('#submit');
-  submit.mousePressed(sendToParse);
+  // The Markov Generator
+  // First argument is N-gram length, second argument is max length of generated text
+  titleMarkov = new MarkovGenerator(3, 40);
+  elevatorMarkov = new MarkovGenerator(6, 1000);
 
-  // Start loading the data
-  loadParse();
+  // Grab data from the APIs
+  for (var i = 108; i < 132; i++) {
+    var url = 'https://itp.nyu.edu/projects/public/projectsJSON.php?venue_id=' + i;
+    loadJSON(url, process)
+  }
+
+  for (var i = 0; i < venues.length; i++) {
+    var url = 'https://itp.nyu.edu/projects/public/projectsJSON.php?venue_id=' + venues[i];
+    loadJSON(url, process)
+  }
+
+  // Set up a button
+  var button = select('#button');
+  button.mousePressed(generate);
+
+  permabutton = select('#getperma');
+  permabutton.mousePressed(saveThesis);
+
 }
 
-function loadParse() {
+function process(data) {
+  //console.log(data);
+  for (var i = 0; i < data.length; i++) {
+    // Feed in project names
+    titleMarkov.feed(data[i].project_name);
+
+    var elevator = data[i].elevator_pitch;
+    // Not all the data has elevator pitches
+    if (elevator) {
+      // Doing some cleanup to get rid of nonsense text
+      // This is a somewhat terrible job
+      elevator = elevator.replace(/&lt;/g,'<');
+      elevator = elevator.replace(/&gt;/g,'>');
+      elevator = elevator.replace(/&.*?;/g,'');
+      elevator = elevator.replace(/<.*?>/g,'');
+      // Feed in elevator pitches
+      elevatorMarkov.feed(elevator);
+    }
+  }
+}
+
+function loadThesis(id) {
   // What's the name of the object we're looking for
-  var Fruit = Parse.Object.extend("Fruit");
+  var Thesis = Parse.Object.extend("Thesis");
 
   // Start a query
-  var query = new Parse.Query(Fruit);
+  var query = new Parse.Query(Thesis);
 
   // Need a success and error callback
   var callbacks = {
     // success callback is more complex, moving out of here
-    success: gotData,
+    success: gotThesis,
     // Just log the error if it doesn't work
-    error: function(error) {
+    error: function(object, error) {
       console.log(error);
-    }    
+    }
   }
-
-  // find() is how to ask for everything
-  query.find(callbacks);
+  // get() is how to ask by id
+  query.get(id, callbacks);
 }
 
 // The data comes back as an array 
-function gotData(data) {
-  // Look at the data in the console 
-  console.log(data);
-  // clear previous HTML list
-  clearList();
+function gotThesis(data) {
 
-  // Make an HTML list
-  var list = createElement('ol');
-  list.parent('data');
+  // Generate a title
+  var title = select('#title');
+  title.html(data.attributes.title);
 
-  // Loop through array
-  for (var i = 0; i < data.length; i++) {
-    // The  data is in a property attributes
-    // The "id" is also important (it's unique)
-    var attributes = data[i].attributes;
-    var li = createElement('li', attributes.fruit + ': ' + attributes.total + ", id: " + data[i].id);
-    li.parent(list);
-    listItems.push(li);
-  }
+  // And a decription
+  var description = select('#description');
+  description.html(data.attributes.description);
+
+  // In the response is an id
+  // We can use that id to make a "permalink" to this sketch
+  var a = createA('?id='+data.id, 'permalink');
+  a.id('perma');
+  a.parent('permalink');
 }
 
-// Clear everything
-function clearList() {
-  for (var i = 0; i < listItems.length; i++) {
-    listItems[i].remove();
-  }
-}
-
-// This is a function for sending data
-function sendToParse() {
-  // Make an object with data in it
+function saveThesis() {
+  // Has to be an object!
   var data = {
-    fruit: fruitInput.value(),
-    total: totalInput.value()
-  }
+    title: thesisTitle,
+    description: thesisElevator
+  };
 
   // This is the name of the object "type"
-  var Fruit = Parse.Object.extend("Fruit");
+  var Thesis = Parse.Object.extend("Thesis");
   // Make a new instance
-  var fruit = new Fruit();
+  var thesis = new Thesis();
   // Save that data and a callback for when completed
-  fruit.save(data).then(finished);
+  thesis.save(data).then(finished);
 
   // Reload the data for the page
-  function finished() {
-    console.log('Data saved successfully');
-    loadParse();
+  function finished(response) {
+    console.log('Data saved successfully ' + response.id);
+
+    var previous = select('#perma');
+    if (previous) {
+      previous.remove();
+    }
+
+    // In the response is an id
+    // We can use that id to make a "permalink" to this sketch
+    var a = createA('?id='+response.id, 'permalink');
+    a.id('perma');
+    a.parent('permalink');
   }
 }
 
 
+
+function generate() {
+ 
+  // Clear permalink
+  var previous = select('#perma');
+  if (previous) {
+    previous.remove();
+  }
+
+  // Generate a title
+  var title = select('#title');
+  thesisTitle = titleMarkov.generate();
+  title.html(thesisTitle);
+
+  // And a decription
+  var description = select('#description');
+  thesisElevator = elevatorMarkov.generate();
+  description.html(thesisElevator);
+
+  permabutton.show();
+}
