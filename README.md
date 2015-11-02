@@ -94,7 +94,7 @@ This course focuses on programming strategies and techniques behind procedural a
 * How to build a chrome extension
 * Assignment: Final project proposals
 
-## Week 12 - Final Project Proposals part 1
+## Week 11 - Final Project Proposals part 1
 * half of you talk about ideas this week
 * Additional topic
    * Visualizing with text workshop
