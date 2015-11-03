@@ -204,7 +204,9 @@ Here is the a [full example that queries wordnik](13_closure_animation_while_API
 
 ## Exercise ideas
 
-1. Use a closure to create 100 DOM elements with `setTimeout()`.  Here is code that doesn't make use of a closure and does not work properly.
+### 1: Closure with setTimeout()
+
+Use a closure to create 100 DOM elements with `setTimeout()`.  Here is code that doesn't make use of a closure and does not work properly.
 
 {% highlight javascript %}
 for (var i = 0; i < 100; i++) {
@@ -217,7 +219,9 @@ function makeElt() {
 {% endhighlight %}
 
 
-2. Use a closure to animate a DOM element in some way with the `style()` function.  (Fill in the blanks).
+### 2: Closure to animate a DOM element.
+
+Use a closure to animate a DOM element in some way with the `style()` function.  (Fill in the blanks).
 
 {% highlight javascript %}
 function animate(_______) {
@@ -252,7 +256,9 @@ Now make many elements, each that start animating when you click on them.  Do yo
 
 Finally, can you get your `animate()` function to return a reference to the interval so that you can start and stop the animation when you click on it?  This one is hard!
 
-3. Use a closure to make an API call to openweathermap.org.  Send openweathermap a zip code and when the weather is returned, create a DOM element with that zip code and the weather data.  Here is some code to help you get started.
+### 3: Closure for an API call.
+
+Use a closure to make an API call to openweathermap.org.  Send openweathermap a zip code and when the weather is returned, create a DOM element with that zip code and the weather data.  Here is some code to help you get started.
 
 {% highlight javascript %}
 
