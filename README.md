@@ -78,7 +78,7 @@ This course focuses on programming strategies and techniques behind procedural a
 
 ## Week 8 - [Text Generation: Grammars](http://shiffman.github.io/A2Z-F15/week8/notes.html)
 * Using parse for saving data
-* [Closures](http://shiffman.github.io/A2Z-F15/week7/closures.html)
+* [Closures](http://shiffman.github.io/A2Z-F15/week8/closures.html)
 * [Context free grammars](http://shiffman.github.io/A2Z-F15/week8/notes.html)
 * [Homework Assignment](https://github.com/shiffman/Programming-from-A-to-Z-F15/wiki/Week-8-Homework)
 
