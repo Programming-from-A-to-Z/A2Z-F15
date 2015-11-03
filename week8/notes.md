@@ -19,17 +19,21 @@ layout: default
 * [LSystem](05_LSystem/) — [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week8/05_LSystem)
 
 ## CFG projects
+* [Context-Free Art](http://www.contextfreeart.org/)
 
 ## Related references
 * [Context-Free Grammars by Allison Parrish](http://www.decontextualize.com/teaching/rwet/recursion-and-context-free-grammars/)
 * [Context-Free Grammars by Daniel Howe](http://www.rednoise.org/pdal/index.php?n=Main.Grammars)
+* [Context-Free Grammars by Randal C. Nelson](https://www.cs.rochester.edu/~nelson/courses/csc_173/grammars/cfg.html) -- includes some info about thinking about programming syntax as CFG
+* [Example grammars](http://marvin.cs.uidaho.edu/Teaching/CS445/grammar.html)
 * [Three Models for the Description of Language (Chomsky)](http://chomsky.info/articles/195609--.pdf)
+* [More on grammars](http://matt.might.net/articles/grammars-bnf-ebnf/)
 
 ## Exercise ideas
 * Rework any of the example programs to use something other than text (or, at least, text that represents language) as its basic unit. For example: musical notes, songs in playlists, pixels in an image, etc.
 * Invent your own grammar. Consider using one that generates something other English sentences: music, images, code, etc.
 * Build a grammar that pulls its terminal words from [Wordnik](https://www.wordnik.com/).
-* Build a grammar based on a source text [as demonstrated here](https://github.com/shiffman/Programming-from-A-to-Z-F14/blob/master/week4_generate/02_cfg/04_grammar_maker/grammarmaker.js).  
+* Build a grammar based on a source text [as demonstrated here](04_cfg_generate_grammar/) — [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week8/04_cfg_generate_grammar).  
 
 ## Grammars
 
