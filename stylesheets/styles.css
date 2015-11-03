@@ -18,6 +18,17 @@
   padding: 4px;
 }
 
+/* For closure tutorial */
+
+.box {
+  background-color: #CCC;
+  padding: 16px;
+  display:inline;
+  font-weight: bold;
+  text-align: center; 
+  line-height: 64px; 
+}
+
 
 body {
   padding:50px;

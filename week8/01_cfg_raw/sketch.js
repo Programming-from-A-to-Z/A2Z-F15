@@ -1,6 +1,6 @@
+// A2Z F15
 // Daniel Shiffman
-// Programming from A to Z, Fall 2014
-// https://github.com/shiffman/Programming-from-A-to-Z-F14
+// https://github.com/shiffman/A2Z-F15
 
 // This is based on Allison Parrish's great RWET examples
 // https://github.com/aparrish/rwet-examples
@@ -31,10 +31,12 @@ function setup() {
   var button = select('#generate');
   button.mousePressed(generate);
 
+  // A button to clear everything
   var clear = select('#clear');
   clear.mousePressed(clearAll);
 }
 
+// Remove everything
 function clearAll() {
   var elements = selectAll('.text');
   for (var i = 0; i < elements.length; i++) {
@@ -43,8 +45,9 @@ function clearAll() {
 }
 
 function generate() {
-  // Make a DIV with the new sentence
+  // Get an expansion starting with 'S'
   var expansion = cfree.getExpansion('S');
+  // Make a paragraph
   var par = createP(expansion);
   par.class('text');
 }

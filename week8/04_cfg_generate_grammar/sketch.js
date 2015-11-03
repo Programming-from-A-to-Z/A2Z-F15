@@ -2,6 +2,9 @@
 // Daniel Shiffman
 // https://github.com/shiffman/A2Z-F15
 
+
+// This function builds the JSON grammar
+
 function buildGrammar(words) {
 
   // Hard-coded haiku
@@ -36,7 +39,7 @@ function buildGrammar(words) {
   ];
 
   
-  // Make the terminal words
+  // Make the terminal words assigned to their syllable count
   for (var i = 1; i < 6; i++) {
     var key = '<' + i + '>';
     grammar[key] = [];
@@ -61,33 +64,38 @@ function buildGrammar(words) {
   cfree = new ContextFree();
 
   // Look at the JSON object
-  // Look at the JSON object
   for (var rule in grammar) {
     // Get the expansions and split them
     var expansions = grammar[rule];
     for (var j = 0; j < expansions.length; j++) {
       // Now split up each expansion into its own array
+      // Internally, the CF object is using arrays of arrays
+      // It's awkward to look at it that in the JSON file so split by whitespace
       var tokens = expansions[j].split(/\s+/);
       // Add the rule
       cfree.addRule(rule, tokens);
     }
   }
 
-  // save(grammar, 'grammar.json');
-  console.log(grammar);
 
+  // Now that data is loaded show all the buttons
   var buttons = select('#grammar');
   buttons.show();
 }
 
 
+// Process the text 
 function process(txt) {
   clearText();
+
+  // Count all the words
   var concordance = new Concordance();
   concordance.process(txt);
 
+  // Get all the unique keys
   var keys = concordance.getKeys();
 
+  // Make a grammar from these unique keys
   buildGrammar(keys);
 }
 

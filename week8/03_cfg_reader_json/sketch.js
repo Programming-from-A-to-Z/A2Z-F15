@@ -34,18 +34,17 @@ function setup() {
     }
   }
 
-  console.log(grammar);
-  console.log(cfree);
-
   noCanvas();
   // A button to generate a new sentence
   var button = select('#generate');
   button.mousePressed(generate);
 
+  // A button to clear everything
   var clear = select('#clear');
   clear.mousePressed(clearAll);
 }
 
+// Remove everything
 function clearAll() {
   var elements = selectAll('.text');
   for (var i = 0; i < elements.length; i++) {
@@ -53,11 +52,10 @@ function clearAll() {
   }
 }
 
-
 function generate() {
-  // Make a DIV with the new sentence
-  var expansion = cfree.getExpansion('<start>');
-  expansion = expansion.replace(/%/g, '<br/>');
+  // Get an expansion starting with 'S'
+  var expansion = cfree.getExpansion('S');
+  // Make a paragraph
   var par = createP(expansion);
   par.class('text');
 }
