@@ -99,6 +99,21 @@ function process(txt) {
   buildGrammar(keys);
 }
 
+// This function generates the haiku
+function generateHaiku() {
+  // Make a DIV with the new sentence
+  var expansion = cfree.getExpansion('<start>');
+  expansion = expansion.replace(/%/g, '<br/>');
+  var par = createP(expansion);
+  par.class('text');
+}
+
+// This function downloads the grammar as a JSON file
+function downloadGrammar() {
+  saveJSON(grammar, 'haiku_grammar.json');
+}
+
+
 /***************************************************/
 /* Everything below just handles the text input ****/
 /***************************************************/
@@ -114,18 +129,6 @@ var inputText = '';
 
 var grammar = {};
 var cfree;
-
-function generateHaiku() {
-  // Make a DIV with the new sentence
-  var expansion = cfree.getExpansion('<start>');
-  expansion = expansion.replace(/%/g, '<br/>');
-  var par = createP(expansion);
-  par.class('text');
-}
-
-function downloadGrammar() {
-  saveJSON(grammar, 'haiku_grammar.json');
-}
 
 
 function setup() {

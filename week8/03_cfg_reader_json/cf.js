@@ -31,7 +31,6 @@ ContextFree.prototype.addRule = function(rule, expansion) {
 }
 
 ContextFree.prototype.addRules = function(rules) {
-
   // Copying all of the properties over
   for (var rule in rules) {
     //console.log(rule);
@@ -43,6 +42,7 @@ ContextFree.prototype.addRules = function(rules) {
 // This function recursively calls itself 
 // over and over until it reaches a terminal
 ContextFree.prototype.expand = function(start, expansion) {
+  console.log(this.rules);
   if (this.rules.hasOwnProperty(start)) {
     // Grab one possible expansion
     var possibilities = this.rules[start];
