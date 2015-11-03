@@ -22,11 +22,6 @@ layout: default
 * [Mozilla Closure page](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)
 * [Eloquent JavaScript section](http://eloquentjavascript.net/03_functions.html#h_hOd+yVxaku)
 
-
-## Exercise ideas
-* Coming soon
-
-
 ## Closures
 
 Closures are a key aspect of the JavaScript programming language.  This page offers a cursory overview of the idea of a closure along with a couple scenarios particularly relevant to the examples for this course.
@@ -206,3 +201,78 @@ If the `gotData()` function is also defined inside `assignQuery()` then it can a
 Again, the key here is that while the scope of `elt` and `word` is defined locally to `assignQuery`, event though `queryAPI` may happen later whenever the user clicks the mouse, long after `assignQuery` was executed, that scope is maintained by the `queryAPI`'s closure which maintains a reference to all variables within its own scope.
 
 Here is the a [full example that queries wordnik](13_closure_animation_while_API_loading/) and returns substitutes a "related" in the DOM element.  And the [source code](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week8/13_closure_animation_while_API_loading).  The example also uses the "animation" closure to count while waiting for data back from the API.
+
+## Exercise ideas
+
+1. Use a closure to create 100 DOM elements with `setTimeout()`.  Here is code that doesn't make use of a closure and does not work properly.
+
+{% highlight javascript %}
+for (var i = 0; i < 100; i++) {
+  setTimeout(makeElt, i * 100);
+}
+
+function makeElt() {
+  createDiv('Number: ' + i);
+}
+{% endhighlight %}
+
+
+2. Use a closure to animate a DOM element in some way with the `style()` function.  (Fill in the blanks).
+
+{% highlight javascript %}
+function animate(_______) {
+  
+  ______________________________;
+
+  setInterval(________, ________);
+
+  function _______() {
+    ______.style(________, ________);
+  }
+}
+{% endhighlight %}
+
+Then assign the function to a single element:
+
+{% highlight javascript %}
+animate(elt);
+{% endhighlight %}
+
+Then start animating elements only once you click on them:
+
+{% highlight javascript %}
+elt.mousePressed(_________);
+
+function(__________) {
+  
+}
+{% endhighlight %}
+
+Now make many elements, each that start animating when you click on them.  Do you need a closure now that you are looping through the elements? (Hint: yes, you do except for the fact the p5.js will assign the `this` keyword to the element in a `mousePressed` callback.)
+
+Finally, can you get your `animate()` function to return a reference to the interval so that you can start and stop the animation when you click on it?  This one is hard!
+
+3. Use a closure to make an API call to openweathermap.org.  Send openweathermap a zip code and when the weather is returned, create a DOM element with that zip code and the weather data.  Here is some code to help you get started.
+
+{% highlight javascript %}
+
+var zip = '10003';
+
+assignQuery(zip);
+
+function assignQuery(_________) {
+  
+  loadJSON(_________, _________);
+
+  function _________(_________) {
+    _____________________________________________
+    _____________________________________________
+    // etc.
+  }
+
+}
+{% endhighlight %}
+
+Now can you make this work with multiple zip codes?  Can you make buttons for each zip code that when you click on each button an API call is made for a particular zip code?
+
+

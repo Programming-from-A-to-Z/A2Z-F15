@@ -28,6 +28,7 @@ layout: default
 * [Example grammars](http://marvin.cs.uidaho.edu/Teaching/CS445/grammar.html)
 * [Three Models for the Description of Language (Chomsky)](http://chomsky.info/articles/195609--.pdf)
 * [More on grammars](http://matt.might.net/articles/grammars-bnf-ebnf/)
+* [More on L-Systems](http://natureofcode.com/book/chapter-8-fractals/#86-l-systems) from [The Nature of Code](http://natureofcode.com/book).
 
 ## Exercise ideas
 * Rework any of the example programs to use something other than text (or, at least, text that represents language) as its basic unit. For example: musical notes, songs in playlists, pixels in an image, etc.
