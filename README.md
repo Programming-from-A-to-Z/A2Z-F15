@@ -76,11 +76,11 @@ This course focuses on programming strategies and techniques behind procedural a
 * ngrams and markov chains
 * [Homework Assignment](https://github.com/shiffman/Programming-from-A-to-Z-F15/wiki/Week-7-Homework)
 
-## Week 8 - Text Generation: Grammars
+## Week 8 - [Text Generation: Grammars](http://shiffman.github.io/A2Z-F15/week8/notes.html)
 * Using parse for saving data
-* Closures
-* Context free grammars
-* Assignment: make a single page text generator using a CFG. Create "permalinks" to generated text using Parse.
+* [Closures](http://shiffman.github.io/A2Z-F15/week8/closures.html)
+* [Context free grammars](http://shiffman.github.io/A2Z-F15/week8/notes.html)
+* [Homework Assignment](https://github.com/shiffman/Programming-from-A-to-Z-F15/wiki/Week-8-Homework)
 
 ## Week 9 - bots and chrome extensions part 1
 * Server side programming with Node
