@@ -1,0 +1,31 @@
+{
+  "name": "decree",
+  "main": "./decree.js",
+  "version": "0.0.6",
+  "homepage": "https://github.com/EyalAr/Decree",
+  "authors": [
+    "Eyal Arubas <eyalarubas@gmail.com>"
+  ],
+  "description": "Declarative arguments-resolver",
+  "moduleType": [
+    "amd"
+  ],
+  "keywords": [
+    "declarative",
+    "arguments",
+    "resolve",
+    "disambiguate",
+    "match"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "lodash-amd": "~2.4.1"
+  }
+}
