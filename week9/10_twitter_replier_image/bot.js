@@ -85,11 +85,11 @@ function downloadFile(url, filename) {
 
   function filed() {
     console.log(url + ' downloaded to ' + filename);
-    //lwip.open(filename, processImage)
+    lwip.open(filename, processImage)
   }
 
   function processImage(err, image) {
-    image.blur(5);
+    //image.rotate(45);
     image.writeFile('output.jpg', tweetBack)
   }
 
@@ -99,22 +99,22 @@ function downloadFile(url, filename) {
     }
     console.log('blurred!');
 
-  //   var b64content = fs.readFileSync('output.jpg', { encoding: 'base64' });
+    var b64content = fs.readFileSync('output.jpg', { encoding: 'base64' });
 
-  //   T.post('media/upload', { media_data: b64content }, uploaded);
+    T.post('media/upload', { media_data: b64content }, uploaded);
 
-  //   function uploaded(err, data, response) {
+    function uploaded(err, data, response) {
 
-  //     // now we can reference the media and post a tweet (media will attach to the tweet)
-  //     var mediaIdStr = data.media_id_string
-  //     var params = { status: '#blurbod', media_ids: [mediaIdStr] }
+      // now we can reference the media and post a tweet (media will attach to the tweet)
+      var mediaIdStr = data.media_id_string
+      var params = { status: '#blurbod', media_ids: [mediaIdStr] }
 
-  //     T.post('statuses/update', params, tweeted);
+      T.post('statuses/update', params, tweeted);
 
-  //     function tweeted(err, data, response) {
-  //       console.log(data)
-  //     }
-  //   };
+      function tweeted(err, data, response) {
+        console.log(data)
+      }
+    };
   }
 
 }
