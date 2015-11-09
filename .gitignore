@@ -2,4 +2,5 @@
 _site/
 keys.txt
 npm-debug.log
+config.js
 

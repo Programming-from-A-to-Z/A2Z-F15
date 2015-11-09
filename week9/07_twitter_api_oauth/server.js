@@ -23,14 +23,19 @@ app.use(express.static('public'));
 // Create an Twitter object to connect to Twitter API
 // npm install twit
 var Twit = require('twit');
-var T = new Twit({
-  consumer_key:         '', 
-  consumer_secret:      '',
-  access_token:         '',
-  access_token_secret:  ''
-});
 
+// Pulling all my twitter account info from another file
+var config = require('./config.js');
+// Making a Twit object for connection to the API
+var T = new Twit(config);
 
+// This is how I would do it manually, if I were doing it manually
+// var T = new Twit({
+//   consumer_key:         '', 
+//   consumer_secret:      '',
+//   access_token:         '',
+//   access_token_secret:  ''
+// });
 
 // This route searches twitter
 app.get('/tweets/:query', getTweets);

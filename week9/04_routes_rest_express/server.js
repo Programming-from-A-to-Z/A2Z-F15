@@ -6,7 +6,7 @@ function listen() {
   var host = server.address().address;
   var port = server.address().port;
   console.log('Example app listening at http://' + host + ':' + port);
-};
+}
 
 // Here's how we can write code to handle a specific 'route'
 // http://myserver.com/thing/dan/5
