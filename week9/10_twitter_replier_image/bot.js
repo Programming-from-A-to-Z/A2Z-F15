@@ -107,7 +107,7 @@ function downloadFile(url, filename) {
 
       // now we can reference the media and post a tweet (media will attach to the tweet)
       var mediaIdStr = data.media_id_string
-      var params = { status: '#blurbod', media_ids: [mediaIdStr] }
+      var params = { status: '#blurred', media_ids: [mediaIdStr] }
 
       T.post('statuses/update', params, tweeted);
 
