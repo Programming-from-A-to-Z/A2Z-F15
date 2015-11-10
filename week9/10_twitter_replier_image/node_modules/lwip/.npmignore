@@ -1,6 +1,0 @@
-build
-node_modules
-npm-debug.log
-tests/results
-.idea
-tests/.DS_Store
