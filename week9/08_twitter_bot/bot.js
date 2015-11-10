@@ -15,7 +15,6 @@ var config = require('./config.js');
 // Making a Twit object for connection to the API
 var T = new Twit(config);
 
-
 // Start once
 tweeter();
 
@@ -26,7 +25,7 @@ setInterval(tweeter, 60*5*1000);
 function tweeter() {
 
   // This is a random number bot
-  var tweet = 'Here\'s a random number between 0 and 100:' + Math.floor(Math.random()*100);
+  var tweet = 'Here\'s a random number between 0 and 100: ' + Math.floor(Math.random()*100);
   
   // Post that tweet!
   T.post('statuses/update', { status: tweet }, tweeted);
@@ -36,8 +35,8 @@ function tweeter() {
     if (err) {
       console.log(err);
     } else {
-      console.log(data);
-      console.log(response);
+      console.log('Success: ' + data.text);
+      //console.log(response);
     }
   };
 
