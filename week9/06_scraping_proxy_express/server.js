@@ -1,66 +1,52 @@
+// A2Z F15
 // Daniel Shiffman
-// Programming from A to Z, Fall 2014
-// https://github.com/shiffman/Programming-from-A-to-Z-F14
+// https://github.com/shiffman/A2Z-F15
 
-// Thanks Sam Lavigne and Shawn Van Every
-// https://github.com/antiboredom/servi.js/wiki
-
-
-var http = require('http');
-
+// Using express: http://expressjs.com/
 var express = require('express');
+// Create the app
 var app = express();
+
+// Set up the server
+// process.env.PORT is related to deploying on heroku
 var server = app.listen(process.env.PORT || 3000, listen);
 
+// This call back just tells us that the server has started
 function listen() {
   var host = server.address().address;
   var port = server.address().port;
   console.log('Example app listening at http://' + host + ':' + port);
-  console.log("scraping proxy starting");
-};
+}
 
-// This is basically just like 'python -m SimpleHTTPServer'
-// We are just serving up a directory of files
+// This is for hosting files
+// Anything in the public directory will be served
+// This is just like python -m SimpleHTTPServer
+// We could also add routes, but aren't doing so here
 app.use(express.static('public'));
 
+// A router to load a URL
 app.get('/load', loadURL);
+
+// This is a module for HTTP Requests
+var request = require('request');
 
 // Callback
 function loadURL(req, res) {
-  // Here's the string we are seraching for
+  // Get the URL from the user
   var url = req.query.url;
-  var regex = /https?:\/\/([^\s\/]+)(.*)/;
-  var matches = url.match(regex);
-
-  var ahost = matches[1];
-  var apath = '/';
-  if (matches[2]) {
-    apath = matches[2];
+  
+  // Execute the HTTP Request
+  request(url, loaded);
+  
+  // Callback for when the request is complete
+  function loaded(error, response, body) {
+    // Check for errors
+    if (!error && response.statusCode == 200) {
+      // The raw HTML is in body
+      res.send(body);
+    } else {
+      res.send('error');
+    }
   }
-
-  var options = {
-    host: ahost,
-    path: apath
-  };
-
-  // This makes the request
-  http.request(options, loaded).end();
-
-  function loaded(response) {
-    var str = '';
-
-    // Some more data has come in
-    response.on('data', function (chunk) {
-      str += chunk;
-    });
-
-    // The request is finished
-    response.on('end', function () {
-      //console.log('Got soemtjing: ' + str);
-      res.send(str);
-    });
-  }
-
-
 }
 

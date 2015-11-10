@@ -1,23 +1,27 @@
+// A2Z F15
 // Daniel Shiffman
-// Programming from A to Z, Fall 2014
-// https://github.com/shiffman/Programming-from-A-to-Z-F14
+// https://github.com/shiffman/A2Z-F15
 
-// Thanks Sam Lavigne and Shawn Van Every
-// https://github.com/antiboredom/servi.js/wiki
-
+// Using express: http://expressjs.com/
 var express = require('express');
+// Create the app
 var app = express();
+
+// Set up the server
+// process.env.PORT is related to deploying on heroku
 var server = app.listen(process.env.PORT || 3000, listen);
 
+// This call back just tells us that the server has started
 function listen() {
   var host = server.address().address;
   var port = server.address().port;
   console.log('Example app listening at http://' + host + ':' + port);
-  console.log("Twitter API server");
-};
+}
 
-// This is basically just like 'python -m SimpleHTTPServer'
-// We are just serving up a directory of files
+// This is for hosting files
+// Anything in the public directory will be served
+// This is just like python -m SimpleHTTPServer
+// We could also add routes, but aren't doing so here
 app.use(express.static('public'));
 
 // Create an Twitter object to connect to Twitter API
@@ -48,10 +52,10 @@ function getTweets(req, res) {
   // Execute a Twitter API call
   T.get('search/tweets', { q: query, count: 10 }, gotData);
 
+  // Callback
   function gotData(err, data) {
-    // Get some data
+    // Get the tweets
     var tweets = data.statuses;
-
     // Spit it back out so that p5 can load it!
     res.send(tweets);
   };
@@ -69,22 +73,11 @@ function postTweet(req, res) {
 
   function tweeted(err, reply) {
     // If there was an error let's respond with that error
-    if (err !== null) {
+    if (err) {
       res.send(err);
     // Otherwise let's respond back that it worked ok!
     } else {
       res.send(reply);
     }
   };
-}
-
-// If you don't specify a query let's return an error
-app.get('/tweets', error);
-
-// Sending back an error
-function error(req, res) {
-  var error = {
-    error: 'you forgot to specify a query'
-  };
-  res.send(error);
 }

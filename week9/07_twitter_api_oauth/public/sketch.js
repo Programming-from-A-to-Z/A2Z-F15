@@ -1,6 +1,6 @@
+// A2Z F15
 // Daniel Shiffman
-// Programming from A to Z, Fall 2014
-// https://github.com/shiffman/Programming-from-A-to-Z-F14
+// https://github.com/shiffman/A2Z-F15
 
 // A p5 sketch that searches twitter and tweets
 
@@ -28,7 +28,8 @@ function setup() {
   // Set the current tweet character count
   countChars();
 
-  postInput.elt.addEventListener('input', countChars);
+  // Count characters for the tweet
+  postInput.input(countChars);
 }
 
 // Update the div that says how many characters are in the tweet
@@ -53,7 +54,7 @@ function gotTweets(tweets) {
 // Execute an API call to tweet!
 function postTweet() {
   // Note the use of encodeURIComponent()
-  // We should probably be using this in all the examples from this week
+  // We should probably be using this more often!
   loadJSON('/tweet?status=' + encodeURIComponent(postInput.value()), tweeted);
 }
 
@@ -64,14 +65,16 @@ function tweeted(data) {
 
   // What came back?
   // Just show that in the window
-  var p;
+  var msg;
+
   if (data.message) {
-    p = createP('Error! ' + data.message);
+    msg = 'Error! ' + data.message;
   } else if (data.text) {
-    p = createP('Success I tweeted: ' + data.text);
+    msg = 'Success I tweeted: ' + data.text;
   } else {
-    p = createP('Unknown error! ');
+    msg = 'Unknown error!';
   }
+  var p = createP(msg);
   p.style('background','#F660AB')
   p.style('padding','16px');
 }

@@ -9,6 +9,7 @@ var app = express();
 
 // This is for hosting files
 // Anything in the public directory will be served
+// This is just like python -m SimpleHTTPServer
 // We could also add routes, but aren't doing so here
 app.use(express.static('public'));
 

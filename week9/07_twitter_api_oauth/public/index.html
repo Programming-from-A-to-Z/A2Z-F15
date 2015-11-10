@@ -17,30 +17,25 @@
         border-style: solid;
         border-width: 1px;
         padding: 20px;
-        margin-top: 24px;
-        margin-bottom: 4px;
       }    
-      .apiquery {
-        margin: 0 0 20 0;
-      }
     </style>
   </head>
   <body>
     <h1>Twitter</h1>
 
-    <p>This page pulls data from Twitter.  Authentication is happening in node on the server.</p>
+    <p>This page pulls data from Twitter.  Authentication is happening in node on the server. </p>
 
-    <p class = 'apiquery'>
-      <div class ='info'>Search for tweets:</div>
+    <p>
+      Search for tweets:
       <input id='searchInput' value = 'JavaScript'></input>
       <button id = 'searchButton'>Search!</button>
     </p>
 
-    <p class = 'apiquery'>
-      <div class ='info'>Tweet this:</div>
+    <p>
+      Tweet this:
       <input id='postInput' value = 'A test tweet.' size='50'></input>
       <button id = 'postButton'>Tweet!</button>
-      <div id='numchars' style='display:inline'></div>
+      <span id='numchars'></span>
     </p>
   </body>
 </html>
