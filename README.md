@@ -83,6 +83,8 @@ This course focuses on programming strategies and techniques behind procedural a
 * [Homework Assignment](https://github.com/shiffman/Programming-from-A-to-Z-F15/wiki/Week-8-Homework)
 
 ## Week 9 - [Twitter Bots](http://shiffman.github.io/A2Z-F15/week9/notes.html)
+* [All notes](http://shiffman.github.io/A2Z-F15/week9/notes.html)
+* [All examples](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week9)
 * Server side programming with Node
 * How to do data scraping
 * How to make your own "API"
