@@ -475,8 +475,14 @@ function tweetEvent(tweet) {
 
 [Here's an example of a bot](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week9/10_twitter_replier_bot) that replies to all @mentions with the same exact text in reverse.
 
+The same search I used in the `get()` examples can also be accessed as a stream.  For example, to get a continuous stream of all tweets from a certain geolocation:
 
-
+{% highlight javascript %}
+// A geo location
+var sanfran = [ '-122.75', '36.8', '-121.75', '37.8' ]
+var stream = T.stream('statuses/filter', { locations: sanfran })
+stream.on('tweet', tweetEvent);
+{% endhighlight %}
 
 
 
