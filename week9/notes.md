@@ -23,6 +23,8 @@ layout: default
 ## Examples (twitter bots)
 * [Basics -- random number bot](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week9/08_twitter_bot)
 * [Bot + text generation with context free grammar](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week9/09_twitter_bot_cfg)
+* [Bot that replies to @mentions](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week9/10_twitter_replier_bot)
+
 
 ## Bot lists
 * [Bot twitter list](https://twitter.com/shiffman/lists/bots)
