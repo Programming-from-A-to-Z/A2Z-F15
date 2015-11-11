@@ -82,15 +82,19 @@ This course focuses on programming strategies and techniques behind procedural a
 * [Context free grammars](http://shiffman.github.io/A2Z-F15/week8/notes.html)
 * [Homework Assignment](https://github.com/shiffman/Programming-from-A-to-Z-F15/wiki/Week-8-Homework)
 
-## Week 9 - bots and chrome extensions part 1
+## Week 9 - [Twitter Bots](http://shiffman.github.io/A2Z-F15/week9/notes.html)
+* [All notes](http://shiffman.github.io/A2Z-F15/week9/notes.html)
+* [All examples](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week9)
 * Server side programming with Node
 * How to do data scraping
 * How to make your own "API"
 * How to make a Twitter bot
-* Assignment: Use your assignment form week 7 or 8 (or something else) to make a "bot"
+* [Bot Homework Assignment](https://github.com/shiffman/Programming-from-A-to-Z-F15/wiki/Week-9-Homework)
 
-## Week 10 - bots and chrome extensions part 2
-* How to deploy to heroku
+## Week 10 - More Bots + Chrome Extensions
+* More on bots -- Twitter streaming API
+* More on bots -- Working with images/media
+* Deploying: Heroku? Amazon EC2? Digital Ocean?
 * How to build a chrome extension
 * Assignment: Final project proposals
 
