@@ -6,32 +6,22 @@ var config = require('./config.js');
 // Making a Twit object for connection to the API
 var T = new Twit(config);
 
-// This is how I would do it manually, if I were doing it manually
-// var T = new Twit({
-//   consumer_key:         '', 
-//   consumer_secret:      '',
-//   access_token:         '',
-//   access_token_secret:  ''
-// });
-
+// File system
 var fs = require('fs');
-var stream = T.stream('user');
+// Request for downloading files
 var request = require('request');
-var lwip = require('lwip');
 
-console.log("image bot starting");
+// Require child_process for triggering script for Processing
+var exec = require('child_process').exec;
+
+// Start a streem to listen to tweets
+var stream = T.stream('user');
 stream.on('tweet', tweetEvent);
 
-function tweeted(err, success) {
-  if (err !== undefined) {
-    console.log(err);
-  } else {
-    console.log('Tweeted: ' + JSON.stringify(success, null, 2));
-  }
-}
-
+// Ok a tweet has happend
 function tweetEvent(tweet) {
-
+  
+  // What's the deal with this tweet?
   var reply_to = tweet.in_reply_to_screen_name;
   var name = tweet.user.screen_name;
   var txt = tweet.text;
@@ -39,82 +29,80 @@ function tweetEvent(tweet) {
 
   console.log(reply_to + ' ' + name + ' ' + txt + ' ' + media);
 
+  // Is it a reply to me?
   if (reply_to === 'a2zitp') {
-
-
+    // If there's no image let the tweeter know
     if (media === undefined) {
       var reply = '@' + name + ' I need an image to do something!';
       T.post('statuses/update', { status: reply }, tweeted);
-      console.log("replying: " + reply);
+    // If there is an image, download it!
     } else if (media.length > 0) {
       var img = media[0].media_url;
-      console.log(img);
       downloadFile(img, 'media');
     }
-
-    // If we wanted to write a file out
-    // var json = JSON.stringify(tweet,null,2);
-    // fs.writeFile("tweet.json", json, output);
-
-    // function output(err) {
-    //   if (err) {
-    //     throw err;
-    //   }
-    //   console.log("file saved");
-    // }; 
   }
 
+  // Deal with downloading
+  function downloadFile(url, filename) {
+
+    console.log('Attemping to downlowd url: ' + url + ' to ' + filename);
+    // Make the request
+    request.head(url, downloaded);
+
+    // Here's the callback for when it is done
+    function downloaded (err, res, body) {
+
+      // Look at what it is
+      var type = res.headers['content-type'];
+      
+      // Figure out what file extension it should have
+      var i = type.indexOf('/');
+      var ext = type.substring(i+1, type.length);
+      filename = filename + '.' + ext;
+
+      // Now save it to disk with that filename
+      // Put it in the Processing folder
+      request(url).pipe(fs.createWriteStream('pointillize/'+filename)).on('close', filed);
+
+      // Ok it's saved to disk
+      function filed() {
+
+        // Here is the command to run the Processing sketch
+        // You need to have Processing command line installed
+        // See: https://github.com/processing/processing/wiki/Command-Line
+        var cmd = 'processing-java --sketch=`pwd`/pointillize/ --run ' + filename;
+        exec(cmd, processing);
+
+        // Callback for command line process
+        function processing(error, stdout, stderr) {
+
+          // I could do some error checking here
+          console.log(stdout);
+
+          // Read the file made by Processing
+          var b64content = fs.readFileSync('pointillize/output.png', { encoding: 'base64' })
+
+          // Upload the media
+          T.post('media/upload', { media_data: b64content }, uploaded);
+
+          function uploaded(err, data, response) {
+            // Now we can reference the media and post a tweet 
+            // with the media attached
+            var mediaIdStr = data.media_id_string;
+            var params = { status: '.@' + name + ' #pointillize', media_ids: [mediaIdStr] }
+            // Post tweet
+            T.post('statuses/update', params, tweeted);
+          };
+        }
+      }
+    }
+  }
 }
 
-function downloadFile(url, filename) {
-  console.log('Attemping to downlowd url: ' + url + ' to ' + filename);
-
-  request.head(url, downloaded);
-
-  function downloaded (err, res, body) {
-    var type = res.headers['content-type'];
-    console.log('content-type:', type);
-    console.log('content-length:', res.headers['content-length']);
-
-    var i = type.indexOf('/');
-    var ext = type.substring(i+1, type.length);
-    filename = filename + '.' + ext;
-
-    request(url).pipe(fs.createWriteStream(filename)).on('close', filed);
-  };
-
-  function filed() {
-    console.log(url + ' downloaded to ' + filename);
-    lwip.open(filename, processImage)
+function tweeted(err, success) {
+  if (err !== undefined) {
+    console.log(err);
+  } else {
+    console.log('Tweeted: ' + success.text);
   }
-
-  function processImage(err, image) {
-    //image.rotate(45);
-    image.writeFile('output.jpg', tweetBack)
-  }
-
-  function tweetBack(err) {
-    if (err) {
-      console.log(err);
-    }
-    console.log('blurred!');
-
-    var b64content = fs.readFileSync('output.jpg', { encoding: 'base64' });
-
-    T.post('media/upload', { media_data: b64content }, uploaded);
-
-    function uploaded(err, data, response) {
-
-      // now we can reference the media and post a tweet (media will attach to the tweet)
-      var mediaIdStr = data.media_id_string
-      var params = { status: '#blurred', media_ids: [mediaIdStr] }
-
-      T.post('statuses/update', params, tweeted);
-
-      function tweeted(err, data, response) {
-        console.log(data)
-      }
-    };
-  }
-
 }
