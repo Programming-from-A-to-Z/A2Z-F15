@@ -1,0 +1,23 @@
+{
+  "name": "Alter Page",
+  "description": "Change something about the page",
+  "version": "2.0",
+  "permissions": [
+    "activeTab"
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*"],
+      "css": ["custom.css"],
+      "js": ["p5.js", "p5.dom.js", "custom.js"]
+    }
+  ],
+  "browser_action": {
+    "default_title": "Change this page"
+  },
+  "manifest_version": 2
+}
