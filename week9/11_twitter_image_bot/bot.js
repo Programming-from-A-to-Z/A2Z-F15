@@ -26,7 +26,7 @@ var fs = require('fs');
 tweeter();
 
 // Once every N milliseconds
-setInterval(tweeter, 60*5*1000);
+setInterval(tweeter, 60*60*1000);
 
 // Here is the bot!
 function tweeter() {
@@ -42,6 +42,8 @@ function tweeter() {
 
     // I could do some error checking here
     console.log(stdout);
+    console.log(error);
+    console.log(stderr);
 
     // Read the file made by Processing
     var b64content = fs.readFileSync('randomwalk/output.png', { encoding: 'base64' })
