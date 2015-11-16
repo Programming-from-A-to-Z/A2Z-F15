@@ -16,7 +16,6 @@ function receiver(request, sender, sendResponse) {
     for (var i = 0; i < elts.length; i++) {
       elts[i].style['background-color'] = '#F0C';
     }
-
     // Send a message back!
     chrome.runtime.sendMessage({ "message": "thank you" });
   }
