@@ -1,24 +1,26 @@
-// Called when the user clicks on the browser action.
+// A2Z F15
+// Daniel Shiffman
+// https://github.com/shiffman/A2Z-F15
+
+// This is the background script for the extension
+
+// A listener for when the user clicks on the extension button
 chrome.browserAction.onClicked.addListener(buttonClicked);
 
-
+// Handle that click
 function buttonClicked(tab) {
   // Send a message to the active tab
   console.log("button clicked!");
 
   // Send a message to the tab that is open when button was clicked
   chrome.tabs.sendMessage(tab.id, {"message": "browser action"});
-
-  // Code for querying all the tabs
-  // chrome.tabs.query({active: true, currentWindow: true}, activeTabs);
-  // function activeTabs(tabs) {
-  // }
 }
 
+// Listening for messages
 chrome.runtime.onMessage.addListener(receiver);
 
 function receiver(request, sender, sendResponse) {
   if (request.message === "thank you") {
-    chrome.tabs.create( {"url": "https://www.google.com/?q=thank+you" } );
+    // Not doing anything for messages received but I could!
   }
 }
