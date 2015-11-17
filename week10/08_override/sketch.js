@@ -2,12 +2,8 @@
 // Daniel Shiffman
 // https://github.com/shiffman/A2Z-F15
 
-// Thank you to: https://github.com/dariusk/metaphor-a-minute/blob/master/metaphor.js
-
-// Sign up for Wordnik here: https://www.wordnik.com/
-// Developer documentation: http://developer.wordnik.com/
-
-// Call to get a random noun
+// This just picks a random word from wordnik
+// And shows it to the user each time a new tab is opened
 
 // A random word
 var randomWordURL = "http://api.wordnik.com/v4/words.json/randomWord?" + 
