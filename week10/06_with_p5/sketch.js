@@ -1,26 +1,28 @@
+// A2Z F15
+// Daniel Shiffman
+// https://github.com/shiffman/A2Z-F15
 
+// This is the content script for the extension
 
+// It creates a canvas overlay on a web page
+
+// p5 can not be executed the normal "global" way
+// Instead a sketch instance has to be manually created
+// This is done with the closure below
 var sketch = function(p5) {
 
-  var first = true;
-
+  // The setup function
   p5.setup = function() {
+    // Make a canvas that covers the HTML document up to 2000 pixels high
     var h = p5.constrain(document.body.clientHeight, 0, 2000);
-    console.log(h);
     var c = p5.createCanvas(p5.windowWidth, h);
+    // Position it
     c.position(0,0);
-    // In front of everything!
-    c.style('z-index', 500);
     p5.clear();
-    p5.background(255,0,200,5);
   }
 
+  // Draw lines if the user drags the mouse
   p5.mouseDragged = function() {
-    if (first) {
-      console.log('drawing');
-      first = false;
-    }
-
     p5.stroke(0);
     p5.strokeWeight(4);
     p5.line(p5.mouseX, p5.mouseY, p5.pmouseX, p5.pmouseY);
@@ -28,7 +30,8 @@ var sketch = function(p5) {
 
 }
 
-
+// The above function closure is passed into a p5 object constructor
+// this starts the sketch.
 var myp5 = new p5(sketch);
 
 
