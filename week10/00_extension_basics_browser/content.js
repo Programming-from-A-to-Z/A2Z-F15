@@ -1,4 +1,6 @@
 
+
+
 console.log("Chrome extension is running!");
 
 // Highlight all paragraphs
