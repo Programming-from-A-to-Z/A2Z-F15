@@ -16,7 +16,6 @@ var fs = require('fs');
 //var words = fs.readFileSync('data/words_less.txt', 'utf8');
 var words = fs.readFileSync('data/words.txt', 'utf8');
 var corpus = words.split(/\n/);
-console.log(corpus.length);
 
 var spellcheck = new Spellcheck(corpus);
 
@@ -30,14 +29,17 @@ function listen() {
   var port = server.address().port;
   console.log('Example app listening at http://' + host + ':' + port);
 }
-// var corrections = spellcheck.getCorrections(word, 1); 
-// console.log(corrections);
+
+// This is for hosting files
+// Anything in the public directory will be served
+// This is just like python -m SimpleHTTPServer
+// We could also add routes, but aren't doing so here
+app.use(express.static('public'));
 
 // Here's how we can write code to handle a specific 'route'
 // http://myserver.com/thing/dan/5
 // This is the "RESTful" model, thing is the path, name and num are parameters
 app.get('/spellcheck/:word/:maxdistance', spellCheck);
-
 app.get('/spellcheck/:word', spellCheck);
 
 
@@ -49,9 +51,13 @@ function spellCheck(req, res) {
   var word = req.params['word'];
   var maxdistance = req.params['maxdistance'] || 1;
 
+  // The spellchecker seems to hang over 2
+  // Probably b/c the wordlist at 350,000 words in it
   if (maxdistance > 2) {
     maxdistance = 2;
   }
+
+  console.log('checking ' + word);
 
   var correct = spellcheck.isCorrect(word);
   if (correct) {
@@ -61,7 +67,6 @@ function spellCheck(req, res) {
     res.send(reply);
   }
 
-  console.log('checking ' + word);
 
   var corrections = spellcheck.getCorrections(word, maxdistance); 
   //console.log(corrections);
