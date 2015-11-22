@@ -2,6 +2,9 @@
 // Daniel Shiffman
 // https://github.com/shiffman/A2Z-F15
 
+// http://www2.imm.dtu.dk/pubdb/views/publication_details.php?id=6010
+// https://finnaarupnielsen.wordpress.com/2011/03/16/afinn-a-new-word-list-for-sentiment-analysis/
+
 // Using express: http://expressjs.com/
 var express = require('express');
 // Create the app

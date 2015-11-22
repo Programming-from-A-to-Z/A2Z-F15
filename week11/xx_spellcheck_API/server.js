@@ -2,6 +2,9 @@
 // Daniel Shiffman
 // https://github.com/shiffman/A2Z-F15
 
+// http://norvig.com/spell-correct.html
+// https://github.com/dwyl/english-words
+
 // Using express: http://expressjs.com/
 var express = require('express');
 // Create the app
