@@ -10,6 +10,8 @@ var express = require('express');
 // Create the app
 var app = express();
 
+var cors = require('cors');
+
 var natural = require('natural');
 var Spellcheck = natural.Spellcheck;
 
@@ -38,6 +40,7 @@ function listen() {
 // This is just like python -m SimpleHTTPServer
 // We could also add routes, but aren't doing so here
 app.use(express.static('public'));
+app.use(cors());
 
 // Here's how we can write code to handle a specific 'route'
 // http://myserver.com/thing/dan/5
@@ -68,15 +71,14 @@ function spellCheck(req, res) {
       status: 'correct'
     }
     res.send(reply);
+  } else {
+    var corrections = spellcheck.getCorrections(word, maxdistance); 
+    //console.log(corrections);
+    var reply = {
+      status: 'incorrect',
+      maxdistance: maxdistance,
+      suggestions: corrections
+    }
+    res.send(reply);
   }
-
-
-  var corrections = spellcheck.getCorrections(word, maxdistance); 
-  //console.log(corrections);
-  var reply = {
-    status: 'incorrect',
-    maxdistance: maxdistance,
-    suggestions: corrections
-  }
-  res.send(reply);
 }

@@ -1,7 +1,7 @@
 {
-  "name": "spellcheck_api",
+  "name": "sentiment_API",
   "version": "1.0.0",
-  "description": "Spellcheck API",
+  "description": "Sentiment API",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -10,8 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.14.1",
     "cors": "^2.7.1",
     "express": "^4.13.3",
-    "natural": "^0.2.1"
+    "sentiment": "^1.0.2"
   }
 }
