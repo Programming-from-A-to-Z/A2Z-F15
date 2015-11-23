@@ -10,18 +10,22 @@ var express = require('express');
 // Create the app
 var app = express();
 
-var cors = require('cors');
-
+// Node natural for NLP
 var natural = require('natural');
 var Spellcheck = natural.Spellcheck;
 
-
+// File System for loading the list of words
 var fs = require('fs');
 
-//var words = fs.readFileSync('data/words_less.txt', 'utf8');
-var words = fs.readFileSync('data/words.txt', 'utf8');
-var corpus = words.split(/\n/);
+// Cors for allowing "cross origin resources"
+// https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS
+var cors = require('cors');
 
+// Load all the words
+var words = fs.readFileSync('data/words.txt', 'utf8');
+// Make it an array by line breaks
+var corpus = words.split(/\n/);
+// Create a spellchecker with those words
 var spellcheck = new Spellcheck(corpus);
 
 // Set up the server
@@ -43,11 +47,9 @@ app.use(express.static('public'));
 app.use(cors());
 
 // Here's how we can write code to handle a specific 'route'
-// http://myserver.com/thing/dan/5
-// This is the "RESTful" model, thing is the path, name and num are parameters
+// http://myserver.com/spellcheck/werd/1
 app.get('/spellcheck/:word/:maxdistance', spellCheck);
 app.get('/spellcheck/:word', spellCheck);
-
 
 // This is the call back for what to do
 // We can get stuff from url path
@@ -55,6 +57,7 @@ app.get('/spellcheck/:word', spellCheck);
 function spellCheck(req, res) {
   // Query String
   var word = req.params['word'];
+  // Maxdistance is "optional"
   var maxdistance = req.params['maxdistance'] || 1;
 
   // The spellchecker seems to hang over 2
@@ -65,19 +68,25 @@ function spellCheck(req, res) {
 
   console.log('checking ' + word);
 
+  // Is it correct?
   var correct = spellcheck.isCorrect(word);
+  // If so, just send back "correct" and the original word
   if (correct) {
     var reply = {
-      status: 'correct'
+      status: 'correct',
+      word: word
     }
     res.send(reply);
+  // Otherwise
   } else {
+    // Get the corrections
     var corrections = spellcheck.getCorrections(word, maxdistance); 
-    //console.log(corrections);
+    // Send back the suggestions
     var reply = {
       status: 'incorrect',
       maxdistance: maxdistance,
-      suggestions: corrections
+      suggestions: corrections,
+      word: word
     }
     res.send(reply);
   }
