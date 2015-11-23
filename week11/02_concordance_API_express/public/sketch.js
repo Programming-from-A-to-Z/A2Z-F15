@@ -4,13 +4,17 @@
 
 function setup() {
   noCanvas();
+  // No concordance is performed here
+  // Just all the data is loaded from the server
   loadJSON('/all', gotData);
 }
 
 
 function gotData(data) {
+  // Get all the keys
   var words = data.keys;
 
+  // Make a div for every word
   for (var i = 0; i < words.length; i++) {
     var word = words[i];
     var count = data.dict[word];
@@ -18,6 +22,7 @@ function gotData(data) {
   }
 }
 
+// Div-making closure, need this to use setTimeout
 function divMaker(word, count, index) {
   setTimeout(makeDiv, index*10);
 
@@ -26,5 +31,4 @@ function divMaker(word, count, index) {
     span.class('count');
     span.parent('results');
   }
-
 }

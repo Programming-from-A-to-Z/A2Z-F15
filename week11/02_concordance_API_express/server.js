@@ -35,40 +35,18 @@ var files = fs.readdirSync('austen');
 // Pulling our concordance object from a separate "module" - concordance.js
 var Concordance = require('./concordance');
 
-// Read the file as utf8 and process the data
-// Notice how this is in a loop to parse all files
-for (var i = 0; i  < files.length; i++) {
-  // Note the callback is processFile
-  fs.readFile('austen/'+files[i], 'utf8', processFile);
-}
-
-// How many files have been read?
-// This helps us know when we are done
-var fileCount = 0;
 
 // An object that acts as dictionary of words and counts
 var wordcounts = new Concordance();
 
-// This callback is triggered for every file
-function processFile(err, data) {
-  // If there's a problem
-  if (err) {
-    console.log('ooops, there was an error reading this file');
-    throw err;
-  }
-
-  // Send the data into the concordance
-  wordcounts.process(data);
-
-  // This file finished
-  fileCount++;
-
-  // Is this the last file?
-  if (fileCount === files.length) {
-    wordcounts.sortByCount();
-    console.log('finished all files');
-  }
+// Read all the files
+for (var i = 0; i  < files.length; i++) {
+  // Doing this synchronously since it's before the server begins
+  var txt = fs.readFileSync('austen/'+files[i], 'utf8');
+  wordcounts.process(txt);
 }
+console.log('finished all files');
+wordcounts.sortByCount();
 
 
 // Route for sending all the concordance data

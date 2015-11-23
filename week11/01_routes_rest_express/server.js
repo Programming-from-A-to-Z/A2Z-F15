@@ -22,6 +22,8 @@ function listen() {
 // http://myserver.com/thing/dan/5
 // This is the "RESTful" model, thing is the path, name and num are parameters
 app.get('/thing/:name/:num', doThing);
+// Making num "optional"
+app.get('/thing/:name/', doThing);
 
 // This is the call back for what to do
 // We can get stuff from url path

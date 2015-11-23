@@ -1,5 +1,5 @@
 {
-  "name": "02_serve_files_express",
+  "name": "express_rest_routes",
   "version": "1.0.0",
   "description": "Express serve files",
   "main": "server.js",
