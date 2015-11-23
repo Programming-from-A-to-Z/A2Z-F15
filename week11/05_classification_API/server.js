@@ -2,20 +2,33 @@
 // Daniel Shiffman
 // https://github.com/shiffman/A2Z-F15
 
-// http://norvig.com/spell-correct.html
-// https://github.com/dwyl/english-words
+// https://github.com/NaturalNode/natural
+// http://stackoverflow.com/questions/10059594/a-simple-explanation-of-naive-bayes-classification
+// http://shiffman.github.io/A2Z-F15/week5/notes.html#naive-bayesian-text-classification
 
 // Using express: http://expressjs.com/
 var express = require('express');
 // Create the app
 var app = express();
 
-var bodyParser = require('body-parser');
+// File System for loading the list of words
+var fs = require('fs');
 
+// Using node natural
+var natural = require('natural');
+
+// Cors for allowing "cross origin resources"
+// https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS
+var cors = require('cors');
+app.use(cors());
+
+// "body parser" is need to deal with post requests
+var bodyParser = require('body-parser');
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
-var natural = require('natural');
+// This is for hosting files
+app.use(express.static('public'));
 
 // Set up the server
 // process.env.PORT is related to deploying on heroku
@@ -28,66 +41,68 @@ function listen() {
   console.log('Example app listening at http://' + host + ':' + port);
 }
 
-//natural.BayesClassifier.load('classifier.json', null, loaded);
-
-var fs = require('fs');
+// Do we already have a classifier "database"
 var exists = fs.existsSync('classifier.json');
+
+// If we do, load it
 if (exists) {
   natural.BayesClassifier.load('classifier.json', null, loaded);
+// If not make a new one
 } else {
   console.log('starting a new classifier');
   classifier = new natural.BayesClassifier();  
 }
 
+// All set and loaded
 function loaded(err, cf) {
   classifier = cf;
   console.log('Classifier loaded');
 }
 
-// This is for hosting files
-// Anything in the public directory will be served
-// This is just like python -m SimpleHTTPServer
-// We could also add routes, but aren't doing so here
-app.use(express.static('public'));
 
-
+// This is a post for training
 app.post('/train', training);
 
 function training(req, res) {
-  console.log(req.body);
+  // Get the text and category
   var text = req.body.text;
   var category = req.body.category;
+
+  // Add the document and train
   classifier.addDocument(text, category);
   classifier.train();
-  res.send(req.body);
+  
+  // Save to the "database"
   classifier.save('classifier.json', saved);
 
+  // All done saving, can send a message back to client
   function saved(err, classifier) {
     console.log('finished training and saving');
+    res.send(req.body);
   }
 }
 
+
+// This is a POST for classifying a text
 app.post('/classify', classify);
 
+// Handle the POST
 function classify(req, res) {
+  // What is the text
   var text = req.body.text;
+  // Use natural to classify
   var classification = classifier.classify(text);
+  // Also look at all the metadaya
   var all = classifier.getClassifications(text);
 
+  // Make a reply that has all the info
   var reply = {
     category: classification,
     classifications: all
   }
+
+  // Send it back
   res.send(reply);
 }
-
-
-
-// classifier.addDocument('i am long qqqq', 'buy');
-// classifier.addDocument('buy the q\'s', 'buy');
-// classifier.addDocument('short gold', 'sell');
-// classifier.addDocument('sell gold', 'sell');
-
-// classifier.train();
 
 
