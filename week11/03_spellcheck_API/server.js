@@ -66,8 +66,6 @@ function spellCheck(req, res) {
     maxdistance = 2;
   }
 
-  console.log('checking ' + word);
-
   // Is it correct?
   var correct = spellcheck.isCorrect(word);
   // If so, just send back "correct" and the original word
