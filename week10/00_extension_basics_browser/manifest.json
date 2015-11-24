@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
-  "name": "Chrome Extension Basics Browser Action",
+  "name": "Example Extension",
   "version": "1.0",
-  "description": "This extension shows all the pieces of a chrome extension",
+  "description": "This extension shows the pieces of a chrome extension",
   "content_scripts": [
     {
       "matches": [
