@@ -5,13 +5,7 @@ layout: default
 
 # Chrome Extensions
 
-<!--<head>
-<script language="javascript" type="text/javascript" src="../javascripts/p5/p5.js"></script>
-<script language="javascript" type="text/javascript" src="../javascripts/p5/p5.dom.js"></script>
-<script language="javascript" type="text/javascript" src="generate.js"></script>
-</head>-->
-
-## Examples (node basics)
+## Example extensions
 * [Basic "hello world" extension -- Browser Action](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week10/00_extension_basics_browser)
 * [Basic "hello world" extension -- Page action](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week10/01_extension_basics_page)
 * [Extension with pop-up (using p5)](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week10/02_extension_browser_popup_p5)
