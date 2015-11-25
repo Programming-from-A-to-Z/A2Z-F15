@@ -11,14 +11,14 @@ layout: default
 * [Extension with pop-up (using p5)](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week10/02_extension_browser_popup_p5)
 * [Extension with pop-up controlling content](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week10/03_extension_browser_popup_messaging)
 * [Extension with pop-up querying wordnik](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week10/04_extension_browser_popup_messaging_2)
-* [Image and content changer example extension](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week10/05_content_changer)
+* [Image swap and content altering](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week10/05_content_changer)
 * [Content script with p5 canvas overlay](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week10/06_with_p5)
 * [Searching and redacting a word](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week10/07_word_redacter)
-* [Override "new tab" example](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week10/08_override)
-* [OmniBox example](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week10/09_omnibox)
+* [Override "new tab"](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week10/08_override)
+* [OmniBox](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week10/09_omnibox)
 * [Alarms](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week10/10_alarms)
 
-## Exampels of Creative Extensions
+## Examples of Creative Extensions
 * [girlsvsgit](https://github.com/wheresaddie/girlsvsgit) by [wheresaddie](https://twitter.com/wheresaddie)
 * [wordless web](http://pleaseenjoy.com/projects/personal/wordless-web/#image454) (this is actually a bookmarklet but as a content script could be an extension).
 * [code doodles](http://codedoodl.es/)
