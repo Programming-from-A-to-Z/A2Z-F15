@@ -24,9 +24,16 @@ layout: default
 * [OmniBox example](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week10/09_omnibox)
 * [Alarms](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week10/10_alarms)
 
-## Other Creative Extensions
+## Exampels of Creative Extensions
+* [girlsvsgit](https://github.com/wheresaddie/girlsvsgit) by [wheresaddie](https://twitter.com/wheresaddie)
+* [wordless web](http://pleaseenjoy.com/projects/personal/wordless-web/#image454) (this is actually a bookmarklet but as a content script could be an extension).
+* [code doodles](http://codedoodl.es/)
 
 ## Resources / Tutorials
+* [Official Google guide to chrome extensions](https://developer.chrome.com/extensions/getstarted)
+* [Building your first chrome extension video tutorial](https://www.youtube.com/watch?v=pT-b2SpFIWo)
+* [How to make a chrome extension](https://robots.thoughtbot.com/how-to-make-a-chrome-extension)
+* [Developing chrome extensions tutorial](http://code.tutsplus.com/tutorials/developing-google-chrome-extensions--net-33076)
 
 ## Basics
 
@@ -182,7 +189,46 @@ var word = chrome.extension.getBackgroundPage().word;
 
 ## Omnibox
 
+Actions can also be triggered by typing a keyword into the "omnibox" (also known as "address bar").  The keyword is specified in `manifest.json`.
+
+{% highlight javascript %}
+  "omnibox": { 
+    "keyword": "a2z" 
+  }
+{% endhighlight %}
+
+What to do after the user types a2z is handled in the background script.
+
+{% highlight javascript %}
+// This event is fired when the user hits "enter"
+chrome.omnibox.onInputEntered.addListener(omniChanged);
+
+function omniChanged(text) {
+  // The variable "text" has the text the user typed
+  // You could open a new tab on a specific page that uses that text
+  // or send a message to a content script
+  // etc.
+}
+{% endhighlight %}
+
+## Override Page
+
+Chrome extensions allow you to replace the default chrome pages for bookmarks, history, and new tab. To replace new tab, for example, add the following to manifest.json.
+
+{% highlight javascript %}
+  "chrome_url_overrides": {
+    "newtab": "newtab.html"
+  }
+{% endhighlight %}
+
+Then you can create `newtab.html` with any HTML, CSS, or JavaScript. [Here's an example that picks a random "word of the day" from Wordnik](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week10/08_override).
 
 
+## APIs
 
+One of the benefits of using a chrome extension is [all of the APIs](https://developer.chrome.com/extensions/api_index) that are available for controlling the behavior of the browser.  Some that might interest you are:
 
+* [Alarms API](https://developer.chrome.com/extensions/alarms)
+* [tabs](https://developer.chrome.com/extensions/tabs) and [windows](https://developer.chrome.com/extensions/windows)
+* [tts (text-to-speech)](https://developer.chrome.com/extensions/tts)
+* [webRequest](https://developer.chrome.com/extensions/webRequest)
