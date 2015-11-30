@@ -91,25 +91,26 @@ This course focuses on programming strategies and techniques behind procedural a
 * How to make a Twitter bot
 * [Bot Homework Assignment](https://github.com/shiffman/Programming-from-A-to-Z-F15/wiki/Week-9-Homework)
 
-## Week 10 - More Bots + Chrome Extensions
-* More on bots -- Twitter streaming API
-* More on bots -- Working with images/media
-* Deploying: Heroku? Amazon EC2? Digital Ocean?
-* How to build a chrome extension
-* Assignment: Final project proposals
+## Week 10 - [More Bots + Chrome Extensions](http://shiffman.github.io/A2Z-F15/week10/notes.html)
+* [Notes on chrome extensions](http://shiffman.github.io/A2Z-F15/week10/notes.html)
+* More on bots -- Twitter streaming API, [video tutorial](https://www.youtube.com/watch?v=b4JShWhWADY&index=7&list=PLRqwX-V7Uu6atTSxoRiVnSuOn6JHnq2yV)
+* More on bots -- Working with images/media, [video tutorial](https://www.youtube.com/watch?v=mUoIPmZ4KwA&index=6&list=PLRqwX-V7Uu6atTSxoRiVnSuOn6JHnq2yV)
+* Deploying
+   * [Notes on EC2](http://shiffman.github.io/A2Z-F15/week9/ec2.html)
+   * [Notes on Heroku](http://shiffman.github.io/A2Z-F15/week9/heroku.html)
+* Assignment: [Final project proposals](https://github.com/shiffman/A2Z-F15/wiki/Final-Project-Proposals)
 
-## Week 11 - Final Project Proposals part 1
-* half of you talk about ideas this week
-* Additional topic
-   * Visualizing with text workshop
-   * Return to p5.js canvas
-   * More DOM
-   * Physics?
-   * Font outlines
+## Week 11 - [Final Project Proposals part 1](https://github.com/shiffman/A2Z-F15/wiki/Final-Project-Proposals)
+* [half of you talk about ideas this week](https://github.com/shiffman/A2Z-F15/wiki/Final-Project-Proposals)
+* [Text Analysis in Node](http://shiffman.github.io/A2Z-F15/week11/notes.html)
+  * building your own API
 
-## Week 12 - Final Project Proposals part 2
-* half of you talk about ideas this week
-* Additional topic TBA?
+## Week 12 - [Final Project Proposals part 2](https://github.com/shiffman/A2Z-F15/wiki/Final-Project-Proposals)
+* [half of you talk about ideas this week](https://github.com/shiffman/A2Z-F15/wiki/Final-Project-Proposals)
+* [Text Analysis in Node](http://shiffman.github.io/A2Z-F15/week11/notes.html)
+  * Persistance (files, database, parse.com)
+  * GET vs POST
+  * Node packages for text: [NaturalNode](https://github.com/NaturalNode/natural), [sentiment](https://github.com/thisandagain/sentiment), and more
 
 ## Week 13 - User Testing
 
