@@ -161,9 +161,146 @@ app.use(cors());
 
 ## Persistance
 
-## GET vs POST
+Another topic relevant to server-side programming is "persistance".  In other words, let's say you want to build a text classifier.  [NaturalNode](https://github.com/NaturalNode/natural) includes as one of its features [Bayesian Text Classification](https://web.stanford.edu/class/cs124/lec/naivebayes.pdf) which we briefly covered in [week five]((http://shiffman.github.io/A2Z-F15/week5/notes.html)).  
+
+Let's assume your application classifies text as "happy" or "sad".  The system is "trained" by users submitting text tagged with the appropriate category (happy or sad).  The server passes all this text to a `Classifier` object stores all the relevant counts and probabilities for the submitted text.  After running your application for a week, you have hundreds of submissions.  What if you now need to restart the server?
+
+If all of the data is just stored in memory in the Classifier object, it will all be lost as soon as you quit the server.  The solution is to save the data somewhere permanent that persists even when the server stops running.   You could certainly use a database (like [mongodb](https://docs.mongodb.org/ecosystem/drivers/node-js/) or the simpler [nedb](https://github.com/louischatriot/nedb)) but for some basic scenarios these solutions can be overkill.
+
+One option is to just write out a text file and the JSON format can be most convenient.  The `fs` module can handle the reading and writing and the [JSON](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON) object has functions `parse()` and `stringify()` to convert back and forth from JS object to raw text.
+
+Here is the skeleton of code used in the examples here.  Step 1 for the server is to check and see if the file exists.  (The code below is from a sentiment analysis scenario where words and their positive/negative score are stored in a file called `additional.json`.)
+
+{% highlight javascript %}
+var exists = fs.existsSync('additional.json');
+{% endhighlight %}
+
+If it does in fact exist, the data can be read using `fs` and stored in a variable using `JSON.parse()`.
+
+{% highlight javascript %}
+var additional;
+if (exists) {
+  var txt = fs.readFileSync('additional.json', 'utf8');
+  additional = JSON.parse(txt);
+} 
+{% endhighlight %}
+
+In the case of it not existing, the code simply makes an empty JavScript object.
+
+{% highlight javascript %}
+} else {
+  additional = {};
+}
+{% endhighlight %}
+
+The example includes an API call to add a word and score to the sentiment analysis.  The server can then just write out a new JSON file using `JSON.stringify()` on the variable `additional`.  Here, the writing of a file must be done asynchronously since the action is associated with a web request (rather than just when the server starts up) and you don't want the server to get stuck on an operation while other clients could be trying to connect.
+
+{% highlight javascript %}
+// Assuming some new word and score is added
+additional['new word'] = 5;
+
+// Turn additional back into text
+var json = JSON.stringify(additional);
+
+// Write out the file
+fs.writeFile('additional.json', json, 'utf8', finished);
+
+// Callback for when file is finished
+function finished(err) {
+  console.log('Finished writing additional.json');
+}
+{% endhighlight %}
 
 ## Parse.com
+
+Writing out a text file is a nice quick and dirty solution that can work for many small-scale creative projects in a prototyping stage.  Often, however, a more involved database is required. In addition to creating a database on your own server, there is also the option of using an API service like [parse.com](https://parse.com/) to store your data.  Parse has a pretty decent free plan and you can access the data directly from the client or from node itself.  Some examples are included as part of this week's materials.
+
+* [Saving drawings](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week11/06_parse_drawing) -- saving coordinate data for drawings (from client)
+* [Saving web form data](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week11/07_parse_form) (from client)
+* [Saving web form data for text generation (mad libs)](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week11/08_parse_madlibs) (from client)
+* [Creating permalinks for generated text (markov chains)](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week11/09_parse_markov) (from client)
+* [Saving and retrieving from parse with node](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week11/10_parse_node) (from server)
+
+There are a few things to note when working with Parse.  Client-side you'll need to reference the Parse API JS file.
+
+{% highlight html %}
+<script src="//www.parsecdn.com/js/parse-1.4.2.min.js"></script>
+{% endhighlight %}
+
+In node, simply install the parse node module.
+
+<pre>
+$ npm install parse --save
+</pre>
+
+Then the code works identically on both the client and server.  Initialize Parse using your API keys.
+
+{% highlight javascript %}
+Parse.initialize("KEY", "SECRET");
+{% endhighlight %}
+
+Everything you send to Parse gets saved as JavaScript object.  It's up to you to specify a type "name" for this object and reference that name as you save and retrieve.  Let's say you are saving information related to a fruit basket -- kind of fruit and how many there are.  Your data in your object might then be:
+
+{% highlight javascript %}
+var data = {
+  name: 'pear',
+  count: 7
+}
+{% endhighlight %}
+
+To save this to Parse you need to create a `Fruit` object type along with an instance of a Fruit object.
+
+{% highlight javascript %}
+var Fruit = Parse.Object.extend("Fruit");
+var fruit = new Fruit();
+{% endhighlight %}
+
+Once you've done this you can save that data inside a `Fruit` object passed to parse.
+
+{% highlight javascript %}
+// save() saves the data and finished is the callback
+fruit.save(data).then(finished);
+
+function finished(response) {
+  console.log('Data saved successfully ' + response.id);
+}
+{% endhighlight %}
+
+Note the chained sequence of `save()` and `then()`.  This follows [a pattern in JavaScript known as a "promise"](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then) where `finished()` is the callback triggered after the the data has been saved.
+
+The code can, of course, query Parse for data as well.  You can ask for all the `Fruit` objects or search for a single one.  This works by making a Parse `query`. 
+
+{% highlight javascript %}
+var query = new Parse.Query(Fruit);
+{% endhighlight %}
+
+The function `find()` allows you to ask for all `Fruit` records and `get()` searches for a single one based on an `id`.  Here, for example, is the code required for loading all the data.  Note the use of an object to specify success and failure callbacks.  The data is read in the success callback.
+
+{% highlight javascript %}
+var query = new Parse.Query(Fruit);
+
+var callbacks = {
+  success: gotAll,
+  error: gotError
+}
+
+// Ask for all the data
+query.find(callbacks);
+
+function gotAll(data) {
+  for (var i = 0; i < data.length; i++) {
+    // Look at each fruit object!
+  }
+}
+
+function gotError(err) {
+  console.log(err);
+}
+{% endhighlight %}
+
+
+## GET vs POST
+
 
 ## More on sync vs async
 
