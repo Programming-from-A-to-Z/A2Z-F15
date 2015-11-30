@@ -298,8 +298,37 @@ function gotError(err) {
 }
 {% endhighlight %}
 
-
 ## GET vs POST
+
+The [HTTP (Hypertext Transfer Protocol)](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol) includes several different kinds of requests.  The one you are likely most commonly familiar with is a `GET` request.  This is the request that happens when you type a URL into an address bar.  You are asking the server if you can "get" something, and what is sent back is some sort of data, often in the form of HTML, but in can be anything.
+
+In fact, you are also making GET requests in code all the time.  If you pass a url into the `loadJSON()` function, a GET request is made.
+
+{% highlight javascript %}
+loadJSON('http://api.com/some/api/call', gotData);
+
+function gotData(data) {
+  // the response is in data
+}
+{% endhighlight %}
+
+In this week's examples, I am handling GET requests in node as well, by using the `get()` function on the `app` object, i.e.
+
+{% highlight javascript %}
+loadJSON('http://api.com/some/api/call', gotData);
+
+function gotData(data) {
+  // the response is in data
+}
+{% endhighlight %}
+
+There are some scenarios, however, where a POST request is preferable to a GET.  POST requests are designed for instances where the data sent would be stored on the server (or affect some sort of change of state by the server like deleting a database record.)  They are also useful in the context of sending sensitive data like passwords since the data of a POST is not visible via the URL address.
+
+In the case of creative ITP projects we can be a little loosey goosey about these distinctions.  I'm using a post here because my examples might send a large paragraph (or even more) of text.  This can be inconvenient in terms of forming a URL for a GET request.  
+
+To send a POST from p5 the `httpPost()` method is available.  Simply pass a JavaScript object with the data for the post to the appropriate url.  You can then also define success and error callbacks to track the request.
+
+
 
 
 ## More on sync vs async

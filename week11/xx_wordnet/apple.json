@@ -1,0 +1,90 @@
+[
+  {
+    "synsetOffset": 12654755,
+    "lexFilenum": 20,
+    "pos": "n",
+    "wCnt": 3,
+    "lemma": "apple",
+    "synonyms": [
+      "apple",
+      "orchard_apple_tree",
+      "Malus_pumila"
+    ],
+    "lexId": "0",
+    "ptrs": [
+      {
+        "pointerSymbol": "@",
+        "synsetOffset": 12654399,
+        "pos": "n",
+        "sourceTarget": "0000"
+      },
+      {
+        "pointerSymbol": "#m",
+        "synsetOffset": 12654147,
+        "pos": "n",
+        "sourceTarget": "0000"
+      },
+      {
+        "pointerSymbol": "%p",
+        "synsetOffset": 7755101,
+        "pos": "n",
+        "sourceTarget": "0000"
+      }
+    ],
+    "gloss": "native Eurasian tree widely cultivated in many varieties for its firm rounded edible fruits  ",
+    "def": "native Eurasian tree widely cultivated in many varieties for its firm rounded edible fruits  ",
+    "exp": []
+  },
+  {
+    "synsetOffset": 7755101,
+    "lexFilenum": 13,
+    "pos": "n",
+    "wCnt": 1,
+    "lemma": "apple",
+    "synonyms": [
+      "apple"
+    ],
+    "lexId": "0",
+    "ptrs": [
+      {
+        "pointerSymbol": "@",
+        "synsetOffset": 7721676,
+        "pos": "n",
+        "sourceTarget": "0000"
+      },
+      {
+        "pointerSymbol": "@",
+        "synsetOffset": 13159619,
+        "pos": "n",
+        "sourceTarget": "0000"
+      },
+      {
+        "pointerSymbol": "#p",
+        "synsetOffset": 12654755,
+        "pos": "n",
+        "sourceTarget": "0000"
+      },
+      {
+        "pointerSymbol": "~",
+        "synsetOffset": 7755320,
+        "pos": "n",
+        "sourceTarget": "0000"
+      },
+      {
+        "pointerSymbol": "~",
+        "synsetOffset": 7755482,
+        "pos": "n",
+        "sourceTarget": "0000"
+      },
+      {
+        "pointerSymbol": "~",
+        "synsetOffset": 7757988,
+        "pos": "n",
+        "sourceTarget": "0000"
+      }
+    ],
+    "gloss": "fruit with red or yellow or green skin and sweet to tart crisp whitish flesh  ",
+    "def": "fruit with red or yellow or green skin and sweet to tart crisp whitish flesh  ",
+    "exp": []
+  }
+]
