@@ -43,6 +43,7 @@ layout: default
 * Twitter Bot node tutorial: [part 1](http://ursooperduper.github.io/2014/10/27/twitter-bot-with-node-js-part-1.html), [part 2](http://ursooperduper.github.io/2014/10/28/twitter-bot-with-node-js-part-2.html), [part 3](http://ursooperduper.github.io/2014/11/03/twitter-bot-with-node-js-part-3.html)
 * [Twit Node API](https://github.com/ttezel/twit)
 * [Another Node bot tutorial](http://kiafathi.azurewebsites.net/project-making-a-twitter-bot-with-node-js/)
+* [Making a Twitter bot with node.js and Cloud9](https://botwiki.org/tutorials/making-what_capital/)
 
 ## Node basics
 

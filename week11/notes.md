@@ -272,6 +272,10 @@ function finished(response) {
 
 Note the chained sequence of `save()` and `then()`.  This follows [a pattern in JavaScript known as a "promise"](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then) where `finished()` is the callback triggered after the the data has been saved.
 
+You can then go to parse.com and login to your account to view the data.
+
+![parse](images/parse.png)
+
 The flip side of this is asking  Parse for data.  You can ask for all the `Fruit` objects or search for a single one.  This works by making a Parse `query` (again specifying the object type).
 
 {% highlight javascript %}
