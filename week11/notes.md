@@ -148,7 +148,7 @@ One thing you might notice about the above `loadJSON()` calls is that they do no
 app.use(express.static('public'));
 {% endhighlight %}
 
-However, let's say you want others to be able to access your API from their code.  In order for this to be possible you must enable something called [CORS (Cross-origin resource sharing)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS).  This prevents others from getting those nasty *XMLHttpRequest cannot load. No 'Access-Control-Allow-Origin' header is present on the requested resource.* errors.  
+However, let's say you want others to be able to access your API from their code.  In order for this to be possible you must enable something called [CORS (Cross-origin resource sharing)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS).  This prevents others from getting that nasty error: *XMLHttpRequest cannot load. No 'Access-Control-Allow-Origin' header is present on the requested resource.*  ([More about Cross Domain Requests in JS](https://jvaneyck.wordpress.com/2014/01/07/cross-domain-requests-in-javascript/).)
 
 This is easy enough to do with the [Node CORS package](https://github.com/expressjs/cors).
 
