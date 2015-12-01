@@ -34,7 +34,7 @@ One of the main reasons you might go down this road is if you have a large datas
 
 ### module.exports
 
-To build this example the first thing I'll do is go and grab `concordance.js` from [week five's examples](http://shiffman.github.io/A2Z-F15/week5/notes.html).  Functions and objects from separate JS files can be used in node just like in an HTML page.  However, this must be done via [node modules](https://nodejs.org/api/modules.html) and the `require()` function.
+To build this example the first thing I'll do is go and grab [`concordance.js`](https://github.com/shiffman/A2Z-F15/blob/gh-pages/week5/01_concordance/concordance.js) from [week five's examples](http://shiffman.github.io/A2Z-F15/week5/notes.html).  Functions and objects from separate JS files can be used in node just like in an HTML page.  However, this must be done via [node modules](https://nodejs.org/api/modules.html) and the `require()` function.
 
 For example, if you have the following constructor function in a file called `concordance.js`:
 
@@ -45,7 +45,7 @@ function Concordance() {
 }
 {% endhighlight %}
 
-You can "include" this function by saying the following in your main app (`server.js`) with two additional steps.  First, you must add `Concordance` to `module.exports` in `concordance.js`.  `module.exports` is [the object that's actually returned as when you call require](http://stackoverflow.com/questions/5311334/what-is-the-purpose-of-node-js-module-exports-and-how-do-you-use-it).
+You can have access to this constructor function in your main app (`server.js`) with two additional steps.  First, you must add `Concordance` to `module.exports` in `concordance.js`.  `module.exports` is [the object that's actually returned as when you call require](http://stackoverflow.com/questions/5311334/what-is-the-purpose-of-node-js-module-exports-and-how-do-you-use-it).
 
 {% highlight javascript %}
 module.exports = Concordance; 
@@ -76,7 +76,7 @@ for (var i = 0; i  < files.length; i++) {
 }
 {% endhighlight %}
 
-One thing you might notice about the above is the use of `readdirSync()` and `readFileSync()` as opposed to `readdir()` and `readFile()`.   The "sync" refers to "synchronous" meaning these lines of code are "blocking".  The data has to be read before moving onto the next line.  This is unusual in JavaScript in that typically a callback is required to be executed when the data is read.  This is a case where I am happy for the program to stop and wait because I want to process all of the data before the server starts listening for connections. It's ok if it takes a long time because this only happens once when the server starts.
+One thing you might notice about the above is the use of `readdirSync()` and `readFileSync()` as opposed to `readdir()` and `readFile()`.   The "sync" refers to "synchronous" meaning these lines of code are "blocking".  The data has to be read before moving onto the next line.  This is unusual in JavaScript in that typically a callback is required to be executed when the data is read.  This is a case where I am happy for the program to stop and wait because I want to process all of the data before the server starts listening for connections. It's ok if it takes a long time because this only happens once when the server starts.  (This, however, would not be advisable at other points in the code like handling a client request to the server.)
 
 ### Routes for results
 
@@ -112,6 +112,8 @@ function showOne(req, res) {
     reply.status = 'success';
     reply.count = count;
   }
+  // It's useful to send back the word to
+  // so the client can match the count with a given API call
   reply.word = word;
 
   res.send(reply);
@@ -146,7 +148,7 @@ One thing you might notice about the above `loadJSON()` calls is that they do no
 app.use(express.static('public'));
 {% endhighlight %}
 
-However, let's say you want others to be able to access your API from their code.  In order for this to be possible you must enable something called [CORS (Cross-origin resource sharing)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS).  This prevents others from getting those nasty "XMLHttpRequest cannot load. No 'Access-Control-Allow-Origin' header is present on the requested resource." errors.  
+However, let's say you want others to be able to access your API from their code.  In order for this to be possible you must enable something called [CORS (Cross-origin resource sharing)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS).  This prevents others from getting those nasty *XMLHttpRequest cannot load. No 'Access-Control-Allow-Origin' header is present on the requested resource.* errors.  
 
 This is easy enough to do with the [Node CORS package](https://github.com/expressjs/cors).
 
@@ -163,11 +165,11 @@ app.use(cors());
 
 Another topic relevant to server-side programming is "persistance".  In other words, let's say you want to build a text classifier.  [NaturalNode](https://github.com/NaturalNode/natural) includes as one of its features [Bayesian Text Classification](https://web.stanford.edu/class/cs124/lec/naivebayes.pdf) which we briefly covered in [week five]((http://shiffman.github.io/A2Z-F15/week5/notes.html)).  
 
-Let's assume your application classifies text as "happy" or "sad".  The system is "trained" by users submitting text tagged with the appropriate category (happy or sad).  The server passes all this text to a `Classifier` object stores all the relevant counts and probabilities for the submitted text.  After running your application for a week, you have hundreds of submissions.  What if you now need to restart the server?
+Let's assume your application classifies text as "happy" or "sad".  The system is "trained" by users submitting text tagged with the appropriate category (happy or sad).  The server passes all this text to a `Classifier` object which stores all the relevant counts and probabilities for the submitted text.  After running your application for a week, you have hundreds of submissions.  What would happen in the server crashed and you had to restart it?
 
-If all of the data is just stored in memory in the Classifier object, it will all be lost as soon as you quit the server.  The solution is to save the data somewhere permanent that persists even when the server stops running.   You could certainly use a database (like [mongodb](https://docs.mongodb.org/ecosystem/drivers/node-js/) or the simpler [nedb](https://github.com/louischatriot/nedb)) but for some basic scenarios these solutions can be overkill.
+If all of the data is just stored in memory in the `Classifier` object, it will all be lost as soon as the server quits.  A solution is to save the data somewhere permanent that persists even when the server stops running.   You could certainly use a database (like [mongodb](https://docs.mongodb.org/ecosystem/drivers/node-js/) or the simpler [nedb](https://github.com/louischatriot/nedb)) but for some basic scenarios these solutions can be overkill.
 
-One option is to just write out a text file and the JSON format can be most convenient.  The `fs` module can handle the reading and writing and the [JSON](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON) object has functions `parse()` and `stringify()` to convert back and forth from JS object to raw text.
+One option is to just write out a text file filled with JSON.  The `fs` module can handle the reading and writing and the [JSON](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON) object has functions `parse()` and `stringify()` to convert back and forth from JS object to raw text.
 
 Here is the skeleton of code used in the examples here.  Step 1 for the server is to check and see if the file exists.  (The code below is from a sentiment analysis scenario where words and their positive/negative score are stored in a file called `additional.json`.)
 
@@ -185,7 +187,7 @@ if (exists) {
 } 
 {% endhighlight %}
 
-In the case of it not existing, the code simply makes an empty JavScript object.
+In the case of it not existing, the code simply makes an empty JavaScript object.
 
 {% highlight javascript %}
 } else {
@@ -239,7 +241,7 @@ Then the code works identically on both the client and server.  Initialize Parse
 Parse.initialize("KEY", "SECRET");
 {% endhighlight %}
 
-Everything you send to Parse gets saved as JavaScript object.  It's up to you to specify a type "name" for this object and reference that name as you save and retrieve.  Let's say you are saving information related to a fruit basket -- kind of fruit and how many there are.  Your data in your object might then be:
+Everything you send to Parse gets saved as JavaScript object.  It's up to you to specify a "name" (aka type) for this object and reference that name as you save and retrieve.  Let's say you are saving information related to a fruit basket -- kind of fruit and how many there are.  Your data in your object might then be:
 
 {% highlight javascript %}
 var data = {
@@ -248,14 +250,16 @@ var data = {
 }
 {% endhighlight %}
 
-To save this to Parse you need to create a `Fruit` object type along with an instance of a Fruit object.
+To save this to Parse you need to create a `Fruit` object type along with an instance of a `Fruit` object.
 
 {% highlight javascript %}
+// The type "Fruit"
 var Fruit = Parse.Object.extend("Fruit");
+// A fruit "instance"
 var fruit = new Fruit();
 {% endhighlight %}
 
-Once you've done this you can save that data inside a `Fruit` object passed to parse.
+Once you've done this you can save that data inside that `Fruit` object which is passed to parse.
 
 {% highlight javascript %}
 // save() saves the data and finished is the callback
@@ -268,7 +272,7 @@ function finished(response) {
 
 Note the chained sequence of `save()` and `then()`.  This follows [a pattern in JavaScript known as a "promise"](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then) where `finished()` is the callback triggered after the the data has been saved.
 
-The code can, of course, query Parse for data as well.  You can ask for all the `Fruit` objects or search for a single one.  This works by making a Parse `query`. 
+The flip side of this is asking  Parse for data.  You can ask for all the `Fruit` objects or search for a single one.  This works by making a Parse `query` (again specifying the object type).
 
 {% highlight javascript %}
 var query = new Parse.Query(Fruit);
@@ -324,14 +328,52 @@ function gotData(data) {
 
 There are some scenarios, however, where a POST request is preferable to a GET.  POST requests are designed for instances where the data sent would be stored on the server (or affect some sort of change of state by the server like deleting a database record.)  They are also useful in the context of sending sensitive data like passwords since the data of a POST is not visible via the URL address.
 
-In the case of creative ITP projects we can be a little loosey goosey about these distinctions.  I'm using a post here because my examples might send a large paragraph (or even more) of text.  This can be inconvenient in terms of forming a URL for a GET request.  
+In the case of creative ITP projects we can be a little loosey goosey about these distinctions.  I'm using a post here because my examples might send a large paragraph (or even more) of text (GET requests have a data length limit).
 
 To send a POST from p5 the `httpPost()` method is available.  Simply pass a JavaScript object with the data for the post to the appropriate url.  You can then also define success and error callbacks to track the request.
 
+{% highlight javascript %}
+// Data to be posted
+var params = {
+  name: "daniel",
+  password: "rainb0w"
+}
 
+// Making the post
+httpPost('/path/to/post', params, finished);
 
+// Handling the result
+function finished(reply) {
+  console.log(reply);
+}
+{% endhighlight %}
 
-## More on sync vs async
+On the server side, receiving the data looks almost identical to a `GET`.
+
+{% highlight javascript %}
+// "post" instead of "get"
+app.post('/path/to/post', gotData);
+
+function gotData(req, res) {
+  // Look at the "body" of a POST to get
+  // data, not the "params" like with a GET
+  var name = req.body.name;
+  var password = req.body.password;
+  var reply = {
+    message: "thank you"
+  }
+  res.send(reply);
+}
+{% endhighlight %}
+
+In the above code, you'll notice that the data is pulled from `req.body` rather than `req.params` as with a `GET` request.  This only works because earlier in my code I am including the express [body-parser](https://github.com/expressjs/body-parser) package.  
+
+{% highlight javascript %}
+var bodyParser = require('body-parser');
+app.use(bodyParser.json()); // support json encoded bodies
+{% endhighlight %}
+
+This package handles the parsing of a `POST` body and gives you easy access in `request.body`.
 
 
 
