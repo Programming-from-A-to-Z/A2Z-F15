@@ -68,8 +68,8 @@ function setup() {
     console.log(x + ',' + y);
   }
 
-  // Assign loadXY to logAgain
-  logAgain = loadXY;
+  // Assign logXY to logAgain
+  logAgain = logXY;
 }
 
 function mousePressed() {
