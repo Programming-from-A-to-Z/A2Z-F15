@@ -127,9 +127,21 @@ $ export DISPLAY=":1"
 * Instead of using `processing-java` you can simply export your Processing sketch as a linux application from the PDE itself.  You'll end up with a "application.linux64" folder which is what you'll want to include with your node app and upload.  The node code can then instead be:
 
 {% highlight javascript %}
-var cmd = 'folder/sketchname';
+var cmd = 'folder/sketchname'; //you can use 'pwd' in the sketch folder to determine the absolute path
 exec(cmd, processing);
 {% endhighlight %}
+
+* If your sketch needs to read from, or write to, the server, you may need to change the file permissions to allow it read/write. For example, with a linux application, cd into the application the folder and type:
+
+<pre>
+sudo ./'your_applications_name'
+</pre>
+
+* If the application ran successfully, you should see the console output, provided you sketch has any.  If not:
+
+<pre>
+chmod 777 'your_applications_name'
+</pre>
 
 
 
