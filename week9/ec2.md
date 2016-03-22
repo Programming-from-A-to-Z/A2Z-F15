@@ -7,7 +7,7 @@ layout: default
 
 ## Creating a server instance
 
-* Go to the [https://aws.amazon.com/ec2/](Amazon EC2 Page) and sign up for an account.
+* Go to the [Amazon EC2 Page](https://aws.amazon.com/ec2/) and sign up for an account.
 * Navigate to the [Amazon web services console](https://console.aws.amazon.com/console/home).
 * Click on "EC2" (top left of page).
 * Select "Launch Instance".
