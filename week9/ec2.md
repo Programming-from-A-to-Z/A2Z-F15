@@ -104,6 +104,14 @@ This comes from the [headless Processing wiki](https://github.com/processing/pro
 $ sudo apt-get install default-jre
 </pre>
 
+It may be that the default JRE is not compatible in which case you can try:
+
+<pre>
+$ sudo apt-add-repository ppa:webupd8team/java
+$ sudo apt-get update
+$ sudo apt-get install oracle-java8-installer 
+</pre>
+
 * Install packages that create a "fake" display for Processing to render to.
 
 <pre>
