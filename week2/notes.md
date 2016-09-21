@@ -1,6 +1,8 @@
 ---
 title: Programming from A to Z Week 2 Notes
-layout: default
+layout: redirected
+sitemap: false
+redirect_to:  http://shiffman.net/a2z/intro
 ---
 
 # Week 2 Notes
