@@ -1,6 +1,8 @@
 ---
 title: Programming from A to Z Week 9 Notes
-layout: default
+layout: redirected
+sitemap: false
+redirect_to:  http://shiffman.net/a2z/twitter-bots
 ---
 
 # Twitter Bots (and server-side programming)
@@ -20,30 +22,6 @@ layout: default
 * [Proxy for scraping html](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week9/06_scraping_proxy)
 * [Talking to Twitter API](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week9/07_twitter_api_oauth)
 
-## Examples (twitter bots)
-* [Basics -- random number bot](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week9/08_twitter_bot)
-* [Bot + text generation with context free grammar](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week9/09_twitter_bot_cfg)
-* [Bot that replies to @mentions](https://github.com/shiffman/A2Z-F15/tree/gh-pages/week9/10_twitter_replier_bot)
-
-
-## Bot lists
-* [Bot twitter list](https://twitter.com/shiffman/lists/bots)
-* [More comprehensive twitter bot list](https://twitter.com/ckolderup/lists/the-fall-of-humanity/members)
-* [Bot wiki](https://botwiki.org/tag/twitterbot)
-* [Another bot wiki](https://github.com/shiffman/A2Z-F15/wiki/Twitter-Bots)
-* [New York Magazine article on bots](http://nymag.com/following/2015/11/12-weirdest-funniest-smartest-twitter-bots.html)
-
-## Watch this!
-* [Darius Kazemi Eyeo talk](https://vimeo.com/112289364)
-
-## Bot resources / tutorials
-* [Allison Parrish spreadsheet bot tutorial](http://air.decontextualize.com/twitterbot/)
-* [Allison Parrish bot workshop notes](https://gist.github.com/aparrish/3ee64d07f0a00b08618a)
-* [Allison Parrish node bot example](https://github.com/aparrish/example-twitter-bot-node)
-* Twitter Bot node tutorial: [part 1](http://ursooperduper.github.io/2014/10/27/twitter-bot-with-node-js-part-1.html), [part 2](http://ursooperduper.github.io/2014/10/28/twitter-bot-with-node-js-part-2.html), [part 3](http://ursooperduper.github.io/2014/11/03/twitter-bot-with-node-js-part-3.html)
-* [Twit Node API](https://github.com/ttezel/twit)
-* [Another Node bot tutorial](http://kiafathi.azurewebsites.net/project-making-a-twitter-bot-with-node-js/)
-* [Making a Twitter bot with node.js and Cloud9](https://botwiki.org/tutorials/making-what_capital/)
 
 ## Node basics
 
@@ -115,7 +93,7 @@ With a reference to express, you can then create an express "app":
 var app = express();
 {% endhighlight %}
 
-The `app` is now a variable that holds an express instance, and allows you to implement functionality on that instance.  For example, you might listen to conenctions on a certain port.  The callback is triggered when the 
+The `app` is now a variable that holds an express instance, and allows you to implement functionality on that instance.  For example, you might listen to conenctions on a certain port.  The callback is triggered when the
 
 {% highlight javascript %}
 var server = app.listen(3000);
@@ -164,7 +142,7 @@ function sayHello(request, response) {
 
 You can implement this style in node using `app.get()` as above.  The difference is the following.  
 
-1. "Variables" (i.e. values that are filled by the user) and notated with a colon (":"). 
+1. "Variables" (i.e. values that are filled by the user) and notated with a colon (":").
 2. Those variables are accessed via the `params` property of `request` rather than `query`.
 
 {% highlight javascript %}
@@ -185,13 +163,13 @@ function sayHello(request, response) {
 
 The scenarios above demonstrate how the code works, but don't really produce any useful results.  Let's take a scenario where you have a server that analyzes a massive corpus of text which you want to visualize from the browser.  In previous weeks, we looked at analyzing text right in the client JavaScript code itself, but this was really only well-suited for smaller datasets.  If the server handles it, the client can be saved a lot of computation time and simple "query" the results from the server and visualize them.
 
-Before I get to the actual server code, one thing that may prove useful is looking at how node "modules" work.  In client-side JavaScript, if you wanted to put some code in another JS file, you simply made something called, say, `file.js`, typed some code and included a reference in the HTML file.  With a node app, there is no HTML file gluing everything together.  Instead the "main" JS file (maybe called "server.js") has to refer to another file using `require()`.  For example, the following code assumes a file called `utilities.js`. 
+Before I get to the actual server code, one thing that may prove useful is looking at how node "modules" work.  In client-side JavaScript, if you wanted to put some code in another JS file, you simply made something called, say, `file.js`, typed some code and included a reference in the HTML file.  With a node app, there is no HTML file gluing everything together.  Instead the "main" JS file (maybe called "server.js") has to refer to another file using `require()`.  For example, the following code assumes a file called `utilities.js`.
 
 {% highlight javascript %}
 var utilities = require('./utilities');
 {% endhighlight %}
 
-The objects and functions you want to have access to must be included inside something called `module.exports`. 
+The objects and functions you want to have access to must be included inside something called `module.exports`.
 
 {% highlight javascript %}
 module.exports = {
@@ -265,10 +243,10 @@ app.get('/load', loadURL);
 function loadURL(req, res) {
   // Get the URL from the user
   var url = req.query.url;
-  
+
   // Execute the HTTP Request
   request(url, loaded);
-  
+
   // Callback for when the request is complete
   function loaded(error, response, body) {
     // Check for errors
@@ -336,7 +314,7 @@ And then you'll need to authenticate with all those secret keys.  There are a va
 
 {% highlight javascript %}
 var T = new Twit({
-  consumer_key:         'YOURCONSUMERKEY', 
+  consumer_key:         'YOURCONSUMERKEY',
   consumer_secret:      'YOURCONSUMERSECRET',
   access_token:         'YOURACCESSTOKEN',
   access_token_secret:  'YOURACCESSTOKENSECRET'
@@ -347,7 +325,7 @@ This may cause you some problems down the road, however, if you want to publish 
 
 {% highlight javascript %}
 module.exports = {
-  consumer_key:         'YOURCONSUMERKEY', 
+  consumer_key:         'YOURCONSUMERKEY',
   consumer_secret:      'YOURCONSUMERSECRET',
   access_token:         'YOURACCESSTOKEN',
   access_token_secret:  'YOURACCESSTOKENSECRET'
@@ -365,7 +343,7 @@ This way if you want to share or publish your code, you can do so leaving out th
 
 ## Querying the Twitter API
 
-[Full documentation of the various Twit methods is available on github](https://github.com/ttezel/twit), but I'll highlight what you need here for a basic p5.js sketch or bot. 
+[Full documentation of the various Twit methods is available on github](https://github.com/ttezel/twit), but I'll highlight what you need here for a basic p5.js sketch or bot.
 
 There are three main calls you can make with Twit: `get()`, `post()`, and `stream()`.
 
@@ -421,7 +399,7 @@ With the above code, the function `tweeter()` is triggered once per hour (an hou
 function tweeter() {
   var num = Math.floor(Math.random()*100);
   var tweet = 'Here\'s a random number between 0 and 100: ' + num;
-  
+
   T.post('statuses/update', { status: tweet }, tweeted);
 }
 {% endhighlight %}
@@ -484,6 +462,3 @@ var sanfran = [ '-122.75', '36.8', '-121.75', '37.8' ]
 var stream = T.stream('statuses/filter', { locations: sanfran })
 stream.on('tweet', tweetEvent);
 {% endhighlight %}
-
-
-

@@ -1,6 +1,8 @@
 ---
 title: Programming from A to Z Week 5 Notes
-layout: default
+layout: redirected
+sitemap: false
+redirect_to:  http://shiffman.net/a2z/text-analysis
 ---
 
 # Week 5: Word Counting and Text Analysis
@@ -293,7 +295,7 @@ This reads as "the probability that a positive TID means you have ITPosis" equal
 
 So why do we care?  This type of reasoning can be applied quite nicely to text analysis.   A common example is spam filtering.  If we know the probability that a spam e-mail contains a specific words, we can calculate the likelihood that an e-mail is spam based on its concordance.
 
-A wonderful resource for this approach is [Paul Graham's A Plan for Spam](http://www.paulgraham.com/spam.html) as well as [Better Bayesian Filtering](http://www.paulgraham.com/better.html). 
+A wonderful resource for this approach is [Paul Graham's A Plan for Spam](http://www.paulgraham.com/spam.html) as well as [Better Bayesian Filtering](http://www.paulgraham.com/better.html).
 
 The example code that follows is not a perfect text classifier by any means.  It's a simple implementation of the idea that outlines the basic steps one might take to apply [Bayesian Filtering](http://en.wikipedia.org/wiki/Bayesian_filtering) to text.
 
@@ -350,7 +352,7 @@ for (var i = 0; i < keys.length; i++) {
   var key = keys[i];
   var word = dictionary[key];
 
-  // Average frequency per document 
+  // Average frequency per document
   // (this assumes we've counted total documents)
   word.freqA = word.countA / docCountA;      
   word.freqB = word.countB / docCountB;      
