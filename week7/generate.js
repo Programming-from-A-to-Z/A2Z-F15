@@ -18,7 +18,7 @@ function setup() {
     var result = nGrams(ngramarea.value(),Number(order.value()));
     ngramsresult.html(result.join('<br/>'));
   });
- 
+
   var letters = 'abcdefghijklmnopqrstuvwxyz';
   for (var i = 0; i < letters.length; i++) {
     var prob = json[letters[i]];
@@ -27,12 +27,12 @@ function setup() {
       possibilities.push(letters[i]);
     }
   }
-  
+
   for (var i = 0; i < 10000; i++) {
     possibilities.push(' ');
   }
 
-  setInterval(function() { 
+  setInterval(function() {
    var possible = 'abcdefghijklmnopqrstuvwxyz';
    possible += possible.toUpperCase();
    possible += ' .';
@@ -45,7 +45,7 @@ function setup() {
    randomit.html(tobe);
   },100);
 
-  setInterval(function() { 
+  setInterval(function() {
    var randomfreq = select('#randomfreq');
    var tobe = '';
    for (var i = 0; i < 18; i++) {

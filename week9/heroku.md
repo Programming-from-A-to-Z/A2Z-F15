@@ -1,6 +1,9 @@
 ---
 title: Deploying to Heroku Notes
-layout: default
+layout: redirected
+sitemap: false
+redirect_to:  http://shiffman.net/a2z/bot-heroku
+
 ---
 
 # Notes on Deploying to Heroku
@@ -93,16 +96,3 @@ var key = process.env.api_key;
 {% endhighlight %}
 
 More about [config variables in Heroku's help pages](https://devcenter.heroku.com/articles/config-vars).
-
-
-
-
-
-
-
-
-
-
-
-
-

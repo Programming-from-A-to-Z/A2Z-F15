@@ -1,6 +1,8 @@
 ---
-title: Programming from A to Z Week 7 Notes
-layout: default
+title: Programming from A to Z Week 5 Notes
+layout: redirected
+sitemap: false
+redirect_to:  http://shiffman.net/a2z/markov
 ---
 
 # N-Grams and Markov Chains
@@ -34,7 +36,7 @@ layout: default
 * [Gnoetry](http://www.beardofbees.com/gnoetry.html)
 
 ## Related references
-* [Animated Markov Chain explanation](http://setosa.io/blog/2014/07/26/markov-chains/) 
+* [Animated Markov Chain explanation](http://setosa.io/blog/2014/07/26/markov-chains/)
 * [N-Grams and Markov Chains by Allison Parrish](http://www.decontextualize.com/teaching/rwet/n-grams-and-markov-chains/)
 * [Context-Free Grammars by Allison Parrish](http://www.decontextualize.com/teaching/rwet/recursion-and-context-free-grammars/)
 * [N-Grams and Markov Chains by Daniel Howe](http://www.rednoise.org/pdal/index.php?n=Main.N-Grams)
@@ -73,7 +75,7 @@ Have you seen “to be or not to be” yet?  Probably not.  After all, a true mo
 <pre>
 
 Letter Probability    
------- ----------- 
+------ -----------
 a      8.167%         
 b      1.492%         
 c      2.782%         
@@ -112,11 +114,11 @@ Using [all the letter frequencies found in this JSON file](letterfreq.json), we 
 // All the possible letters
 var letters = 'abcdefghijklmnopqrstuvwxyz';
 for (var i = 0; i < letters.length; i++) {
-    // Let's assume we've loaded a JSON object 
+    // Let's assume we've loaded a JSON object
     // that has the probabilities for each one
     var prob = json[letters[i]];
     // Arbitrarily multiplying the probability by 1,000
-    // If the probability is 1.067% then it would be 
+    // If the probability is 1.067% then it would be
     // placed in the array 1,067 times.
     var n = floor(prob*1000);
     for (var j = 0; j < n; j++) {
@@ -313,10 +315,10 @@ Once we've got the `ngrams` object with all possibities mapped out we can start 
 
 {% highlight javascript %}
 // Start with an arbitrary ngram
-var current = 'to'; 
+var current = 'to';
 // The final text
 var output = current;
-  
+
 // Generate a new character some number of times
 for (var i = 0; i < 20; i++) {
   // If this is a valid ngram

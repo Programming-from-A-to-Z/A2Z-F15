@@ -1,6 +1,8 @@
 ---
 title: Deploying to EC2 Notes
-layout: default
+layout: redirected
+sitemap: false
+redirect_to:  http://shiffman.net/a2z/bot-ec2
 ---
 
 # Notes on Deploying to EC2
@@ -109,7 +111,7 @@ It may be that the default JRE is not compatible in which case you can try:
 <pre>
 $ sudo apt-add-repository ppa:webupd8team/java
 $ sudo apt-get update
-$ sudo apt-get install oracle-java8-installer 
+$ sudo apt-get install oracle-java8-installer
 </pre>
 
 * Install packages that create a "fake" display for Processing to render to.
@@ -150,13 +152,3 @@ sudo ./'your_applications_name'
 <pre>
 chmod 777 'your_applications_name'
 </pre>
-
-
-
-
-
-
-
-
-
-
