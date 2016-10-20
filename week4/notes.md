@@ -1,6 +1,8 @@
 ---
-title: Programming from A to Z Week 4 Notes
-layout: default
+title: Programming from A to Z Week 5 Notes
+layout: redirected
+sitemap: false
+redirect_to: http://shiffman.net/a2z/data-apis/
 ---
 
 <head>
@@ -33,7 +35,7 @@ layout: default
 
 ## Related references
 
-## Data 
+## Data
 
 This material is excerpted partially (and adapted for JavaScript) from <a href="http://learningprocessing.com">Learning Processing</a>.
 
@@ -230,9 +232,9 @@ class Bubble {<span class="callout-bubble pos-3">This simple <code>Bubble</code>
   float x, y;
   float diameter;
   String name;
-  
+
   boolean over = false;
-  
+
   // Create the Bubble
   Bubble(float tempX, float tempY, float tempD, String s) {
     x = tempX;
@@ -240,17 +242,17 @@ class Bubble {<span class="callout-bubble pos-3">This simple <code>Bubble</code>
     diameter = tempD;
     name = s;
   }
-  
+
   // Checking if mouse is over the bubble
   void rollover(float px, float py) {
     float d = dist(px, py, x, y);
     if (d &lt; diameter/2) {
-      over = true; 
+      over = true;
     } else {
       over = false;
     }
   }
-  
+
   // Display the Bubble
   void display() {
     stroke(0);
@@ -379,7 +381,7 @@ String giveMeTextBetween(String s, String startTag, String endTag) { <span class
 
 <pre data-type="programlisting">
 &lt;div class="txt-block">
-  &lt;h4 class="inline">Runtime:&lt;/h4> 
+  &lt;h4 class="inline">Runtime:&lt;/h4>
     &lt;time itemprop="duration" datetime="PT139M">139 min&lt;/time>
 &lt;/div>
 </pre>
@@ -415,7 +417,7 @@ String start = "&lt;time itemprop=\"duration\" datetime=\"PT139M\">"; <span clas
 String end = "&lt;/time>";
 String runningtime = giveMeTextBetween(html, start, end);
 println(runningtime);
- 
+
 </pre>
 
 <p></p>
@@ -476,13 +478,13 @@ String giveMeTextBetween(String s, String before, String after) {
   // Move to the end of the beginning tag
   // and find the index of the "after" String      
   start += before.length();    
-  int end = s.indexOf(after, start); 
+  int end = s.indexOf(after, start);
   if (end == -1) {
     return "";                       
   }
 
   // Return the text in between
-  return s.substring(start, end); 
+  return s.substring(start, end);
 }
 </pre>
 </div>
@@ -715,7 +717,7 @@ var query = "?q=JavaScript&sort=oldest";
 
 {% highlight javascript %}
 function setup() {
-  
+
   var apiKey = "sample-key";
   var url = "http://api.nytimes.com/svc/search/v2/articlesearch.json";
   var query = "?q=JavaScript&sort=newest";
@@ -745,4 +747,3 @@ loadJSON(encoded, callback);
 {% endhighlight %}
 
 <code>encodeURI</code> does not encode the following characters: <code>, / ? : @ & = + $ #</code>. This is as it should be since these are used in URLs to mean certain things.  However, if you wanted to have a $ or / as part of some text you are passing into a key/value pair you *would* want to encode these characters.  For this <code>encodeURIcomponent()</code> can be used.
-
