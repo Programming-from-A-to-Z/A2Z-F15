@@ -1,6 +1,8 @@
 ---
 title: Programming from A to Z Week 8 Notes
-layout: default
+layout: redirected
+sitemap: false
+redirect_to:  http://shiffman.net/a2z/cfg
 ---
 
 # Context-Free Grammar
@@ -62,7 +64,7 @@ c -> 'happy'
 c -> 'sad'
 </pre>
 
-Anything in single quotes is a “terminal” element, meaning this is the end and no more substitutions are necessary.  In the above “cat,” “happy,” and “sad” are all terminals. Anything that is not in quotes is non-terminal, or a “symbol.”  The abve example has 4 symbols — s, a, b, c. The symbol “s” is commonly used to indicate “start” or “sentence.” 
+Anything in single quotes is a “terminal” element, meaning this is the end and no more substitutions are necessary.  In the above “cat,” “happy,” and “sad” are all terminals. Anything that is not in quotes is non-terminal, or a “symbol.”  The abve example has 4 symbols — s, a, b, c. The symbol “s” is commonly used to indicate “start” or “sentence.”
 
 Notice how in the above set of rules the symbol c can be “happy” or “sad.”   This is often express with an OR (pipe character) to combine these two rules:
 
