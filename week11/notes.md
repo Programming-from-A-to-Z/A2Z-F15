@@ -1,6 +1,8 @@
 ---
 title: Programming from A to Z Week 11/12 Notes
-layout: default
+layout: redirected
+sitemap: false
+redirect_to:  http://shiffman.net/a2z/node-api
 ---
 
 # Making APIs and Text Analysis in Node
@@ -48,7 +50,7 @@ function Concordance() {
 You can have access to this constructor function in your main app (`server.js`) with two additional steps.  First, you must add `Concordance` to `module.exports` in `concordance.js`.  `module.exports` is [the object that's actually returned as when you call require](http://stackoverflow.com/questions/5311334/what-is-the-purpose-of-node-js-module-exports-and-how-do-you-use-it).
 
 {% highlight javascript %}
-module.exports = Concordance; 
+module.exports = Concordance;
 {% endhighlight %}
 
 Once you've done this, you can now get access to `Concordance` with a call to `require()` like so:
@@ -184,7 +186,7 @@ var additional;
 if (exists) {
   var txt = fs.readFileSync('additional.json', 'utf8');
   additional = JSON.parse(txt);
-} 
+}
 {% endhighlight %}
 
 In the case of it not existing, the code simply makes an empty JavaScript object.
@@ -378,11 +380,3 @@ app.use(bodyParser.json()); // support json encoded bodies
 {% endhighlight %}
 
 This package handles the parsing of a `POST` body and gives you easy access in `request.body`.
-
-
-
-
-
-
-
-
